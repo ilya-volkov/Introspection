@@ -13,4 +13,6 @@ build/*
 xcuserdata
 profile
 *.moved-aside
-.DS_Store
+
+# Mac OSX
+*.DS_Store
