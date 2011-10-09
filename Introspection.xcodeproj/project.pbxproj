@@ -1,0 +1,900 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7AD8052D1442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
+		7AD805371442323B00BF6EE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD805351442323B00BF6EE6 /* InfoPlist.strings */; };
+		7AD805441442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
+		7AD805471442323B00BF6EE6 /* Introspection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD805291442323B00BF6EE6 /* Introspection.framework */; };
+		7AD8054D1442323B00BF6EE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD8054B1442323B00BF6EE6 /* InfoPlist.strings */; };
+		7AD80570144232F600BF6EE6 /* ISFieldBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8055E144232F600BF6EE6 /* ISFieldBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD80571144232F600BF6EE6 /* ISFieldBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8055F144232F600BF6EE6 /* ISFieldBuilder.m */; };
+		7AD80572144232F600BF6EE6 /* ISFieldDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80560144232F600BF6EE6 /* ISFieldDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD80573144232F600BF6EE6 /* ISFieldDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80561144232F600BF6EE6 /* ISFieldDescriptor.m */; };
+		7AD80574144232F600BF6EE6 /* ISMethodBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80562144232F600BF6EE6 /* ISMethodBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD80575144232F600BF6EE6 /* ISMethodBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80563144232F600BF6EE6 /* ISMethodBuilder.m */; };
+		7AD80576144232F600BF6EE6 /* ISMethodDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80564144232F600BF6EE6 /* ISMethodDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD80577144232F600BF6EE6 /* ISMethodDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80565144232F600BF6EE6 /* ISMethodDescriptor.m */; };
+		7AD80578144232F600BF6EE6 /* ISPropertyDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80566144232F600BF6EE6 /* ISPropertyDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD80579144232F600BF6EE6 /* ISPropertyDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80567144232F600BF6EE6 /* ISPropertyDescriptor.m */; };
+		7AD8057A144232F600BF6EE6 /* ISProtocolBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80568144232F600BF6EE6 /* ISProtocolBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8057B144232F600BF6EE6 /* ISProtocolBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80569144232F600BF6EE6 /* ISProtocolBuilder.m */; };
+		7AD8057C144232F600BF6EE6 /* ISProtocolDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056A144232F600BF6EE6 /* ISProtocolDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8057D144232F600BF6EE6 /* ISProtocolDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8056B144232F600BF6EE6 /* ISProtocolDescriptor.m */; };
+		7AD8057E144232F600BF6EE6 /* ISTypeBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056C144232F600BF6EE6 /* ISTypeBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8057F144232F600BF6EE6 /* ISTypeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8056D144232F600BF6EE6 /* ISTypeBuilder.m */; };
+		7AD80580144232F600BF6EE6 /* ISTypeDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056E144232F600BF6EE6 /* ISTypeDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD80581144232F600BF6EE6 /* ISTypeDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8056F144232F600BF6EE6 /* ISTypeDescriptor.m */; };
+		7AD805911442342000BF6EE6 /* ISPropertyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8058F1442342000BF6EE6 /* ISPropertyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD805921442342000BF6EE6 /* ISPropertyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD805901442342000BF6EE6 /* ISPropertyBuilder.m */; };
+		7AD805951442346100BF6EE6 /* TypeDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD805941442346100BF6EE6 /* TypeDescriptorTests.m */; };
+		7AD8059D1442356000BF6EE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8059C1442356000BF6EE6 /* Foundation.framework */; };
+		7AD805AE1442356000BF6EE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8059C1442356000BF6EE6 /* Foundation.framework */; };
+		7AD805B31442356000BF6EE6 /* libIntrospection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8059B1442356000BF6EE6 /* libIntrospection.a */; };
+		7AD805B91442356000BF6EE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD805B71442356000BF6EE6 /* InfoPlist.strings */; };
+		7AD805E71442360100BF6EE6 /* TypeDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD805941442346100BF6EE6 /* TypeDescriptorTests.m */; };
+		7AD805E91442362C00BF6EE6 /* ISProtocolBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80569144232F600BF6EE6 /* ISProtocolBuilder.m */; };
+		7AD805EB1442362C00BF6EE6 /* ISMethodBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80563144232F600BF6EE6 /* ISMethodBuilder.m */; };
+		7AD805ED1442362C00BF6EE6 /* ISFieldBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8055F144232F600BF6EE6 /* ISFieldBuilder.m */; };
+		7AD805EF1442362C00BF6EE6 /* ISTypeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8056D144232F600BF6EE6 /* ISTypeBuilder.m */; };
+		7AD805F11442362C00BF6EE6 /* ISPropertyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD805901442342000BF6EE6 /* ISPropertyBuilder.m */; };
+		7AD805F31442362C00BF6EE6 /* ISFieldDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80561144232F600BF6EE6 /* ISFieldDescriptor.m */; };
+		7AD805F51442362C00BF6EE6 /* ISMethodDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80565144232F600BF6EE6 /* ISMethodDescriptor.m */; };
+		7AD805F71442362C00BF6EE6 /* ISPropertyDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80567144232F600BF6EE6 /* ISPropertyDescriptor.m */; };
+		7AD805F91442362C00BF6EE6 /* ISProtocolDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8056B144232F600BF6EE6 /* ISProtocolDescriptor.m */; };
+		7AD805FB1442362C00BF6EE6 /* ISTypeDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8056F144232F600BF6EE6 /* ISTypeDescriptor.m */; };
+		7AD806481442398500BF6EE6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD806471442398500BF6EE6 /* SenTestingKit.framework */; };
+		7AD8064B14423A3C00BF6EE6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD806471442398500BF6EE6 /* SenTestingKit.framework */; };
+		7AD8064D14423B8500BF6EE6 /* Introspection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8064C14423B8500BF6EE6 /* Introspection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8064E14423B8500BF6EE6 /* Introspection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8064C14423B8500BF6EE6 /* Introspection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065214423E4F00BF6EE6 /* ISProtocolBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80568144232F600BF6EE6 /* ISProtocolBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065314423E4F00BF6EE6 /* ISMethodBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80562144232F600BF6EE6 /* ISMethodBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065414423E4F00BF6EE6 /* ISFieldBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8055E144232F600BF6EE6 /* ISFieldBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065514423E4F00BF6EE6 /* ISTypeBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056C144232F600BF6EE6 /* ISTypeBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065614423E4F00BF6EE6 /* ISPropertyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8058F1442342000BF6EE6 /* ISPropertyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065714423E4F00BF6EE6 /* ISFieldDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80560144232F600BF6EE6 /* ISFieldDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065814423E4F00BF6EE6 /* ISMethodDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80564144232F600BF6EE6 /* ISMethodDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065914423E4F00BF6EE6 /* ISPropertyDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80566144232F600BF6EE6 /* ISPropertyDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065A14423E4F00BF6EE6 /* ISProtocolDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056A144232F600BF6EE6 /* ISProtocolDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065B14423E4F00BF6EE6 /* ISTypeDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056E144232F600BF6EE6 /* ISTypeDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7AD805451442323B00BF6EE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AD8051A1442319300BF6EE6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AD805281442323B00BF6EE6;
+			remoteInfo = Introspection;
+		};
+		7AD805B11442356000BF6EE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AD8051A1442319300BF6EE6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AD8059A1442356000BF6EE6;
+			remoteInfo = "Introspection-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7AD805291442323B00BF6EE6 /* Introspection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Introspection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD8052C1442323B00BF6EE6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7AD805341442323B00BF6EE6 /* Introspection-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Introspection-Info.plist"; sourceTree = "<group>"; };
+		7AD805361442323B00BF6EE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7AD805381442323B00BF6EE6 /* Introspection-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Introspection-Prefix.pch"; sourceTree = "<group>"; };
+		7AD805411442323B00BF6EE6 /* IntrospectionTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntrospectionTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD8054A1442323B00BF6EE6 /* IntrospectionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IntrospectionTests-Info.plist"; sourceTree = "<group>"; };
+		7AD8054C1442323B00BF6EE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7AD8055E144232F600BF6EE6 /* ISFieldBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFieldBuilder.h; sourceTree = "<group>"; };
+		7AD8055F144232F600BF6EE6 /* ISFieldBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISFieldBuilder.m; sourceTree = "<group>"; };
+		7AD80560144232F600BF6EE6 /* ISFieldDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFieldDescriptor.h; sourceTree = "<group>"; };
+		7AD80561144232F600BF6EE6 /* ISFieldDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISFieldDescriptor.m; sourceTree = "<group>"; };
+		7AD80562144232F600BF6EE6 /* ISMethodBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMethodBuilder.h; sourceTree = "<group>"; };
+		7AD80563144232F600BF6EE6 /* ISMethodBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMethodBuilder.m; sourceTree = "<group>"; };
+		7AD80564144232F600BF6EE6 /* ISMethodDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMethodDescriptor.h; sourceTree = "<group>"; };
+		7AD80565144232F600BF6EE6 /* ISMethodDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMethodDescriptor.m; sourceTree = "<group>"; };
+		7AD80566144232F600BF6EE6 /* ISPropertyDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISPropertyDescriptor.h; sourceTree = "<group>"; };
+		7AD80567144232F600BF6EE6 /* ISPropertyDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISPropertyDescriptor.m; sourceTree = "<group>"; };
+		7AD80568144232F600BF6EE6 /* ISProtocolBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISProtocolBuilder.h; sourceTree = "<group>"; };
+		7AD80569144232F600BF6EE6 /* ISProtocolBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISProtocolBuilder.m; sourceTree = "<group>"; };
+		7AD8056A144232F600BF6EE6 /* ISProtocolDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISProtocolDescriptor.h; sourceTree = "<group>"; };
+		7AD8056B144232F600BF6EE6 /* ISProtocolDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISProtocolDescriptor.m; sourceTree = "<group>"; };
+		7AD8056C144232F600BF6EE6 /* ISTypeBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISTypeBuilder.h; sourceTree = "<group>"; };
+		7AD8056D144232F600BF6EE6 /* ISTypeBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISTypeBuilder.m; sourceTree = "<group>"; };
+		7AD8056E144232F600BF6EE6 /* ISTypeDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISTypeDescriptor.h; sourceTree = "<group>"; };
+		7AD8056F144232F600BF6EE6 /* ISTypeDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISTypeDescriptor.m; sourceTree = "<group>"; };
+		7AD8058F1442342000BF6EE6 /* ISPropertyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISPropertyBuilder.h; sourceTree = "<group>"; };
+		7AD805901442342000BF6EE6 /* ISPropertyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISPropertyBuilder.m; sourceTree = "<group>"; };
+		7AD805931442346100BF6EE6 /* TypeDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeDescriptorTests.h; sourceTree = "<group>"; };
+		7AD805941442346100BF6EE6 /* TypeDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeDescriptorTests.m; sourceTree = "<group>"; };
+		7AD8059B1442356000BF6EE6 /* libIntrospection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIntrospection.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD8059C1442356000BF6EE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7AD805A01442356000BF6EE6 /* Introspection-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Introspection-ios-Prefix.pch"; sourceTree = "<group>"; };
+		7AD805A91442356000BF6EE6 /* Introspection-iosTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Introspection-iosTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD805B61442356000BF6EE6 /* Introspection-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Introspection-iosTests-Info.plist"; sourceTree = "<group>"; };
+		7AD805B81442356000BF6EE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7AD806471442398500BF6EE6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		7AD8064C14423B8500BF6EE6 /* Introspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Introspection.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7AD805251442323B00BF6EE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD8052D1442323B00BF6EE6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD8053D1442323B00BF6EE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD806481442398500BF6EE6 /* SenTestingKit.framework in Frameworks */,
+				7AD805441442323B00BF6EE6 /* Cocoa.framework in Frameworks */,
+				7AD805471442323B00BF6EE6 /* Introspection.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD805981442356000BF6EE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD8059D1442356000BF6EE6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD805A51442356000BF6EE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD805AE1442356000BF6EE6 /* Foundation.framework in Frameworks */,
+				7AD8064B14423A3C00BF6EE6 /* SenTestingKit.framework in Frameworks */,
+				7AD805B31442356000BF6EE6 /* libIntrospection.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7AD805181442319300BF6EE6 = {
+			isa = PBXGroup;
+			children = (
+				7AD8055D144232F600BF6EE6 /* Classes */,
+				7AD80587144233C000BF6EE6 /* Tests */,
+				7AD805321442323B00BF6EE6 /* Introspection */,
+				7AD805481442323B00BF6EE6 /* IntrospectionTests */,
+				7AD8059E1442356000BF6EE6 /* Introspection-ios */,
+				7AD805B41442356000BF6EE6 /* Introspection-iosTests */,
+				7AD8052B1442323B00BF6EE6 /* Frameworks */,
+				7AD8052A1442323B00BF6EE6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7AD8052A1442323B00BF6EE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805291442323B00BF6EE6 /* Introspection.framework */,
+				7AD805411442323B00BF6EE6 /* IntrospectionTests.octest */,
+				7AD8059B1442356000BF6EE6 /* libIntrospection.a */,
+				7AD805A91442356000BF6EE6 /* Introspection-iosTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AD8052B1442323B00BF6EE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AD806471442398500BF6EE6 /* SenTestingKit.framework */,
+				7AD8052C1442323B00BF6EE6 /* Cocoa.framework */,
+				7AD8059C1442356000BF6EE6 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7AD805321442323B00BF6EE6 /* Introspection */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805331442323B00BF6EE6 /* Supporting Files */,
+			);
+			path = Introspection;
+			sourceTree = "<group>";
+		};
+		7AD805331442323B00BF6EE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805341442323B00BF6EE6 /* Introspection-Info.plist */,
+				7AD805351442323B00BF6EE6 /* InfoPlist.strings */,
+				7AD805381442323B00BF6EE6 /* Introspection-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AD805481442323B00BF6EE6 /* IntrospectionTests */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805491442323B00BF6EE6 /* Supporting Files */,
+			);
+			path = IntrospectionTests;
+			sourceTree = "<group>";
+		};
+		7AD805491442323B00BF6EE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AD8054A1442323B00BF6EE6 /* IntrospectionTests-Info.plist */,
+				7AD8054B1442323B00BF6EE6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AD8055D144232F600BF6EE6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805821442330800BF6EE6 /* Generation */,
+				7AD80560144232F600BF6EE6 /* ISFieldDescriptor.h */,
+				7AD80561144232F600BF6EE6 /* ISFieldDescriptor.m */,
+				7AD80564144232F600BF6EE6 /* ISMethodDescriptor.h */,
+				7AD80565144232F600BF6EE6 /* ISMethodDescriptor.m */,
+				7AD80566144232F600BF6EE6 /* ISPropertyDescriptor.h */,
+				7AD80567144232F600BF6EE6 /* ISPropertyDescriptor.m */,
+				7AD8056A144232F600BF6EE6 /* ISProtocolDescriptor.h */,
+				7AD8056B144232F600BF6EE6 /* ISProtocolDescriptor.m */,
+				7AD8056E144232F600BF6EE6 /* ISTypeDescriptor.h */,
+				7AD8056F144232F600BF6EE6 /* ISTypeDescriptor.m */,
+				7AD8064C14423B8500BF6EE6 /* Introspection.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7AD805821442330800BF6EE6 /* Generation */ = {
+			isa = PBXGroup;
+			children = (
+				7AD80568144232F600BF6EE6 /* ISProtocolBuilder.h */,
+				7AD80569144232F600BF6EE6 /* ISProtocolBuilder.m */,
+				7AD80562144232F600BF6EE6 /* ISMethodBuilder.h */,
+				7AD80563144232F600BF6EE6 /* ISMethodBuilder.m */,
+				7AD8055E144232F600BF6EE6 /* ISFieldBuilder.h */,
+				7AD8055F144232F600BF6EE6 /* ISFieldBuilder.m */,
+				7AD8056C144232F600BF6EE6 /* ISTypeBuilder.h */,
+				7AD8056D144232F600BF6EE6 /* ISTypeBuilder.m */,
+				7AD8058F1442342000BF6EE6 /* ISPropertyBuilder.h */,
+				7AD805901442342000BF6EE6 /* ISPropertyBuilder.m */,
+			);
+			name = Generation;
+			sourceTree = "<group>";
+		};
+		7AD80587144233C000BF6EE6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805931442346100BF6EE6 /* TypeDescriptorTests.h */,
+				7AD805941442346100BF6EE6 /* TypeDescriptorTests.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		7AD8059E1442356000BF6EE6 /* Introspection-ios */ = {
+			isa = PBXGroup;
+			children = (
+				7AD8059F1442356000BF6EE6 /* Supporting Files */,
+			);
+			path = "Introspection-ios";
+			sourceTree = "<group>";
+		};
+		7AD8059F1442356000BF6EE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805A01442356000BF6EE6 /* Introspection-ios-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AD805B41442356000BF6EE6 /* Introspection-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805B51442356000BF6EE6 /* Supporting Files */,
+			);
+			path = "Introspection-iosTests";
+			sourceTree = "<group>";
+		};
+		7AD805B51442356000BF6EE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AD805B61442356000BF6EE6 /* Introspection-iosTests-Info.plist */,
+				7AD805B71442356000BF6EE6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7AD805261442323B00BF6EE6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD80570144232F600BF6EE6 /* ISFieldBuilder.h in Headers */,
+				7AD80572144232F600BF6EE6 /* ISFieldDescriptor.h in Headers */,
+				7AD80574144232F600BF6EE6 /* ISMethodBuilder.h in Headers */,
+				7AD80576144232F600BF6EE6 /* ISMethodDescriptor.h in Headers */,
+				7AD80578144232F600BF6EE6 /* ISPropertyDescriptor.h in Headers */,
+				7AD8057A144232F600BF6EE6 /* ISProtocolBuilder.h in Headers */,
+				7AD8057C144232F600BF6EE6 /* ISProtocolDescriptor.h in Headers */,
+				7AD8057E144232F600BF6EE6 /* ISTypeBuilder.h in Headers */,
+				7AD80580144232F600BF6EE6 /* ISTypeDescriptor.h in Headers */,
+				7AD805911442342000BF6EE6 /* ISPropertyBuilder.h in Headers */,
+				7AD8064D14423B8500BF6EE6 /* Introspection.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD805991442356000BF6EE6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD8064E14423B8500BF6EE6 /* Introspection.h in Headers */,
+				7AD8065214423E4F00BF6EE6 /* ISProtocolBuilder.h in Headers */,
+				7AD8065314423E4F00BF6EE6 /* ISMethodBuilder.h in Headers */,
+				7AD8065414423E4F00BF6EE6 /* ISFieldBuilder.h in Headers */,
+				7AD8065514423E4F00BF6EE6 /* ISTypeBuilder.h in Headers */,
+				7AD8065614423E4F00BF6EE6 /* ISPropertyBuilder.h in Headers */,
+				7AD8065714423E4F00BF6EE6 /* ISFieldDescriptor.h in Headers */,
+				7AD8065814423E4F00BF6EE6 /* ISMethodDescriptor.h in Headers */,
+				7AD8065914423E4F00BF6EE6 /* ISPropertyDescriptor.h in Headers */,
+				7AD8065A14423E4F00BF6EE6 /* ISProtocolDescriptor.h in Headers */,
+				7AD8065B14423E4F00BF6EE6 /* ISTypeDescriptor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7AD805281442323B00BF6EE6 /* Introspection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AD805561442323B00BF6EE6 /* Build configuration list for PBXNativeTarget "Introspection" */;
+			buildPhases = (
+				7AD805241442323B00BF6EE6 /* Sources */,
+				7AD805251442323B00BF6EE6 /* Frameworks */,
+				7AD805261442323B00BF6EE6 /* Headers */,
+				7AD805271442323B00BF6EE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Introspection;
+			productName = Introspection;
+			productReference = 7AD805291442323B00BF6EE6 /* Introspection.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7AD805401442323B00BF6EE6 /* IntrospectionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AD805571442323B00BF6EE6 /* Build configuration list for PBXNativeTarget "IntrospectionTests" */;
+			buildPhases = (
+				7AD8053C1442323B00BF6EE6 /* Sources */,
+				7AD8053D1442323B00BF6EE6 /* Frameworks */,
+				7AD8053E1442323B00BF6EE6 /* Resources */,
+				7AD8053F1442323B00BF6EE6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AD805461442323B00BF6EE6 /* PBXTargetDependency */,
+			);
+			name = IntrospectionTests;
+			productName = IntrospectionTests;
+			productReference = 7AD805411442323B00BF6EE6 /* IntrospectionTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		7AD8059A1442356000BF6EE6 /* Introspection-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AD805BE1442356000BF6EE6 /* Build configuration list for PBXNativeTarget "Introspection-ios" */;
+			buildPhases = (
+				7AD805971442356000BF6EE6 /* Sources */,
+				7AD805981442356000BF6EE6 /* Frameworks */,
+				7AD805991442356000BF6EE6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Introspection-ios";
+			productName = "Introspection-ios";
+			productReference = 7AD8059B1442356000BF6EE6 /* libIntrospection.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7AD805A81442356000BF6EE6 /* Introspection-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AD805C11442356000BF6EE6 /* Build configuration list for PBXNativeTarget "Introspection-iosTests" */;
+			buildPhases = (
+				7AD805A41442356000BF6EE6 /* Sources */,
+				7AD805A51442356000BF6EE6 /* Frameworks */,
+				7AD805A61442356000BF6EE6 /* Resources */,
+				7AD805A71442356000BF6EE6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AD805B21442356000BF6EE6 /* PBXTargetDependency */,
+			);
+			name = "Introspection-iosTests";
+			productName = "Introspection-iosTests";
+			productReference = 7AD805A91442356000BF6EE6 /* Introspection-iosTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7AD8051A1442319300BF6EE6 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 7AD8051D1442319300BF6EE6 /* Build configuration list for PBXProject "Introspection" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7AD805181442319300BF6EE6;
+			productRefGroup = 7AD8052A1442323B00BF6EE6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7AD805281442323B00BF6EE6 /* Introspection */,
+				7AD805401442323B00BF6EE6 /* IntrospectionTests */,
+				7AD8059A1442356000BF6EE6 /* Introspection-ios */,
+				7AD805A81442356000BF6EE6 /* Introspection-iosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7AD805271442323B00BF6EE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD805371442323B00BF6EE6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD8053E1442323B00BF6EE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD8054D1442323B00BF6EE6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD805A61442356000BF6EE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD805B91442356000BF6EE6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7AD8053F1442323B00BF6EE6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		7AD805A71442356000BF6EE6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7AD805241442323B00BF6EE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD80571144232F600BF6EE6 /* ISFieldBuilder.m in Sources */,
+				7AD80573144232F600BF6EE6 /* ISFieldDescriptor.m in Sources */,
+				7AD80575144232F600BF6EE6 /* ISMethodBuilder.m in Sources */,
+				7AD80577144232F600BF6EE6 /* ISMethodDescriptor.m in Sources */,
+				7AD80579144232F600BF6EE6 /* ISPropertyDescriptor.m in Sources */,
+				7AD8057B144232F600BF6EE6 /* ISProtocolBuilder.m in Sources */,
+				7AD8057D144232F600BF6EE6 /* ISProtocolDescriptor.m in Sources */,
+				7AD8057F144232F600BF6EE6 /* ISTypeBuilder.m in Sources */,
+				7AD80581144232F600BF6EE6 /* ISTypeDescriptor.m in Sources */,
+				7AD805921442342000BF6EE6 /* ISPropertyBuilder.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD8053C1442323B00BF6EE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD805951442346100BF6EE6 /* TypeDescriptorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD805971442356000BF6EE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD805E91442362C00BF6EE6 /* ISProtocolBuilder.m in Sources */,
+				7AD805EB1442362C00BF6EE6 /* ISMethodBuilder.m in Sources */,
+				7AD805ED1442362C00BF6EE6 /* ISFieldBuilder.m in Sources */,
+				7AD805EF1442362C00BF6EE6 /* ISTypeBuilder.m in Sources */,
+				7AD805F11442362C00BF6EE6 /* ISPropertyBuilder.m in Sources */,
+				7AD805F31442362C00BF6EE6 /* ISFieldDescriptor.m in Sources */,
+				7AD805F51442362C00BF6EE6 /* ISMethodDescriptor.m in Sources */,
+				7AD805F71442362C00BF6EE6 /* ISPropertyDescriptor.m in Sources */,
+				7AD805F91442362C00BF6EE6 /* ISProtocolDescriptor.m in Sources */,
+				7AD805FB1442362C00BF6EE6 /* ISTypeDescriptor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AD805A41442356000BF6EE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD805E71442360100BF6EE6 /* TypeDescriptorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7AD805461442323B00BF6EE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AD805281442323B00BF6EE6 /* Introspection */;
+			targetProxy = 7AD805451442323B00BF6EE6 /* PBXContainerItemProxy */;
+		};
+		7AD805B21442356000BF6EE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AD8059A1442356000BF6EE6 /* Introspection-ios */;
+			targetProxy = 7AD805B11442356000BF6EE6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7AD805351442323B00BF6EE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AD805361442323B00BF6EE6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7AD8054B1442323B00BF6EE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AD8054C1442323B00BF6EE6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7AD805B71442356000BF6EE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AD805B81442356000BF6EE6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7AD8051F1442319300BF6EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		7AD805201442319300BF6EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		7AD805521442323B00BF6EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection/Introspection-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Introspection/Introspection-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		7AD805531442323B00BF6EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection/Introspection-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Introspection/Introspection-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		7AD805541442323B00BF6EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection/Introspection-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "IntrospectionTests/IntrospectionTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		7AD805551442323B00BF6EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection/Introspection-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "IntrospectionTests/IntrospectionTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		7AD805BF1442356000BF6EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/Introspection_ios.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection-ios/Introspection-ios-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7AD805C01442356000BF6EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/Introspection_ios.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection-ios/Introspection-ios-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7AD805C21442356000BF6EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection-ios/Introspection-ios-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Introspection-iosTests/Introspection-iosTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		7AD805C31442356000BF6EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Introspection-ios/Introspection-ios-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Introspection-iosTests/Introspection-iosTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7AD8051D1442319300BF6EE6 /* Build configuration list for PBXProject "Introspection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AD8051F1442319300BF6EE6 /* Debug */,
+				7AD805201442319300BF6EE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AD805561442323B00BF6EE6 /* Build configuration list for PBXNativeTarget "Introspection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AD805521442323B00BF6EE6 /* Debug */,
+				7AD805531442323B00BF6EE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AD805571442323B00BF6EE6 /* Build configuration list for PBXNativeTarget "IntrospectionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AD805541442323B00BF6EE6 /* Debug */,
+				7AD805551442323B00BF6EE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AD805BE1442356000BF6EE6 /* Build configuration list for PBXNativeTarget "Introspection-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AD805BF1442356000BF6EE6 /* Debug */,
+				7AD805C01442356000BF6EE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7AD805C11442356000BF6EE6 /* Build configuration list for PBXNativeTarget "Introspection-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AD805C21442356000BF6EE6 /* Debug */,
+				7AD805C31442356000BF6EE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7AD8051A1442319300BF6EE6 /* Project object */;
+}
