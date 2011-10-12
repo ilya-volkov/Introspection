@@ -1,0 +1,3 @@
+@interface ISFieldDescriptor : NSObject
+
+@end
