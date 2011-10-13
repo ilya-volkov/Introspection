@@ -4,19 +4,19 @@
 @class ISInstanceVariableDescriptor;
 
 #import "ISDescriptor.h"
+#import "ISBindingFlags.h"
 
 @interface ISClassDescriptor : NSObject <ISDescriptor> {
 @private
-    Class _class;
+    Class class;
 }
 
 + (NSArray*) allClasses;
 + (ISClassDescriptor*) descriptorForClass:(Class)aClass;
 + (ISClassDescriptor*) descriptorForClassName:(NSString*)aClassName;
 
-// TODO: existing methods overrides
-- (BOOL) respondsToSelector:(SEL)aSelector;
-- (BOOL) conformsToProtocol:(ISProtocolDescriptor*)aProtocol;
+- (BOOL) classRespondsToSelector:(SEL)aSelector;
+- (BOOL) classConformsToProtocol:(ISProtocolDescriptor*)aProtocol;
 
 - (id) initWithClass:(Class)aClass;
 
@@ -24,12 +24,19 @@
 - (ISPropertyDescriptor*)propertyWithName:(NSString*)name;
 - (ISInstanceVariableDescriptor*)instanceVariableWithName:(NSString*)name;
 
-@property (readonly) ISClassDescriptor* superclass;
-@property (copy) NSNumber* version;
+- (NSArray*) methodsFilteredBy:(ISBindingFlags)flags;
+- (NSArray*) propertiesFilteredBy:(ISBindingFlags)flags;
+- (NSArray*) instanceVariablesFilteredBy:(ISBindingFlags)flags;
 
+@property (readonly) ISClassDescriptor* classSuperclass;
+@property (assign) NSNumber* classVersion;
+
+// inherited protocols
 @property (readonly) NSArray* protocols;
 @property (readonly) NSArray* methods;
 @property (readonly) NSArray* properties;
+// test class variables
 @property (readonly) NSArray* instanceVariables;
+// variables visibility: public, protected, public
 
 @end

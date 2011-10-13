@@ -1,4 +1,4 @@
-#import "ISFieldDescriptor.h"
+#import "ISInstanceVariableDescriptor.h"
 
 @implementation ISFieldDescriptor
 

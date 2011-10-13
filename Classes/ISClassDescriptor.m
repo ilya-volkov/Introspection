@@ -22,7 +22,7 @@
 - (id) initWithClass:(Class)aClass {
     self = [super init];
     if (self) {
-        _class = aClass;
+        _class = aClass;[self super]
     }
     
     return self;
