@@ -1,29 +1,31 @@
-@class ISMethodDescriptor;
-@class ISPropertyDescriptor;
+#import <objc/runtime.h>
 
 #import "ISDescriptor.h"
 
+@class ISMethodDescriptor;
+@class ISPropertyDescriptor;
+
 @interface ISProtocolDescriptor : NSObject <ISDescriptor> {
 @private
-    Protocol protocol;
+    Protocol *protocol;
 }
 
 + (NSArray*) allProtocols;
-+ (ISProtocolDescriptor*) descriptorForProtocol:(Protocol)aProtocol;
++ (ISProtocolDescriptor*) descriptorForProtocol:(Protocol*)aProtocol;
 + (ISProtocolDescriptor*) descriptorForProtocolName:(NSString*)aProtocolName;
 
 - (BOOL) protocolRespondsToSelector:(SEL)aSelector;
 - (BOOL) isProtocolEqual:(ISProtocolDescriptor*)aProtocol;
 
-- (id) initWithProtocol:(Protocol)aProtocol;
+- (id) initWithProtocol:(Protocol*)aProtocol;
 
-// isRequired in method descriptor
 - (ISMethodDescriptor*)methodWithName:(NSString*)name;
 - (ISPropertyDescriptor*)propertyWithName:(NSString*)name;
 
 @property (readonly) NSArray* protocols;
 @property (readonly) NSArray* requiredMethods;
 @property (readonly) NSArray* optionalMethods;
+@property (readonly) NSArray* methods;
 @property (readonly) NSArray* properties;
 
 @end

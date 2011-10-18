@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A1D84FD144C12FF00A2079D /* NSArray+CollectionQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1D84FB144C12FF00A2079D /* NSArray+CollectionQuery.h */; };
+		7A1D84FE144C12FF00A2079D /* NSArray+CollectionQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1D84FB144C12FF00A2079D /* NSArray+CollectionQuery.h */; };
+		7A1D8516144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */; };
+		7A1D8517144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */; };
+		7A1D851B144CCC9000A2079D /* NSArray+CollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */; };
+		7A1D851F144CCC9100A2079D /* SenTestCase+CollectionAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */; };
+		7A1D8521144CCC9E00A2079D /* SimpleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFEDF1144821FB009EE7CF /* SimpleClass.m */; };
+		7A1D852B144CCD5600A2079D /* NSArray+CollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */; };
+		7A1D852D144CCD5600A2079D /* SenTestCase+CollectionAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */; };
+		7A1D852E144CCD5600A2079D /* SimpleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFEDF1144821FB009EE7CF /* SimpleClass.m */; };
 		7AD8052D1442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
 		7AD805371442323B00BF6EE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD805351442323B00BF6EE6 /* InfoPlist.strings */; };
 		7AD805441442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
@@ -62,12 +72,14 @@
 		7AD8065914423E4F00BF6EE6 /* ISPropertyDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD80566144232F600BF6EE6 /* ISPropertyDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AD8065A14423E4F00BF6EE6 /* ISProtocolDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056A144232F600BF6EE6 /* ISProtocolDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AD8065B14423E4F00BF6EE6 /* ISClassDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8056E144232F600BF6EE6 /* ISClassDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7AD8065D144426A100BF6EE6 /* ISDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8065C144426A100BF6EE6 /* ISDescriptor.h */; };
-		7AD8065E144426A100BF6EE6 /* ISDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8065C144426A100BF6EE6 /* ISDescriptor.h */; };
-		7ADFEDE9144776BB009EE7CF /* ISBindingFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDE8144776BB009EE7CF /* ISBindingFlags.h */; };
-		7ADFEDEA144776BB009EE7CF /* ISBindingFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDE8144776BB009EE7CF /* ISBindingFlags.h */; };
-		7ADFEDED14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */; };
-		7ADFEDEE14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */; };
+		7AD8065D144426A100BF6EE6 /* ISDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8065C144426A100BF6EE6 /* ISDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD8065E144426A100BF6EE6 /* ISDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8065C144426A100BF6EE6 /* ISDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7ADFEDE9144776BB009EE7CF /* ISBindingFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDE8144776BB009EE7CF /* ISBindingFlags.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7ADFEDEA144776BB009EE7CF /* ISBindingFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDE8144776BB009EE7CF /* ISBindingFlags.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7ADFEDED14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7ADFEDEE14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7ADFEDF2144821FB009EE7CF /* SimpleClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDF0144821FB009EE7CF /* SimpleClass.h */; };
+		7ADFEDF3144821FB009EE7CF /* SimpleClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDF0144821FB009EE7CF /* SimpleClass.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +100,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A1D84FB144C12FF00A2079D /* NSArray+CollectionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CollectionQuery.h"; sourceTree = "<group>"; };
+		7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CollectionQuery.m"; sourceTree = "<group>"; };
+		7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SenTestCase+CollectionAssert.h"; sourceTree = "<group>"; };
+		7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SenTestCase+CollectionAssert.m"; sourceTree = "<group>"; };
 		7AD805291442323B00BF6EE6 /* Introspection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Introspection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD8052C1442323B00BF6EE6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7AD805341442323B00BF6EE6 /* Introspection-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Introspection-Info.plist"; sourceTree = "<group>"; };
@@ -129,6 +145,8 @@
 		7AD8065C144426A100BF6EE6 /* ISDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISDescriptor.h; sourceTree = "<group>"; };
 		7ADFEDE8144776BB009EE7CF /* ISBindingFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISBindingFlags.h; sourceTree = "<group>"; };
 		7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSetterSemanticsType.h; sourceTree = "<group>"; };
+		7ADFEDF0144821FB009EE7CF /* SimpleClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleClass.h; sourceTree = "<group>"; };
+		7ADFEDF1144821FB009EE7CF /* SimpleClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +189,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1D84FA144C0D4F00A2079D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7A1D84FB144C12FF00A2079D /* NSArray+CollectionQuery.h */,
+				7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */,
+				7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */,
+				7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		7AD805181442319300BF6EE6 = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +312,8 @@
 		7AD80587144233C000BF6EE6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7A1D84FA144C0D4F00A2079D /* Extensions */,
+				7ADFEDEF144821D7009EE7CF /* TestClasses */,
 				7AD805931442346100BF6EE6 /* ClassDescriptorTests.h */,
 				7AD805941442346100BF6EE6 /* ClassDescriptorTests.m */,
 			);
@@ -322,6 +353,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7ADFEDEF144821D7009EE7CF /* TestClasses */ = {
+			isa = PBXGroup;
+			children = (
+				7ADFEDF0144821FB009EE7CF /* SimpleClass.h */,
+				7ADFEDF1144821FB009EE7CF /* SimpleClass.m */,
+			);
+			name = TestClasses;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -329,6 +369,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD8065D144426A100BF6EE6 /* ISDescriptor.h in Headers */,
+				7ADFEDE9144776BB009EE7CF /* ISBindingFlags.h in Headers */,
+				7ADFEDED14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */,
 				7AD80570144232F600BF6EE6 /* ISFieldBuilder.h in Headers */,
 				7AD80572144232F600BF6EE6 /* ISInstanceVariableDescriptor.h in Headers */,
 				7AD80574144232F600BF6EE6 /* ISMethodBuilder.h in Headers */,
@@ -340,9 +383,9 @@
 				7AD80580144232F600BF6EE6 /* ISClassDescriptor.h in Headers */,
 				7AD805911442342000BF6EE6 /* ISPropertyBuilder.h in Headers */,
 				7AD8064D14423B8500BF6EE6 /* Introspection.h in Headers */,
-				7AD8065D144426A100BF6EE6 /* ISDescriptor.h in Headers */,
-				7ADFEDE9144776BB009EE7CF /* ISBindingFlags.h in Headers */,
-				7ADFEDED14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */,
+				7ADFEDF2144821FB009EE7CF /* SimpleClass.h in Headers */,
+				7A1D84FD144C12FF00A2079D /* NSArray+CollectionQuery.h in Headers */,
+				7A1D8516144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +393,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD8065E144426A100BF6EE6 /* ISDescriptor.h in Headers */,
+				7ADFEDEA144776BB009EE7CF /* ISBindingFlags.h in Headers */,
+				7ADFEDEE14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */,
 				7AD8064E14423B8500BF6EE6 /* Introspection.h in Headers */,
 				7AD8065214423E4F00BF6EE6 /* ISProtocolBuilder.h in Headers */,
 				7AD8065314423E4F00BF6EE6 /* ISMethodBuilder.h in Headers */,
@@ -361,9 +407,9 @@
 				7AD8065914423E4F00BF6EE6 /* ISPropertyDescriptor.h in Headers */,
 				7AD8065A14423E4F00BF6EE6 /* ISProtocolDescriptor.h in Headers */,
 				7AD8065B14423E4F00BF6EE6 /* ISClassDescriptor.h in Headers */,
-				7AD8065E144426A100BF6EE6 /* ISDescriptor.h in Headers */,
-				7ADFEDEA144776BB009EE7CF /* ISBindingFlags.h in Headers */,
-				7ADFEDEE14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */,
+				7ADFEDF3144821FB009EE7CF /* SimpleClass.h in Headers */,
+				7A1D84FE144C12FF00A2079D /* NSArray+CollectionQuery.h in Headers */,
+				7A1D8517144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +494,9 @@
 /* Begin PBXProject section */
 		7AD8051A1442319300BF6EE6 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 7AD8051D1442319300BF6EE6 /* Build configuration list for PBXProject "Introspection" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -546,6 +595,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1D8521144CCC9E00A2079D /* SimpleClass.m in Sources */,
+				7A1D851B144CCC9000A2079D /* NSArray+CollectionQuery.m in Sources */,
+				7A1D851F144CCC9100A2079D /* SenTestCase+CollectionAssert.m in Sources */,
 				7AD805951442346100BF6EE6 /* ClassDescriptorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,6 +623,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1D852B144CCD5600A2079D /* NSArray+CollectionQuery.m in Sources */,
+				7A1D852D144CCD5600A2079D /* SenTestCase+CollectionAssert.m in Sources */,
+				7A1D852E144CCD5600A2079D /* SimpleClass.m in Sources */,
 				7AD805E71442360100BF6EE6 /* ClassDescriptorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +690,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -669,6 +725,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -696,6 +753,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -728,6 +786,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
@@ -753,6 +812,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/Introspection_ios.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -769,11 +829,11 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
@@ -786,6 +846,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/Introspection_ios.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -795,11 +856,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Introspection-ios/Introspection-ios-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
@@ -813,6 +874,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -828,12 +890,12 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Introspection-iosTests/Introspection-iosTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
@@ -845,6 +907,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -853,12 +916,12 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Introspection-ios/Introspection-ios-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Introspection-iosTests/Introspection-iosTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -1,3 +1,5 @@
+#import <objc/runtime.h>
+
 #import "ISDescriptor.h"
 #import "ISSetterSemanticsType.h"
 
@@ -18,8 +20,8 @@
 
 @property (readonly) NSString* typeEncoding;
 
-@property (readonly) ISSetterSemanticsType setterSemanticType;
-@property (readonly) BOOL isRetain;
+@property (readonly) ISSetterSemanticsType setterSemanticsType;
+
 @property (readonly) BOOL isReadOnly;
 @property (readonly) BOOL isNonAtomic;
 // get, set dynamic

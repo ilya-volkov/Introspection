@@ -1,24 +1,26 @@
+#import <objc/runtime.h>
+
+#import "ISDescriptor.h"
+#import "ISBindingFlags.h"
+
 @class ISProtocolDescriptor;
 @class ISMethodDescriptor;
 @class ISPropertyDescriptor;
 @class ISInstanceVariableDescriptor;
 
-#import "ISDescriptor.h"
-#import "ISBindingFlags.h"
-
 @interface ISClassDescriptor : NSObject <ISDescriptor> {
 @private
-    Class class;
+    Class _class;
 }
 
 + (NSArray*) allClasses;
 + (ISClassDescriptor*) descriptorForClass:(Class)aClass;
 + (ISClassDescriptor*) descriptorForClassName:(NSString*)aClassName;
 
+- (id) initWithClass:(Class)aClass;
+
 - (BOOL) classRespondsToSelector:(SEL)aSelector;
 - (BOOL) classConformsToProtocol:(ISProtocolDescriptor*)aProtocol;
-
-- (id) initWithClass:(Class)aClass;
 
 - (ISMethodDescriptor*)methodWithName:(NSString*)name;
 - (ISPropertyDescriptor*)propertyWithName:(NSString*)name;
@@ -29,7 +31,9 @@
 - (NSArray*) instanceVariablesFilteredBy:(ISBindingFlags)flags;
 
 @property (readonly) ISClassDescriptor* classSuperclass;
-@property (assign) NSNumber* classVersion;
+
+// weak or strong by default ??? assign for NSNumber etc???
+@property (weak) NSNumber* classVersion;
 
 // inherited protocols
 @property (readonly) NSArray* protocols;

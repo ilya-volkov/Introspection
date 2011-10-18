@@ -2,4 +2,8 @@
 
 @interface ClassDescriptorTests : SenTestCase
 
+- (void)testCreateDescriptorForClass;
+- (void)testCreateDescriptorForClassName;
+- (void)testListAllClasses;
+
 @end

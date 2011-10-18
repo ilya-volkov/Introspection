@@ -1,31 +1,56 @@
 #import "ISClassDescriptor.h"
 
+// research objc_copyImageNames
+
 @implementation ISClassDescriptor
 
-/*+ (NSArray*) allClasses {
-    return nil;
+// filter out classes with empty names
++ (NSArray*) allClasses {
+    unsigned int outCount;
+    Class* classes = objc_copyClassList(&outCount);
+    
+    NSMutableArray* result = [NSMutableArray array];
+    for (int i = 0; i < outCount; i++) {
+        id class = [ISClassDescriptor descriptorForClass:classes[i]];
+        [result addObject:class];
+    }
+    
+    free(classes);
+    
+    return result;
 }
 
-+ (ISClassDescriptor*) descriptorWithClass:(Class)aClass {
++ (ISClassDescriptor*) descriptorForClass:(Class)aClass {
+    return [[ISClassDescriptor alloc] initWithClass:aClass];
 }
 
 + (ISClassDescriptor*) descriptorForClassName:(NSString*)aClassName {
-}
-
-
-- (BOOL)respondsToSelector:(SEL)aSelector {
-}
-
-- (BOOL)conformsToProtocol:(ISProtocolDescriptor*)aProtocol {
+    Class class = objc_getClass([aClassName cStringUsingEncoding:NSASCIIStringEncoding]);
+    if (class == nil)
+        return nil;
+    
+    return [[ISClassDescriptor alloc] initWithClass:class];
 }
 
 - (id) initWithClass:(Class)aClass {
     self = [super init];
-    if (self) {
-        _class = aClass;[self super]
-    }
+    if (self)
+        _class = aClass;
     
     return self;
+}
+
+- (NSString*)name {
+    const char *name = class_getName(_class);
+    
+    return [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
+}
+
+/*
+- (BOOL)respondsToSelector:(SEL)aSelector {
+}
+
+- (BOOL)conformsToProtocol:(ISProtocolDescriptor*)aProtocol {
 }
 
 - (NSNumber*)version {

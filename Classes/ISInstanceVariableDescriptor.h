@@ -1,3 +1,5 @@
+#import <objc/runtime.h>
+
 #import "ISDescriptor.h"
 
 @interface ISInstanceVariableDescriptor : NSObject <ISDescriptor> {
