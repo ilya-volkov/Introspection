@@ -14,6 +14,7 @@
 }
 
 + (NSArray*) allClasses;
++ (NSArray*) classesInBundle:(NSBundle*)aBundle;
 + (ISClassDescriptor*) descriptorForClass:(Class)aClass;
 + (ISClassDescriptor*) descriptorForClassName:(NSString*)aClassName;
 
@@ -42,5 +43,6 @@
 // test class variables
 @property (readonly) NSArray* instanceVariables;
 // variables visibility: public, protected, public
+@property (readonly) NSBundle* bundle;
 
 @end

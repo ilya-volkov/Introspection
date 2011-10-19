@@ -2,8 +2,11 @@
 
 @interface ClassDescriptorTests : SenTestCase
 
-- (void)testCreateDescriptorForClass;
 - (void)testCreateDescriptorForClassName;
+- (void)testCreateDescriptorForClassNameFailed;
 - (void)testListAllClasses;
+- (void)testListClassesInBundle;
+- (void)testGetName;
+- (void)testGetBundle;
 
 @end

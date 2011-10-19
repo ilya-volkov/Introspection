@@ -28,4 +28,12 @@
     }
 }
 
+- (void)assertObject:(id<NSObject>)anObject containsInCollection:(NSArray*)actual {
+    STAssertTrue([actual containsObject:anObject], @"Collection don't contain an object");
+}
+
+- (void)assertObject:(id<NSObject>)anObject notContainsInCollection:(NSArray*)actual {
+    STAssertFalse([actual containsObject:anObject], @"Collection contains an object");
+}
+
 @end

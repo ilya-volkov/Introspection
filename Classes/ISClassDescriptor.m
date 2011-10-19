@@ -1,17 +1,14 @@
 #import "ISClassDescriptor.h"
 
-// research objc_copyImageNames
-
 @implementation ISClassDescriptor
 
-// filter out classes with empty names
 + (NSArray*) allClasses {
     unsigned int outCount;
     Class* classes = objc_copyClassList(&outCount);
     
     NSMutableArray* result = [NSMutableArray array];
     for (int i = 0; i < outCount; i++) {
-        id class = [ISClassDescriptor descriptorForClass:classes[i]];
+        ISClassDescriptor* class = [ISClassDescriptor descriptorForClass:classes[i]];
         [result addObject:class];
     }
     
@@ -32,6 +29,28 @@
     return [[ISClassDescriptor alloc] initWithClass:class];
 }
 
++ (NSArray*) classesInBundle:(NSBundle*)aBundle {
+    unsigned int count = 0;
+    const char **classNames = objc_copyClassNamesForImage(
+        [[aBundle executablePath] cStringUsingEncoding:NSUTF8StringEncoding],                                                  
+        &count
+    );
+    
+    NSMutableArray* result = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        NSLog([NSString stringWithCString:classNames[i] encoding:NSASCIIStringEncoding]);
+        [result addObject:
+            [ISClassDescriptor 
+                descriptorForClassName:[NSString stringWithCString:classNames[i] encoding:NSASCIIStringEncoding]
+            ]
+        ];
+    }
+    
+    free(classNames);
+    
+    return result;
+}
+
 - (id) initWithClass:(Class)aClass {
     self = [super init];
     if (self)
@@ -44,6 +63,10 @@
     const char *name = class_getName(_class);
     
     return [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
+}
+
+- (NSBundle*)bundle {
+    return [NSBundle bundleForClass:_class];
 }
 
 /*
