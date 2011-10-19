@@ -17,6 +17,8 @@
 		7A1D852B144CCD5600A2079D /* NSArray+CollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */; };
 		7A1D852D144CCD5600A2079D /* SenTestCase+CollectionAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */; };
 		7A1D852E144CCD5600A2079D /* SimpleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFEDF1144821FB009EE7CF /* SimpleClass.m */; };
+		7A1D853F144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */; };
+		7A1D8540144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */; };
 		7AD8052D1442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
 		7AD805371442323B00BF6EE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD805351442323B00BF6EE6 /* InfoPlist.strings */; };
 		7AD805441442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
@@ -104,6 +106,8 @@
 		7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CollectionQuery.m"; sourceTree = "<group>"; };
 		7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SenTestCase+CollectionAssert.h"; sourceTree = "<group>"; };
 		7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SenTestCase+CollectionAssert.m"; sourceTree = "<group>"; };
+		7A1D853D144F789800A2079D /* InstanceVariableDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceVariableDescriptorTests.h; sourceTree = "<group>"; };
+		7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstanceVariableDescriptorTests.m; sourceTree = "<group>"; };
 		7AD805291442323B00BF6EE6 /* Introspection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Introspection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD8052C1442323B00BF6EE6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7AD805341442323B00BF6EE6 /* Introspection-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Introspection-Info.plist"; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 				7ADFEDEF144821D7009EE7CF /* TestClasses */,
 				7AD805931442346100BF6EE6 /* ClassDescriptorTests.h */,
 				7AD805941442346100BF6EE6 /* ClassDescriptorTests.m */,
+				7A1D853D144F789800A2079D /* InstanceVariableDescriptorTests.h */,
+				7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				7A1D851B144CCC9000A2079D /* NSArray+CollectionQuery.m in Sources */,
 				7A1D851F144CCC9100A2079D /* SenTestCase+CollectionAssert.m in Sources */,
 				7AD805951442346100BF6EE6 /* ClassDescriptorTests.m in Sources */,
+				7A1D853F144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +634,7 @@
 				7A1D852D144CCD5600A2079D /* SenTestCase+CollectionAssert.m in Sources */,
 				7A1D852E144CCD5600A2079D /* SimpleClass.m in Sources */,
 				7AD805E71442360100BF6EE6 /* ClassDescriptorTests.m in Sources */,
+				7A1D8540144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

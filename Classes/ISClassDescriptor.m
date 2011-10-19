@@ -26,7 +26,7 @@
     if (class == nil)
         return nil;
     
-    return [[ISClassDescriptor alloc] initWithClass:class];
+    return [ISClassDescriptor descriptorForClass:class];
 }
 
 + (NSArray*) classesInBundle:(NSBundle*)aBundle {

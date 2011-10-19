@@ -42,6 +42,8 @@
 @property (readonly) NSArray* properties;
 // test class variables
 @property (readonly) NSArray* instanceVariables;
+// Test ivar layout + weak layouts
+@property (readonly) NSString* instanceVariablesLayout;
 // variables visibility: public, protected, public
 @property (readonly) NSBundle* bundle;
 

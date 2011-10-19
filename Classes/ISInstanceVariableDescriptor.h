@@ -10,13 +10,12 @@
 + (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass;
 + (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(Ivar)anInstanceVariable;
 
-- (id)initWithInstanceVariable:(Ivar)InstanceVariable;
+- (id)initWithInstanceVariable:(Ivar)anInstanceVariable;
 
+// test get/set with non reference types (struct, int, etc.)
 - (void)setValue:(id)value inObject:(id)anObject;
 - (id)getValueFromObject:(id)anObject;
 
-// Test ivar layout + weak layouts
-@property (readonly) NSString* layout;
 @property (readonly) NSString* typeEncoding;
 
 @end
