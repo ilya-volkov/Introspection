@@ -1,6 +1,12 @@
 #import "ISInstanceVariableDescriptor.h"
 
-@implementation ISInstanceVariableDescriptor
+@implementation ISInstanceVariableDescriptor {
+@private
+    Ivar ivar;
+}
+
+@synthesize name;
+@synthesize typeEncoding;
 
 + (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass {
     Ivar ivar = class_getInstanceVariable(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
@@ -16,26 +22,21 @@
 
 - (id)initWithInstanceVariable:(Ivar)anInstanceVariable {
     self = [super init];
-    if (self)
+    if (self) {
         ivar = anInstanceVariable;
+        name = [NSString stringWithCString:ivar_getName(ivar) encoding:NSASCIIStringEncoding];
+        typeEncoding = [NSString stringWithCString:ivar_getTypeEncoding(ivar) encoding:NSASCIIStringEncoding];
+    }
     
     return self;
 }
 
-- (void)setValue:(id)value inObject:(id)anObject {
-    object_setIvar(anObject, ivar, value);
+- (void)setValue:(void*)value inObject:(id)anObject {
+    object_setIvar(anObject, ivar, (__bridge id)value);
 }
 
-- (id)getValueFromObject:(id)anObject {
-    return object_getIvar(anObject, ivar);
-}
-
-- (NSString*) typeEncoding {
-    return [NSString stringWithCString:ivar_getTypeEncoding(ivar) encoding:NSASCIIStringEncoding];
-}
-
-- (NSString*) name {
-    return [NSString stringWithCString:ivar_getName(ivar) encoding:NSASCIIStringEncoding];
+- (void*)getValueFromObject:(id)anObject {
+    return (__bridge void*)object_getIvar(anObject, ivar);
 }
 
 @end

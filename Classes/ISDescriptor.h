@@ -2,6 +2,6 @@
 
 @protocol ISDescriptor <NSObject>
 
-@property (readonly) NSString* name;
+@property (nonatomic, readonly, strong) NSString* name;
 
 @end

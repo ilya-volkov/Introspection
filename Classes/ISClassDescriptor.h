@@ -8,10 +8,7 @@
 @class ISPropertyDescriptor;
 @class ISInstanceVariableDescriptor;
 
-@interface ISClassDescriptor : NSObject <ISDescriptor> {
-@private
-    Class _class;
-}
+@interface ISClassDescriptor : NSObject <ISDescriptor>
 
 + (NSArray*) allClasses;
 + (NSArray*) classesInBundle:(NSBundle*)aBundle;

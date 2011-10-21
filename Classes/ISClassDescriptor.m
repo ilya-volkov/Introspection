@@ -1,6 +1,9 @@
 #import "ISClassDescriptor.h"
 
-@implementation ISClassDescriptor
+@implementation ISClassDescriptor {
+@private
+    Class _class;
+}
 
 + (NSArray*) allClasses {
     unsigned int outCount;

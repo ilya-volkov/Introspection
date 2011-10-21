@@ -3,8 +3,10 @@
 @interface InstanceVariableDescriptorTests : SenTestCase
 
 - (void)testGetName;
-- (void)testCreateDescriptorForInstanceVariableNameInClass;
+- (void)testGetObjectValue;
+- (void)testSetObjectValue;
 - (void)testGetValue;
 - (void)testSetValue;
+- (void)testGetTypeEncoding;
 
 @end
