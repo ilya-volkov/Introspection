@@ -1,5 +1,5 @@
 typedef enum _ISSetterSemanticsType {
-    ISAsssignSetterSemanticsType = 0,
+    ISAssignSetterSemanticsType = 0,
     ISRetainSetterSemanticsType  = 1,
-    ISCopySettrSemanticsType = 2
+    ISCopySetterSemanticsType = 2
 } ISSetterSemanticsType;

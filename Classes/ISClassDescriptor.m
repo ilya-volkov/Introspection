@@ -41,7 +41,6 @@
     
     NSMutableArray* result = [NSMutableArray array];
     for (int i = 0; i < count; i++) {
-        NSLog([NSString stringWithCString:classNames[i] encoding:NSASCIIStringEncoding]);
         [result addObject:
             [ISClassDescriptor 
                 descriptorForClassName:[NSString stringWithCString:classNames[i] encoding:NSASCIIStringEncoding]

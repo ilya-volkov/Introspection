@@ -3,6 +3,8 @@
 #import "ISBindingFlags.h"
 #import "ISSetterSemanticsType.h"
 
+#import "ISInvalidStateException.h"
+
 #import "ISClassDescriptor.h"
 #import "ISProtocolDescriptor.h"
 #import "ISMethodDescriptor.h"

@@ -10,7 +10,7 @@
         inClass:[SimpleClass class]
     ];
     
-    STAssertEqualObjects(@"privateString", descriptor.name, @"Descriptors name should be equal");
+    STAssertEqualObjects(@"privateString", descriptor.name, nil);
 }
 
 - (void)testGetObjectValue {
@@ -24,7 +24,7 @@
     
     id value = (NSString*)[descriptor getValueFromObject:instance];
     
-    STAssertEqualObjects(@"SomeString", value, @"Values should be equal");
+    STAssertEqualObjects(@"SomeString", value, nil);
 }
 
 - (void)testSetObjectValue {
@@ -36,7 +36,7 @@
     
     [descriptor setValue:@"SomeString" inObject:instance];
     
-    STAssertEqualObjects(@"SomeString", instance->publicString, @"Values should be equal");
+    STAssertEqualObjects(@"SomeString", instance->publicString, nil);
 }
 
 - (void)testGetValue {
@@ -50,7 +50,7 @@
     
     int value = (int)[descriptor getValueFromObject:instance];
     
-    STAssertEquals(123, value, @"Values should be equal");
+    STAssertEquals(123, value, nil);
 }
 
 - (void)testSetValue {
@@ -62,7 +62,7 @@
     
     [descriptor setValue:(void*)111 inObject:instance];
     
-    STAssertEquals(111, instance->publicInt, @"Values should be equal");
+    STAssertEquals(111, instance->publicInt, nil);
 }
 
 
@@ -77,10 +77,8 @@
         inClass:[SimpleClass class]
     ];
     
-    //STAssertEqualObjects([NSString stringWithCString:@encode(NSString)], descriptor1.typeEncoding, @"Types should be equal");
-    // Encode object type !!!
-    STAssertEqualObjects(@"@\"NSString\"", descriptor1.typeEncoding, @"Types should be equal");
-    STAssertEqualObjects([NSString stringWithCString:@encode(int)], descriptor2.typeEncoding, @"Types should be equal");
+    STAssertEqualObjects(@"@\"NSString\"", descriptor1.typeEncoding, nil);
+    STAssertEqualObjects([NSString stringWithCString:@encode(int)], descriptor2.typeEncoding, nil);
 }
 
 @end
