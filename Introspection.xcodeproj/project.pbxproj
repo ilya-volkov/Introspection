@@ -12,8 +12,8 @@
 		7A1D8516144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */; };
 		7A1D8517144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */; };
 		7A1D851F144CCC9100A2079D /* SenTestCase+CollectionAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */; };
-		7A1D8521144CCC9E00A2079D /* SimpleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFEDF1144821FB009EE7CF /* SimpleClass.m */; };
-		7A1D852E144CCD5600A2079D /* SimpleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFEDF1144821FB009EE7CF /* SimpleClass.m */; };
+		7A1D8521144CCC9E00A2079D /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFEDF1144821FB009EE7CF /* TestClass.m */; };
+		7A1D852E144CCD5600A2079D /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFEDF1144821FB009EE7CF /* TestClass.m */; };
 		7A1D853F144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */; };
 		7A1D8540144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */; };
 		7A1D8547145201A200A2079D /* PropertyDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8546145201A200A2079D /* PropertyDescriptorTests.m */; };
@@ -33,6 +33,8 @@
 		7A1D855D1454749200A2079D /* ISInvalidStateException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D85591454749200A2079D /* ISInvalidStateException.m */; };
 		7A1D855E14547DB300A2079D /* NSArray+CollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */; };
 		7A1D856114547F1400A2079D /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D854F1454635200A2079D /* NSString+Extensions.m */; };
+		7A1D856414547F7100A2079D /* MethodDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D856314547F7000A2079D /* MethodDescriptorTests.m */; };
+		7A1D856514547F7100A2079D /* MethodDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D856314547F7000A2079D /* MethodDescriptorTests.m */; };
 		7AD8052D1442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
 		7AD805371442323B00BF6EE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD805351442323B00BF6EE6 /* InfoPlist.strings */; };
 		7AD805441442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
@@ -94,8 +96,8 @@
 		7ADFEDEA144776BB009EE7CF /* ISBindingFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDE8144776BB009EE7CF /* ISBindingFlags.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ADFEDED14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ADFEDEE14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7ADFEDF2144821FB009EE7CF /* SimpleClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDF0144821FB009EE7CF /* SimpleClass.h */; };
-		7ADFEDF3144821FB009EE7CF /* SimpleClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDF0144821FB009EE7CF /* SimpleClass.h */; };
+		7ADFEDF2144821FB009EE7CF /* TestClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDF0144821FB009EE7CF /* TestClass.h */; };
+		7ADFEDF3144821FB009EE7CF /* TestClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADFEDF0144821FB009EE7CF /* TestClass.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,15 +123,17 @@
 		7A1D8514144CCB6500A2079D /* SenTestCase+CollectionAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SenTestCase+CollectionAssert.h"; sourceTree = "<group>"; };
 		7A1D8515144CCB6500A2079D /* SenTestCase+CollectionAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SenTestCase+CollectionAssert.m"; sourceTree = "<group>"; };
 		7A1D853D144F789800A2079D /* InstanceVariableDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceVariableDescriptorTests.h; sourceTree = "<group>"; };
-		7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstanceVariableDescriptorTests.m; sourceTree = "<group>"; };
+		7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = InstanceVariableDescriptorTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7A1D8545145201A200A2079D /* PropertyDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyDescriptorTests.h; sourceTree = "<group>"; };
-		7A1D8546145201A200A2079D /* PropertyDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDescriptorTests.m; sourceTree = "<group>"; };
+		7A1D8546145201A200A2079D /* PropertyDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PropertyDescriptorTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7A1D85491454278F00A2079D /* PropertyImplementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyImplementation.h; sourceTree = "<group>"; };
 		7A1D854A1454278F00A2079D /* PropertyImplementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyImplementation.m; sourceTree = "<group>"; };
-		7A1D854E1454635200A2079D /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
-		7A1D854F1454635200A2079D /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
+		7A1D854E1454635200A2079D /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSString+Extensions.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7A1D854F1454635200A2079D /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+Extensions.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7A1D85581454749200A2079D /* ISInvalidStateException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISInvalidStateException.h; sourceTree = "<group>"; };
 		7A1D85591454749200A2079D /* ISInvalidStateException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISInvalidStateException.m; sourceTree = "<group>"; };
+		7A1D856214547F7000A2079D /* MethodDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodDescriptorTests.h; sourceTree = "<group>"; };
+		7A1D856314547F7000A2079D /* MethodDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodDescriptorTests.m; sourceTree = "<group>"; };
 		7AD805291442323B00BF6EE6 /* Introspection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Introspection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD8052C1442323B00BF6EE6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7AD805341442323B00BF6EE6 /* Introspection-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Introspection-Info.plist"; sourceTree = "<group>"; };
@@ -147,7 +151,7 @@
 		7AD80564144232F600BF6EE6 /* ISMethodDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMethodDescriptor.h; sourceTree = "<group>"; };
 		7AD80565144232F600BF6EE6 /* ISMethodDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMethodDescriptor.m; sourceTree = "<group>"; };
 		7AD80566144232F600BF6EE6 /* ISPropertyDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISPropertyDescriptor.h; sourceTree = "<group>"; };
-		7AD80567144232F600BF6EE6 /* ISPropertyDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISPropertyDescriptor.m; sourceTree = "<group>"; };
+		7AD80567144232F600BF6EE6 /* ISPropertyDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ISPropertyDescriptor.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7AD80568144232F600BF6EE6 /* ISProtocolBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISProtocolBuilder.h; sourceTree = "<group>"; };
 		7AD80569144232F600BF6EE6 /* ISProtocolBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISProtocolBuilder.m; sourceTree = "<group>"; };
 		7AD8056A144232F600BF6EE6 /* ISProtocolDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISProtocolDescriptor.h; sourceTree = "<group>"; };
@@ -159,7 +163,7 @@
 		7AD8058F1442342000BF6EE6 /* ISPropertyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISPropertyBuilder.h; sourceTree = "<group>"; };
 		7AD805901442342000BF6EE6 /* ISPropertyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISPropertyBuilder.m; sourceTree = "<group>"; };
 		7AD805931442346100BF6EE6 /* ClassDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDescriptorTests.h; sourceTree = "<group>"; };
-		7AD805941442346100BF6EE6 /* ClassDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDescriptorTests.m; sourceTree = "<group>"; };
+		7AD805941442346100BF6EE6 /* ClassDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ClassDescriptorTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7AD8059B1442356000BF6EE6 /* libIntrospection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIntrospection.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD8059C1442356000BF6EE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7AD805A01442356000BF6EE6 /* Introspection-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Introspection-ios-Prefix.pch"; sourceTree = "<group>"; };
@@ -171,8 +175,8 @@
 		7AD8065C144426A100BF6EE6 /* ISDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISDescriptor.h; sourceTree = "<group>"; };
 		7ADFEDE8144776BB009EE7CF /* ISBindingFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISBindingFlags.h; sourceTree = "<group>"; };
 		7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSetterSemanticsType.h; sourceTree = "<group>"; };
-		7ADFEDF0144821FB009EE7CF /* SimpleClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleClass.h; sourceTree = "<group>"; };
-		7ADFEDF1144821FB009EE7CF /* SimpleClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleClass.m; sourceTree = "<group>"; };
+		7ADFEDF0144821FB009EE7CF /* TestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestClass.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7ADFEDF1144821FB009EE7CF /* TestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestClass.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +370,8 @@
 				7A1D853E144F789800A2079D /* InstanceVariableDescriptorTests.m */,
 				7A1D8545145201A200A2079D /* PropertyDescriptorTests.h */,
 				7A1D8546145201A200A2079D /* PropertyDescriptorTests.m */,
+				7A1D856214547F7000A2079D /* MethodDescriptorTests.h */,
+				7A1D856314547F7000A2079D /* MethodDescriptorTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -406,8 +412,8 @@
 		7ADFEDEF144821D7009EE7CF /* TestClasses */ = {
 			isa = PBXGroup;
 			children = (
-				7ADFEDF0144821FB009EE7CF /* SimpleClass.h */,
-				7ADFEDF1144821FB009EE7CF /* SimpleClass.m */,
+				7ADFEDF0144821FB009EE7CF /* TestClass.h */,
+				7ADFEDF1144821FB009EE7CF /* TestClass.m */,
 				7A1D85491454278F00A2079D /* PropertyImplementation.h */,
 				7A1D854A1454278F00A2079D /* PropertyImplementation.m */,
 			);
@@ -438,7 +444,7 @@
 				7AD8064D14423B8500BF6EE6 /* Introspection.h in Headers */,
 				7A1D85501454635200A2079D /* NSString+Extensions.h in Headers */,
 				7A1D84FD144C12FF00A2079D /* NSArray+CollectionQuery.h in Headers */,
-				7ADFEDF2144821FB009EE7CF /* SimpleClass.h in Headers */,
+				7ADFEDF2144821FB009EE7CF /* TestClass.h in Headers */,
 				7A1D8516144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,7 +469,7 @@
 				7AD8065A14423E4F00BF6EE6 /* ISProtocolDescriptor.h in Headers */,
 				7AD8065B14423E4F00BF6EE6 /* ISClassDescriptor.h in Headers */,
 				7A1D85511454635200A2079D /* NSString+Extensions.h in Headers */,
-				7ADFEDF3144821FB009EE7CF /* SimpleClass.h in Headers */,
+				7ADFEDF3144821FB009EE7CF /* TestClass.h in Headers */,
 				7A1D84FE144C12FF00A2079D /* NSArray+CollectionQuery.h in Headers */,
 				7A1D8517144CCB6500A2079D /* SenTestCase+CollectionAssert.h in Headers */,
 			);
@@ -654,12 +660,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A1D8521144CCC9E00A2079D /* SimpleClass.m in Sources */,
+				7A1D8521144CCC9E00A2079D /* TestClass.m in Sources */,
 				7A1D851F144CCC9100A2079D /* SenTestCase+CollectionAssert.m in Sources */,
 				7AD805951442346100BF6EE6 /* ClassDescriptorTests.m in Sources */,
 				7A1D853F144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */,
 				7A1D8547145201A200A2079D /* PropertyDescriptorTests.m in Sources */,
 				7A1D854B1454278F00A2079D /* PropertyImplementation.m in Sources */,
+				7A1D856414547F7100A2079D /* MethodDescriptorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,11 +697,12 @@
 				7A1D856114547F1400A2079D /* NSString+Extensions.m in Sources */,
 				7A1D855E14547DB300A2079D /* NSArray+CollectionQuery.m in Sources */,
 				7A1D85541454638B00A2079D /* SenTestCase+CollectionAssert.m in Sources */,
-				7A1D852E144CCD5600A2079D /* SimpleClass.m in Sources */,
+				7A1D852E144CCD5600A2079D /* TestClass.m in Sources */,
 				7AD805E71442360100BF6EE6 /* ClassDescriptorTests.m in Sources */,
 				7A1D8540144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */,
 				7A1D8548145201A200A2079D /* PropertyDescriptorTests.m in Sources */,
 				7A1D854C1454278F00A2079D /* PropertyImplementation.m in Sources */,
+				7A1D856514547F7100A2079D /* MethodDescriptorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) ISSetterSemanticsType setterSemanticsType;
 @property (readonly, nonatomic) BOOL isReadOnly;
 @property (readonly, nonatomic) BOOL isNonAtomic;
+// TODO: test weak and eligible properties
 @property (readonly, nonatomic) BOOL isDynamic;
 @property (readonly, nonatomic) BOOL isWeakReference;
 @property (readonly, nonatomic) BOOL isEligibleForGarbageCollection;

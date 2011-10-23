@@ -1,6 +1,6 @@
 #import "ClassDescriptorTests.h"
 #import "ISClassDescriptor.h"
-#import "SimpleClass.h"
+#import "TestClass.h"
 
 #import "SenTestCase+CollectionAssert.h"
 #import "NSArray+CollectionQuery.h"
@@ -12,12 +12,12 @@
 }
 
 - (void)testCreateDescriptorForClassName {
-    ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClassName:@"SimpleClass"];
+    ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClassName:@"TestClass"];
     
-    STAssertEqualObjects(@"SimpleClass", descriptor.name, @"Classes names should be equal");
+    STAssertEqualObjects(@"TestClass", descriptor.name, @"Classes names should be equal");
 }
 
-- (void)testCreateDescriptorForClassNameFailed {
+- (void)testCreateDescriptorForClassNameFails {
     ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClassName:@"NotExistingClass"];
     
     STAssertNil(descriptor, @"Class descriptor should be nil");
@@ -30,7 +30,7 @@
         return (NSString*)[obj name];
     }];
     
-    [self assertCollection:[NSArray arrayWithObject:@"SimpleClass"] isSubsetOfCollection:names];
+    [self assertCollection:[NSArray arrayWithObject:@"TestClass"] isSubsetOfCollection:names];
 }
 
 - (void)testListClassesInBundle {
@@ -39,17 +39,17 @@
         return (NSString*)[obj name];
     }];
     
-    [self assertObject:@"SimpleClass" containsInCollection:names];
+    [self assertObject:@"TestClass" containsInCollection:names];
 }
 
 - (void)testGetName {
-    ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[SimpleClass class]];
+    ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[TestClass class]];
         
-    STAssertEqualObjects(@"SimpleClass", descriptor.name, @"Class names not equal");
+    STAssertEqualObjects(@"TestClass", descriptor.name, @"Class names not equal");
 }
 
 - (void)testGetBundle {
-    ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[SimpleClass class]];
+    ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[TestClass class]];
     
     STAssertEqualObjects(@"com.ilyavolkov.IntrospectionTests", [descriptor.bundle bundleIdentifier], @"Class names not equal");
 }

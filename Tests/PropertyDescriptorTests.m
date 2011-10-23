@@ -2,25 +2,39 @@
 #import "ISInvalidStateException.h"
 
 #import "PropertyDescriptorTests.h"
-#import "SimpleClass.h"
+#import "TestClass.h"
 
 @implementation PropertyDescriptorTests
 
-- (void)testGetName {
+- (void)testCreateDescriptorForPropertyName {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     STAssertEqualObjects(@"idDynamicReadonly", descriptor.name, nil);
 }
 
+- (void)testCreateDescriptorForPropertyNameFails {
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForPropertyName:@"notExistingProperty" 
+        inClass:[TestClass class]
+    ];
+    
+    STAssertNil(descriptor, nil);
+}
+
+
+- (void)testGetName {
+
+}
+
 - (void)testGetObjectValue {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idRetainNonatomic" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     instance.idRetainNonatomic = @"String111";
@@ -29,11 +43,11 @@
 }
 
 - (void)testSetObjectValue {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idRetainNonatomic" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     [descriptor setValue:@"String222" inObject:instance];
@@ -42,11 +56,11 @@
 }
 
 - (void)testGetValue {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intNonatomic" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     instance.intNonatomic = 333;
@@ -55,11 +69,11 @@
 }
 
 - (void)testSetValue {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intNonatomic" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     [descriptor setValue:(void*)222 inObject:instance];
@@ -69,11 +83,11 @@
 
 // TODO: fix dynamic tests (resarch dynamic method resolution and method forwarding)
 /*- (void)testDynamicGetValue {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intDynamicNonatomic" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     instance.intDynamicNonatomic = 987;
@@ -82,11 +96,11 @@
 }
 
 - (void)testDynamicSetValue {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intDynamicNonatomic" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     [descriptor setValue:(void*)111 inObject:instance];
@@ -96,11 +110,11 @@
 }*/
 
 - (void)testGetValueViaCustomGetter {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intGetterSetter" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     instance.intGetterSetter = 432;
@@ -109,11 +123,11 @@
 }
 
 - (void)testSetValueViaCustomSetter {
-    SimpleClass *instance = [SimpleClass new];
+    TestClass *instance = [TestClass new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intGetterSetter" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     [descriptor setValue:(void*)555 inObject:instance];
@@ -124,7 +138,7 @@
 - (void)testRetainNonatomicAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idRetainNonatomic" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     STAssertEqualObjects(@"idRetainNonatomic", descriptor.backingVariable, nil);
@@ -142,7 +156,7 @@
 - (void)testReadonlyCopyAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     STAssertNil(descriptor.backingVariable, nil);
@@ -160,7 +174,7 @@
 - (void)testGetterSetterAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intGetterSetter" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     STAssertEqualObjects(@"intGetterSetter", descriptor.backingVariable, nil);
@@ -178,7 +192,7 @@
 - (void)testCopyAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idCopy" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
     
     STAssertEqualObjects(@"idCopy", descriptor.backingVariable, nil);
@@ -196,11 +210,11 @@
 - (void)testSetReadonlyPropertyFails {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 
-        inClass:[SimpleClass class]
+        inClass:[TestClass class]
     ];
 
     STAssertThrowsSpecific(
-        [descriptor setValue:@"123" inObject:[SimpleClass new]], 
+        [descriptor setValue:@"123" inObject:[TestClass new]], 
         ISInvalidStateException, 
         nil
     );
