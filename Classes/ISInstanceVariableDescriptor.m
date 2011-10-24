@@ -8,7 +8,7 @@
 @synthesize name;
 @synthesize typeEncoding;
 
-// TODO: check class variables
+// TODO: add override with bindign flags + UTs
 + (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass {
     Ivar ivar = class_getInstanceVariable(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (ivar == nil)

@@ -14,7 +14,7 @@
 
 @property (readonly) BOOL isStatic;
 @property (readonly, strong) NSString* returnTypeEncoding;
-@property (readonly, strong) NSArray* argumentsTypeEncodings;
+@property (readonly, strong) NSArray* argumentTypeEncodings;
 @property (readonly) SEL methodSelector;
 @property IMP implementation;
 

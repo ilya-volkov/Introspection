@@ -1,7 +1,7 @@
-#import "SimpleClass.h"
+#import "ClassWithProperties.h"
 #import "PropertyImplementation.h"
 
-@implementation SimpleClass {
+@implementation ClassWithProperties{
     PropertyImplementation *implementation;
 }
 
@@ -24,7 +24,7 @@
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
     BOOL isDynamicNonatomicProperty = aSelector == @selector(intDynamicNonatomic)
-                                      || aSelector == @selector(setIntDynamicNonatomic:);
+    || aSelector == @selector(setIntDynamicNonatomic:);
     if (isDynamicNonatomicProperty)
         return YES;
     
@@ -33,10 +33,11 @@
 
 - (void)forwardInvocation:(NSInvocation*)anInvocation {
     BOOL isDynamicNonatomicProperty = [anInvocation selector] == @selector(intDynamicNonatomic)
-                                      || [anInvocation selector] == @selector(setIntDynamicNonatomic:);
+    || [anInvocation selector] == @selector(setIntDynamicNonatomic:);
     
     if (isDynamicNonatomicProperty)
         [anInvocation invokeWithTarget:implementation];
 }
+
 
 @end

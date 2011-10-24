@@ -1,13 +1,13 @@
 #import "InstanceVariableDescriptorTests.h"
 #import "ISInstanceVariableDescriptor.h"
-#import "TestClass.h"
+#import "ClassWithInstanceVariables.h"
 
 @implementation InstanceVariableDescriptorTests
 
 - (void)testCreateDescriptorForInstanceVariableName {
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"privateString" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     STAssertEqualObjects(@"privateString", descriptor.name, nil);
@@ -16,19 +16,19 @@
 - (void)testCreateDescriptorForInstanceVariableNameFails {
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"notExistingVariable" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     STAssertNil(descriptor, nil);
 }
 
 - (void)testGetObjectValue {
-    TestClass *instance = [TestClass new];
+    ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
     instance->publicString = @"SomeString";
 
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"publicString" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     id value = (NSString*)[descriptor getValueFromObject:instance];
@@ -37,10 +37,10 @@
 }
 
 - (void)testSetObjectValue {
-    TestClass *instance = [TestClass new];
+    ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"publicString" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     [descriptor setValue:@"SomeString" inObject:instance];
@@ -49,12 +49,12 @@
 }
 
 - (void)testGetValue {
-    TestClass *instance = [TestClass new];
+    ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
     instance->publicInt = 123;
     
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"publicInt" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     int value = (int)[descriptor getValueFromObject:instance];
@@ -63,10 +63,10 @@
 }
 
 - (void)testSetValue {
-    TestClass *instance = [TestClass new];
+    ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"publicInt" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     [descriptor setValue:(void*)111 inObject:instance];
@@ -78,12 +78,12 @@
 - (void)testGetTypeEncoding {
     ISInstanceVariableDescriptor *descriptor1 = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"publicString" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     ISInstanceVariableDescriptor *descriptor2 = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"publicInt" 
-        inClass:[TestClass class]
+        inClass:[ClassWithInstanceVariables class]
     ];
     
     STAssertEqualObjects(@"@\"NSString\"", descriptor1.typeEncoding, nil);

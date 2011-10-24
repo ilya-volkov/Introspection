@@ -7,11 +7,11 @@
 
 @synthesize isStatic;
 @synthesize returnTypeEncoding;
-@synthesize argumentsTypeEncodings;
+@synthesize argumentTypeEncodings;
 @synthesize methodSelector;
 @synthesize implementation;
 
-// TODO: test with static methods
+// TODO: add override with binding flags + UTs
 + (ISMethodDescriptor*)descriptorForMethodName:(SEL)name inClass:(Class)aClass {
     Method method = class_getInstanceMethod(aClass, name);
     if (method == nil)
@@ -28,6 +28,7 @@
     self = [super init];
     if (self != nil) {
         method = aMethod;
+        // TODO init properties
     }
     
     return self;

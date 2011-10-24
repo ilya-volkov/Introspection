@@ -22,6 +22,7 @@
 @synthesize isWeakReference;
 @synthesize isEligibleForGarbageCollection;
 
+// TODO: add override with binding flags + UTs
 + (ISPropertyDescriptor*)descriptorForPropertyName:(NSString*)name inClass:(Class)aClass {
     objc_property_t property = class_getProperty(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (property == nil)

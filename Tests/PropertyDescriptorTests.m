@@ -2,14 +2,14 @@
 #import "ISInvalidStateException.h"
 
 #import "PropertyDescriptorTests.h"
-#import "TestClass.h"
+#import "ClassWithProperties.h"
 
 @implementation PropertyDescriptorTests
 
 - (void)testCreateDescriptorForPropertyName {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     STAssertEqualObjects(@"idDynamicReadonly", descriptor.name, nil);
@@ -18,23 +18,18 @@
 - (void)testCreateDescriptorForPropertyNameFails {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"notExistingProperty" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     STAssertNil(descriptor, nil);
 }
 
-
-- (void)testGetName {
-
-}
-
 - (void)testGetObjectValue {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idRetainNonatomic" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     instance.idRetainNonatomic = @"String111";
@@ -43,11 +38,11 @@
 }
 
 - (void)testSetObjectValue {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idRetainNonatomic" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     [descriptor setValue:@"String222" inObject:instance];
@@ -56,11 +51,11 @@
 }
 
 - (void)testGetValue {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intNonatomic" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     instance.intNonatomic = 333;
@@ -69,11 +64,11 @@
 }
 
 - (void)testSetValue {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intNonatomic" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     [descriptor setValue:(void*)222 inObject:instance];
@@ -83,11 +78,11 @@
 
 // TODO: fix dynamic tests (resarch dynamic method resolution and method forwarding)
 /*- (void)testDynamicGetValue {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intDynamicNonatomic" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     instance.intDynamicNonatomic = 987;
@@ -96,11 +91,11 @@
 }
 
 - (void)testDynamicSetValue {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intDynamicNonatomic" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     [descriptor setValue:(void*)111 inObject:instance];
@@ -110,11 +105,11 @@
 }*/
 
 - (void)testGetValueViaCustomGetter {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intGetterSetter" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     instance.intGetterSetter = 432;
@@ -123,11 +118,11 @@
 }
 
 - (void)testSetValueViaCustomSetter {
-    TestClass *instance = [TestClass new];
+    ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intGetterSetter" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     [descriptor setValue:(void*)555 inObject:instance];
@@ -138,7 +133,7 @@
 - (void)testRetainNonatomicAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idRetainNonatomic" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     STAssertEqualObjects(@"idRetainNonatomic", descriptor.backingVariable, nil);
@@ -156,7 +151,7 @@
 - (void)testReadonlyCopyAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     STAssertNil(descriptor.backingVariable, nil);
@@ -174,7 +169,7 @@
 - (void)testGetterSetterAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"intGetterSetter" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     STAssertEqualObjects(@"intGetterSetter", descriptor.backingVariable, nil);
@@ -192,7 +187,7 @@
 - (void)testCopyAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idCopy" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
     
     STAssertEqualObjects(@"idCopy", descriptor.backingVariable, nil);
@@ -210,11 +205,11 @@
 - (void)testSetReadonlyPropertyFails {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 
-        inClass:[TestClass class]
+        inClass:[ClassWithProperties class]
     ];
 
     STAssertThrowsSpecific(
-        [descriptor setValue:@"123" inObject:[TestClass new]], 
+        [descriptor setValue:@"123" inObject:[ClassWithProperties new]], 
         ISInvalidStateException, 
         nil
     );
