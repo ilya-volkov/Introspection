@@ -96,7 +96,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
 }
 
 - (void)testGetReturnTypeEncoding {
-    ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"instanceMethodWithoutParametersReturnsString"];
+    ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"classMethodWithoutParameters"];
     
     STAssertEqualObjects([NSString stringWithCString:@encode(void)], descriptor.returnTypeEncoding, nil);
 }
@@ -106,6 +106,15 @@ NSString* newMethodImp(id self, SEL _cmd) {
     
     [self 
         assertCollection:[NSArray arrayWithObjects:@"@", @"i", @"#", nil] 
+        isEqualToCollection:descriptor.argumentTypeEncodings
+    ];
+}
+
+- (void)testGetArgumentTypeEncodingsForMethodWithVarArgs {
+    ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"instanceMethodWithVarArgs:firstArg:"];
+    
+    [self 
+        assertCollection:[NSArray arrayWithObjects:@"@", @"?", nil] 
         isEqualToCollection:descriptor.argumentTypeEncodings
     ];
 }
@@ -123,6 +132,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
     );
 }
 
+// changes environment!!!
 - (void)testSetImplementation {
     ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"instanceMethodWithoutParametersReturnsString"];
     descriptor.implementation = (IMP)newMethodImp;
@@ -144,25 +154,42 @@ NSString* newMethodImp(id self, SEL _cmd) {
     STAssertFalse(instanceDescriptor.isStatic, nil);
 }
 
-
-// TODO: finish 2 tests
-
-/*- (void)testInvokeInstanceMethodWithArguments {
+- (void)testInvokeInstanceMethodWithArguments {
     ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"instanceMethodWithParametersFirst:second:third:"];
+    DerivedClassWithMethods* instance = [DerivedClassWithMethods new];
+    TestStruct arg3 = { 33.3, 444 };
+    int arg2 = 222;
+    
+    NSArray *args = [NSArray arrayWithObjects:
+        [NSValue valueWithNonretainedObject:@"arg1"],
+        [NSValue valueWithPointer:&arg2],
+        [NSValue valueWithPointer:&arg3],
+        nil
+    ];
     
     STAssertEqualObjects(
-        @"instanceMethodWithoutParametersReturnsString", 
-        [descriptor invokeOnObject:instance withArguments:nil],
+        @"arg1:222:33.3:444", 
+        (__bridge id)[descriptor invokeOnObject:instance withArguments:args],
         nil
     );
 }
 
-
 - (void)testInvokeInstanceMethodWithVarArgs {
-    ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"instanceMethodWithParametersFirst:second:third:"];
+    ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"instanceMethodWithVarArgs:firstArg:"];
+    DerivedClassWithMethods* instance = [DerivedClassWithMethods new];
+    NSArray *args = [NSArray arrayWithObjects:
+        [NSValue valueWithNonretainedObject:@"arg1"],
+        [NSValue valueWithPointer:@"arg2"],
+        [NSValue valueWithPointer:@"arg3"],
+        nil
+    ];
     
+    STAssertEqualObjects(
+        @"arg1arg2arg3", 
+        (__bridge id)[descriptor invokeOnObject:instance withArguments:args],
+        nil
+    );
 }
-*/
 
 - (void)testInvokeInstanceMethodWithoutArgumentsReturnsString {
     ISMethodDescriptor* descriptor = [self descriptorForMethodName:@"instanceMethodWithoutParametersReturnsString"];
@@ -171,7 +198,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
     
     STAssertEqualObjects(
         @"instanceMethodWithoutParametersReturnsString", 
-        [descriptor invokeOnObject:instance withArguments:nil],
+        (__bridge id)[descriptor invokeOnObject:instance withArguments:nil],
         nil
     );
 }
@@ -189,7 +216,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
     
     STAssertEqualObjects(
         @"classMethodWithoutParameters", 
-        [descriptor invokeOnObject:nil withArguments:nil],
+        (__bridge id)[descriptor invokeOnObject:nil withArguments:nil],
         nil
     );
 }

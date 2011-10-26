@@ -11,7 +11,6 @@
 
 - (id)initWithMethod:(Method)aMethod;
 
-// TODO:use NSInvocation - no var arg, no union parameter
 - (void*)invokeOnObject:(id)anObject withArguments:(NSArray*)args;
 
 @property (readonly) BOOL isStatic;

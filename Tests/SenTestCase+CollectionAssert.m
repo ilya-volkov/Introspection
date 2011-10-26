@@ -2,7 +2,7 @@
 
 @implementation SenTestCase (CollectionAssert)
 
-- (void)assertCollection:(NSArray*)expected areEqualToCollection:(NSArray*)actual {
+- (void)assertCollection:(NSArray*)expected isEqualToCollection:(NSArray*)actual {
     STAssertEquals([expected count], [actual count], @"Collections count not equal");
     
     for (int i = 0; i < [expected count]; i++) {        
@@ -14,7 +14,7 @@
     }
 }
 
-- (void)assertCollection:(NSArray*)expected areEquivalentToCollection:(NSArray*)actual {
+- (void)assertCollection:(NSArray*)expected isEquivalentToCollection:(NSArray*)actual {
     STAssertEquals([expected count], [actual count], @"Collections count not equal");
     
     [self assertCollection:expected isSubsetOfCollection:actual];

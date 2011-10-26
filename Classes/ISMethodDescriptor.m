@@ -49,7 +49,8 @@
     return self;
 }
 
-- (id)invokeOnObject:(id)anObject withArguments:(NSArray*)args {
+// TODO: find alternative to NSValue for each argument
+- (void*)invokeOnObject:(id)anObject withArguments:(NSArray*)args {
     return nil;
 }
 
