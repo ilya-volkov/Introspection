@@ -37,6 +37,14 @@
 		7AD59E5C14554BED00917711 /* ClassWithProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E5A14554BED00917711 /* ClassWithProperties.m */; };
 		7AD59E6014554C2400917711 /* ClassWithInstanceVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E5F14554C2400917711 /* ClassWithInstanceVariables.m */; };
 		7AD59E6114554C2400917711 /* ClassWithInstanceVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E5F14554C2400917711 /* ClassWithInstanceVariables.m */; };
+		7AD59E6414569AC800917711 /* ClassWithMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6314569AC800917711 /* ClassWithMethods.m */; };
+		7AD59E6514569AC800917711 /* ClassWithMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6314569AC800917711 /* ClassWithMethods.m */; };
+		7AD59E6814569E4400917711 /* DerivedClassWithMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6714569E4400917711 /* DerivedClassWithMethods.m */; };
+		7AD59E6914569E4400917711 /* DerivedClassWithMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6714569E4400917711 /* DerivedClassWithMethods.m */; };
+		7AD59E6C14574E2300917711 /* BaseClassWithMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6B14574E2300917711 /* BaseClassWithMethods.m */; };
+		7AD59E6D14574E2300917711 /* BaseClassWithMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6B14574E2300917711 /* BaseClassWithMethods.m */; };
+		7AD59E701457E7CA00917711 /* ISAmbiguousMatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6F1457E7CA00917711 /* ISAmbiguousMatchException.m */; };
+		7AD59E711457E7CA00917711 /* ISAmbiguousMatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E6F1457E7CA00917711 /* ISAmbiguousMatchException.m */; };
 		7AD8052D1442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
 		7AD805371442323B00BF6EE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD805351442323B00BF6EE6 /* InfoPlist.strings */; };
 		7AD805441442323B00BF6EE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8052C1442323B00BF6EE6 /* Cocoa.framework */; };
@@ -118,6 +126,14 @@
 		7AD59E5A14554BED00917711 /* ClassWithProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassWithProperties.m; sourceTree = "<group>"; };
 		7AD59E5E14554C2400917711 /* ClassWithInstanceVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassWithInstanceVariables.h; sourceTree = "<group>"; };
 		7AD59E5F14554C2400917711 /* ClassWithInstanceVariables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassWithInstanceVariables.m; sourceTree = "<group>"; };
+		7AD59E6214569AC800917711 /* ClassWithMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassWithMethods.h; sourceTree = "<group>"; };
+		7AD59E6314569AC800917711 /* ClassWithMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassWithMethods.m; sourceTree = "<group>"; };
+		7AD59E6614569E4400917711 /* DerivedClassWithMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DerivedClassWithMethods.h; sourceTree = "<group>"; };
+		7AD59E6714569E4400917711 /* DerivedClassWithMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DerivedClassWithMethods.m; sourceTree = "<group>"; };
+		7AD59E6A14574E2300917711 /* BaseClassWithMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseClassWithMethods.h; sourceTree = "<group>"; };
+		7AD59E6B14574E2300917711 /* BaseClassWithMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseClassWithMethods.m; sourceTree = "<group>"; };
+		7AD59E6E1457E7CA00917711 /* ISAmbiguousMatchException.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ISAmbiguousMatchException.h; sourceTree = "<group>"; };
+		7AD59E6F1457E7CA00917711 /* ISAmbiguousMatchException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAmbiguousMatchException.m; sourceTree = "<group>"; };
 		7AD805291442323B00BF6EE6 /* Introspection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Introspection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD8052C1442323B00BF6EE6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7AD805341442323B00BF6EE6 /* Introspection-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Introspection-Info.plist"; sourceTree = "<group>"; };
@@ -216,6 +232,8 @@
 			children = (
 				7A1D85581454749200A2079D /* ISInvalidStateException.h */,
 				7A1D85591454749200A2079D /* ISInvalidStateException.m */,
+				7AD59E6E1457E7CA00917711 /* ISAmbiguousMatchException.h */,
+				7AD59E6F1457E7CA00917711 /* ISAmbiguousMatchException.m */,
 			);
 			name = Exceptions;
 			sourceTree = "<group>";
@@ -372,6 +390,12 @@
 				7AD59E5A14554BED00917711 /* ClassWithProperties.m */,
 				7AD59E5E14554C2400917711 /* ClassWithInstanceVariables.h */,
 				7AD59E5F14554C2400917711 /* ClassWithInstanceVariables.m */,
+				7AD59E6214569AC800917711 /* ClassWithMethods.h */,
+				7AD59E6314569AC800917711 /* ClassWithMethods.m */,
+				7AD59E6614569E4400917711 /* DerivedClassWithMethods.h */,
+				7AD59E6714569E4400917711 /* DerivedClassWithMethods.m */,
+				7AD59E6A14574E2300917711 /* BaseClassWithMethods.h */,
+				7AD59E6B14574E2300917711 /* BaseClassWithMethods.m */,
 			);
 			name = TestClasses;
 			sourceTree = "<group>";
@@ -607,6 +631,10 @@
 				7A1D856414547F7100A2079D /* MethodDescriptorTests.m in Sources */,
 				7AD59E5B14554BED00917711 /* ClassWithProperties.m in Sources */,
 				7AD59E6014554C2400917711 /* ClassWithInstanceVariables.m in Sources */,
+				7AD59E6414569AC800917711 /* ClassWithMethods.m in Sources */,
+				7AD59E6814569E4400917711 /* DerivedClassWithMethods.m in Sources */,
+				7AD59E6C14574E2300917711 /* BaseClassWithMethods.m in Sources */,
+				7AD59E701457E7CA00917711 /* ISAmbiguousMatchException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +667,10 @@
 				7A1D856514547F7100A2079D /* MethodDescriptorTests.m in Sources */,
 				7AD59E5C14554BED00917711 /* ClassWithProperties.m in Sources */,
 				7AD59E6114554C2400917711 /* ClassWithInstanceVariables.m in Sources */,
+				7AD59E6514569AC800917711 /* ClassWithMethods.m in Sources */,
+				7AD59E6914569E4400917711 /* DerivedClassWithMethods.m in Sources */,
+				7AD59E6D14574E2300917711 /* BaseClassWithMethods.m in Sources */,
+				7AD59E711457E7CA00917711 /* ISAmbiguousMatchException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

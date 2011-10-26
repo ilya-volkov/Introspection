@@ -22,18 +22,19 @@
     return self;
 }
 
-- (BOOL)respondsToSelector:(SEL)aSelector {
+- (NSMethodSignature*)methodSignatureForSelector:(SEL)aSelector {
     BOOL isDynamicNonatomicProperty = aSelector == @selector(intDynamicNonatomic)
-    || aSelector == @selector(setIntDynamicNonatomic:);
-    if (isDynamicNonatomicProperty)
-        return YES;
+                                      || aSelector == @selector(setIntDynamicNonatomic:);
     
-    return [super respondsToSelector:aSelector];
+    if (isDynamicNonatomicProperty)
+        return [implementation methodSignatureForSelector:aSelector];
+    
+    return [super methodSignatureForSelector:aSelector];
 }
 
 - (void)forwardInvocation:(NSInvocation*)anInvocation {
     BOOL isDynamicNonatomicProperty = [anInvocation selector] == @selector(intDynamicNonatomic)
-    || [anInvocation selector] == @selector(setIntDynamicNonatomic:);
+                                      || [anInvocation selector] == @selector(setIntDynamicNonatomic:);
     
     if (isDynamicNonatomicProperty)
         [anInvocation invokeWithTarget:implementation];

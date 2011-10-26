@@ -5,19 +5,16 @@
 @class ISMethodDescriptor;
 @class ISPropertyDescriptor;
 
-@interface ISProtocolDescriptor : NSObject <ISDescriptor> {
-@private
-    Protocol *protocol;
-}
+@interface ISProtocolDescriptor : NSObject <ISDescriptor>
 
 + (NSArray*) allProtocols;
 + (ISProtocolDescriptor*) descriptorForProtocol:(Protocol*)aProtocol;
 + (ISProtocolDescriptor*) descriptorForProtocolName:(NSString*)aProtocolName;
 
+- (id) initWithProtocol:(Protocol*)aProtocol;
+
 - (BOOL) protocolRespondsToSelector:(SEL)aSelector;
 - (BOOL) isProtocolEqual:(ISProtocolDescriptor*)aProtocol;
-
-- (id) initWithProtocol:(Protocol*)aProtocol;
 
 - (ISMethodDescriptor*)methodWithName:(NSString*)name;
 - (ISPropertyDescriptor*)propertyWithName:(NSString*)name;

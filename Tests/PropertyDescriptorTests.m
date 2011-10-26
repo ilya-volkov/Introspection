@@ -76,8 +76,7 @@
     STAssertEquals(222, instance.intNonatomic, nil);
 }
 
-// TODO: fix dynamic tests (resarch dynamic method resolution and method forwarding)
-/*- (void)testDynamicGetValue {
+- (void)testDynamicGetValue {
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
@@ -102,7 +101,7 @@
     
     STAssertEquals(111, instance.intDynamicNonatomic, nil);
 
-}*/
+}
 
 - (void)testGetValueViaCustomGetter {
     ClassWithProperties *instance = [ClassWithProperties new];
