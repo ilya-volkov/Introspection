@@ -10,8 +10,10 @@
 + (ISMethodDescriptor*)descriptorForMethod:(Method)aMethod;
 
 - (id)initWithMethod:(Method)aMethod;
+- (id)initWithClassMethod:(Method)aMethod;
+- (id)initWithInstanceMethod:(Method)aMethod;
 
-- (void*)invokeOnObject:(id)anObject withArguments:(NSArray*)args;
+- (NSValue*)invokeOnObject:(id)anObject withArguments:(NSArray*)args;
 
 @property (readonly) BOOL isStatic;
 @property (readonly, strong) NSString* returnTypeEncoding;
@@ -23,6 +25,7 @@
 
 @interface ISMethodDescriptor ()
 
-- (void)initPropertiesFor:(Method)aMethod;
+- (void)initProperties;
+- (void)initArgumentTypeEncodings;
 
 @end

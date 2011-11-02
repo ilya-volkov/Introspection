@@ -6,7 +6,7 @@
     STAssertEquals([expected count], [actual count], @"Collections count not equal");
     
     for (int i = 0; i < [expected count]; i++) {        
-        STAssertEquals(
+        STAssertEqualObjects(
             [expected objectAtIndex:i], 
             [actual objectAtIndex:i], 
             @"Elements at index %d not equal", i

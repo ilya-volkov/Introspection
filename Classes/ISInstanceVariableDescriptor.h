@@ -9,8 +9,8 @@
 
 - (id)initWithInstanceVariable:(Ivar)anInstanceVariable;
 
-- (void)setValue:(void*)value inObject:(id)anObject;
-- (void*)getValueFromObject:(id)anObject;
+- (void)setValue:(NSValue*)value inObject:(id)anObject;
+- (NSValue*)getValueFromObject:(id)anObject;
 
 @property (nonatomic, readonly, strong) NSString* typeEncoding;
 

@@ -10,6 +10,8 @@
 
 - (void)setUp {
     [super setUp];
+    
+    [self raiseAfterFailure];
 }
 
 - (void)testCreateDescriptorForClassName {
@@ -59,10 +61,6 @@
     ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[ClassWithProperties class]];
     
     STAssertEqualObjects(@"com.ilyavolkov.IntrospectionTests", [descriptor.bundle bundleIdentifier], nil);
-}
-
-- (void)tearDown {
-    [super tearDown];
 }
 
 @end

@@ -9,6 +9,7 @@
 @dynamic intDynamicNonatomic;
 
 @synthesize idRetainNonatomic;
+@synthesize structNonatomic;
 @synthesize intGetterSetter;
 @synthesize intNonatomic;
 @synthesize idCopy;

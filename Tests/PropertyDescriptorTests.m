@@ -6,6 +6,12 @@
 
 @implementation PropertyDescriptorTests
 
+- (void)setUp {
+    [super setUp];
+    
+    [self raiseAfterFailure];
+}
+
 - (void)testCreateDescriptorForPropertyName {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 
@@ -24,6 +30,43 @@
     STAssertNil(descriptor, nil);
 }
 
+- (void)testGetStructValue {
+    ClassWithProperties *instance = [ClassWithProperties new];
+    
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForPropertyName:@"structNonatomic" 
+        inClass:[ClassWithProperties class]
+    ];
+    
+    TestStruct value = { .field1 = 123.4, .field2 = 444 };
+    instance.structNonatomic = value;
+    
+    NSValue *structValue = [descriptor getValueFromObject:instance];
+    TestStruct actual;
+    [structValue getValue:&actual];
+    
+    TestStruct expected = { .field1 = 123.4, .field2 = 444 };
+    STAssertEquals(expected, actual, nil);
+}
+
+- (void)testSetStructValue {
+    ClassWithProperties *instance = [ClassWithProperties new];
+    
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForPropertyName:@"structNonatomic" 
+        inClass:[ClassWithProperties class]
+    ];
+    
+    TestStruct value = { .field1 = 432.1, .field2 = 555 };
+    [descriptor 
+        setValue:[NSValue valueWithBytes:&value objCType:@encode(TestStruct)] 
+        inObject:instance
+    ];
+    
+    TestStruct expected = { .field1 = 432.1, .field2 = 555 };
+    STAssertEquals(expected, instance.structNonatomic, nil);
+}
+
 - (void)testGetObjectValue {
     ClassWithProperties *instance = [ClassWithProperties new];
     
@@ -34,7 +77,9 @@
     
     instance.idRetainNonatomic = @"String111";
     
-    STAssertEqualObjects(@"String111", (id)[descriptor getValueFromObject:instance], nil);
+    NSString *actual = [[descriptor getValueFromObject:instance] nonretainedObjectValue];
+    
+    STAssertEqualObjects(@"String111", actual, nil);
 }
 
 - (void)testSetObjectValue {
@@ -45,7 +90,7 @@
         inClass:[ClassWithProperties class]
     ];
     
-    [descriptor setValue:@"String222" inObject:instance];
+    [descriptor setValue:[NSValue valueWithNonretainedObject:@"String222"] inObject:instance];
     
     STAssertEqualObjects(@"String222", instance.idRetainNonatomic, nil);
 }
@@ -60,7 +105,11 @@
     
     instance.intNonatomic = 333;
     
-    STAssertEquals(333, (int)[descriptor getValueFromObject:instance], nil);
+    int actual;
+    NSValue *intValue = [descriptor getValueFromObject:instance];
+    [intValue getValue:&actual];
+    
+    STAssertEquals(333, actual, nil);
 }
 
 - (void)testSetValue {
@@ -71,7 +120,8 @@
         inClass:[ClassWithProperties class]
     ];
     
-    [descriptor setValue:(void*)222 inObject:instance];
+    int intValue = 222;
+    [descriptor setValue:[NSValue valueWithBytes:&intValue objCType:@encode(int)] inObject:instance];
     
     STAssertEquals(222, instance.intNonatomic, nil);
 }
@@ -86,7 +136,11 @@
     
     instance.intDynamicNonatomic = 987;
     
-    STAssertEquals(987, (int)[descriptor getValueFromObject:instance], nil);
+    int actual;
+    NSValue *intValue = [descriptor getValueFromObject:instance];
+    [intValue getValue:&actual];
+    
+    STAssertEquals(987, actual, nil);
 }
 
 - (void)testDynamicSetValue {
@@ -97,7 +151,8 @@
         inClass:[ClassWithProperties class]
     ];
     
-    [descriptor setValue:(void*)111 inObject:instance];
+    int intValue = 111;
+    [descriptor setValue:[NSValue valueWithBytes:&intValue objCType:@encode(int)] inObject:instance];
     
     STAssertEquals(111, instance.intDynamicNonatomic, nil);
 
@@ -113,7 +168,11 @@
     
     instance.intGetterSetter = 432;
     
-    STAssertEquals(432, (int)[descriptor getValueFromObject:instance], nil);
+    int actual;
+    NSValue *intValue = [descriptor getValueFromObject:instance];
+    [intValue getValue:&actual];
+    
+    STAssertEquals(432, actual, nil);
 }
 
 - (void)testSetValueViaCustomSetter {
@@ -123,8 +182,8 @@
         descriptorForPropertyName:@"intGetterSetter" 
         inClass:[ClassWithProperties class]
     ];
-    
-    [descriptor setValue:(void*)555 inObject:instance];
+    int intValue = 555;
+    [descriptor setValue:[NSValue valueWithBytes:&intValue objCType:@encode(int)] inObject:instance];
     
     STAssertEquals(555, instance.intGetterSetter, nil);
 }
@@ -206,9 +265,12 @@
         descriptorForPropertyName:@"idDynamicReadonly" 
         inClass:[ClassWithProperties class]
     ];
-
+    
     STAssertThrowsSpecific(
-        [descriptor setValue:@"123" inObject:[ClassWithProperties new]], 
+        [descriptor 
+            setValue:[NSValue valueWithNonretainedObject:@"234"]  
+            inObject:[ClassWithProperties new]
+        ], 
         ISInvalidStateException, 
         nil
     );

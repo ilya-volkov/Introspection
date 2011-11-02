@@ -5,6 +5,7 @@
 @class ISMethodDescriptor;
 @class ISPropertyDescriptor;
 
+// TODO: filter by class, instance if class methods supported in protocol
 @interface ISProtocolDescriptor : NSObject <ISDescriptor>
 
 + (NSArray*) allProtocols;

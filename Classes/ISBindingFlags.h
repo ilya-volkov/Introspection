@@ -1,5 +1,5 @@
 typedef enum _ISBindingFlags {
-    ISStaticBindingFlag       = 0,
-    ISInstanceBindingFlag     = 1 << 0,
-    ISDeclaredOnlyBindingFlag = 1 << 1
+    ISStaticBindingFlag       = 1,
+    ISInstanceBindingFlag     = 1 << 1,
+    ISDeclaredOnlyBindingFlag = 1 << 2
 } ISBindingFlags;

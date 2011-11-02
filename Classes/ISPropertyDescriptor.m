@@ -3,10 +3,13 @@
 #import "ISInvalidStateException.h"
 
 #import "NSString+Extensions.h"
+#import "NSValue+Extensions.h"
+#import "NSInvocation+Extensions.h"
 
 @implementation ISPropertyDescriptor {
 @private
     objc_property_t property;
+    BOOL isObjectType;
     NSString *attributesDescription;
 }
 
@@ -22,7 +25,7 @@
 @synthesize isWeakReference;
 @synthesize isEligibleForGarbageCollection;
 
-// TODO: add override with binding flags + UTs
+// TODO: add override with binding flags + UTs, static, instance
 + (ISPropertyDescriptor*)descriptorForPropertyName:(NSString*)name inClass:(Class)aClass {
     objc_property_t property = class_getProperty(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (property == nil)
@@ -74,6 +77,10 @@
     
     if (isReadOnly)
         setter = nil;
+    
+    isObjectType = [typeEncoding 
+        hasPrefix:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]
+    ];
 }
 
 - (id)initWithProperty:(objc_property_t)aProperty {
@@ -90,16 +97,33 @@
     return self;
 }
 
-// TOOD: check standard exceptions
-- (void)setValue:(void*)value inObject:(id)anObject {
+- (void)setValue:(NSValue*)value inObject:(id)anObject {
     if (isReadOnly)
         @throw [ISInvalidStateException exceptionWithReason:@"Can't set readonly property"];
-        
-    [anObject performSelector:setter withObject:(__bridge id)value];
+    
+    if (isObjectType) {
+        [anObject performSelector:setter withObject:[value nonretainedObjectValue]];
+        return;
+    }
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[anObject methodSignatureForSelector:setter]];
+    [invocation setSelector:setter];
+    NSMutableData* dataValue = [[value dataValue] mutableCopy];
+    [invocation setArgument:[dataValue mutableBytes] atIndex:2];
+    
+    [invocation invokeWithTarget:anObject];
 }
 
-- (void*)getValueFromObject:(id)anObject {
-    return (__bridge void*)[anObject performSelector:getter];
+- (NSValue*)getValueFromObject:(id)anObject {
+    if (isObjectType)
+        return [NSValue valueWithNonretainedObject:[anObject performSelector:getter]];
+    
+    NSInvocation* invocation = [NSInvocation 
+        invocationWithMethodSignature:[anObject methodSignatureForSelector:getter]
+    ];
+    [invocation setSelector:getter];
+    [invocation invokeWithTarget:anObject];
+    
+    return [invocation getReturnValue];
 }
 
 @end

@@ -1,8 +1,15 @@
 #import "InstanceVariableDescriptorTests.h"
 #import "ISInstanceVariableDescriptor.h"
 #import "ClassWithInstanceVariables.h"
+#import "TestStruct.h"
 
 @implementation InstanceVariableDescriptorTests
+
+- (void)setUp {
+    [super setUp];
+    
+    [self raiseAfterFailure];
+}
 
 - (void)testCreateDescriptorForInstanceVariableName {
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
@@ -31,7 +38,7 @@
         inClass:[ClassWithInstanceVariables class]
     ];
     
-    id value = (NSString*)[descriptor getValueFromObject:instance];
+    NSString* value = [[descriptor getValueFromObject:instance] nonretainedObjectValue];
     
     STAssertEqualObjects(@"SomeString", value, nil);
 }
@@ -43,9 +50,41 @@
         inClass:[ClassWithInstanceVariables class]
     ];
     
-    [descriptor setValue:@"SomeString" inObject:instance];
+    [descriptor setValue:[NSValue valueWithNonretainedObject:@"SomeString"] inObject:instance];
     
     STAssertEqualObjects(@"SomeString", instance->publicString, nil);
+}
+
+- (void)testGetStructValue {
+    ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
+    TestStruct value = { .field1 = 111.1, .field2 = 222 };
+    instance->publicStruct = value;
+    
+    ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
+        descriptorForInstanceVariableName:@"publicStruct" 
+        inClass:[ClassWithInstanceVariables class]
+    ];
+    
+    TestStruct actual;
+    NSValue *structValue = [descriptor getValueFromObject:instance];
+    [structValue getValue:&actual];
+    
+    TestStruct expected = { .field1 = 111.1, .field2 = 222 };
+    STAssertEquals(expected, actual, nil);
+}
+
+- (void)testSetStructValue {
+    ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
+    ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
+        descriptorForInstanceVariableName:@"publicStruct" 
+        inClass:[ClassWithInstanceVariables class]
+    ];
+    
+    TestStruct value = { .field1 = 222.2, .field2 = 444 };
+    [descriptor setValue:[NSValue valueWithBytes:&value objCType:@encode(TestStruct)] inObject:instance];
+    
+    TestStruct expected = { .field1 = 222.2, .field2 = 444 };
+    STAssertEquals(expected, instance->publicStruct, nil);
 }
 
 - (void)testGetValue {
@@ -57,9 +96,11 @@
         inClass:[ClassWithInstanceVariables class]
     ];
     
-    int value = (int)[descriptor getValueFromObject:instance];
+    int intValue;
+    NSValue *value = [descriptor getValueFromObject:instance];
+    [value getValue:&intValue];
     
-    STAssertEquals(123, value, nil);
+    STAssertEquals(123, intValue, nil);
 }
 
 - (void)testSetValue {
@@ -69,7 +110,8 @@
         inClass:[ClassWithInstanceVariables class]
     ];
     
-    [descriptor setValue:(void*)111 inObject:instance];
+    int intValue = 111;
+    [descriptor setValue:[NSValue valueWithBytes:&intValue objCType:@encode(int)] inObject:instance];
     
     STAssertEquals(111, instance->publicInt, nil);
 }

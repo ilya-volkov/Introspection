@@ -1,5 +1,6 @@
 #import "ISDescriptor.h"
 
+#import "ISCommon.h"
 #import "ISBindingFlags.h"
 #import "ISSetterSemanticsType.h"
 

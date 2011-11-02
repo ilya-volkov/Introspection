@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "TestStruct.h"
 
 @interface ClassWithInstanceVariables : NSObject {
 @package
@@ -13,6 +14,7 @@
 @public
     int publicInt;
     NSString *publicString;
+    TestStruct publicStruct;
 }
 
 @end
