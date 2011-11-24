@@ -26,7 +26,7 @@
 @synthesize isEligibleForGarbageCollection;
 
 // TODO: add override with binding flags + UTs, static, instance
-+ (ISPropertyDescriptor*)descriptorForPropertyName:(NSString*)name inClass:(Class)aClass {
++ (ISPropertyDescriptor*) descriptorForPropertyName:(NSString*)name inClass:(Class)aClass {
     objc_property_t property = class_getProperty(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (property == nil)
         return nil;
@@ -34,17 +34,17 @@
     return [ISPropertyDescriptor descriptorForProperty:property];
 }
 
-+ (ISPropertyDescriptor*)descriptorForProperty:(objc_property_t)aProperty {
++ (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)aProperty {
     return [[ISPropertyDescriptor alloc] initWithProperty:aProperty];
 }
 
-- (void)setDefaultAttributeValues {
+- (void) setDefaultAttributeValues {
     getter = NSSelectorFromString(name);
     setter = NSSelectorFromString([NSString stringWithFormat:@"set%@:", [name camelcaseString]]);
     setterSemanticsType = ISAssignSetterSemanticsType;
 }
 
-- (void)parsePropertyAttributeDescription:(NSString*)description {
+- (void) parsePropertyAttributeDescription:(NSString*)description {
     [self setDefaultAttributeValues];
     
     attributesDescription = description;
@@ -83,7 +83,7 @@
     ];
 }
 
-- (id)initWithProperty:(objc_property_t)aProperty {
+- (id) initWithProperty:(objc_property_t)aProperty {
     self = [super init];
     if (self) {
         property = aProperty;
@@ -97,7 +97,7 @@
     return self;
 }
 
-- (void)setValue:(NSValue*)value inObject:(id)anObject {
+- (void) setValue:(NSValue*)value inObject:(id)anObject {
     if (isReadOnly)
         @throw [ISInvalidStateException exceptionWithReason:@"Can't set readonly property"];
     
@@ -113,7 +113,7 @@
     [invocation invokeWithTarget:anObject];
 }
 
-- (NSValue*)getValueFromObject:(id)anObject {
+- (NSValue*) getValueFromObject:(id)anObject {
     if (isObjectType)
         return [NSValue valueWithNonretainedObject:[anObject performSelector:getter]];
     

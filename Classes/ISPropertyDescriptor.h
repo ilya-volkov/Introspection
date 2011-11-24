@@ -5,13 +5,13 @@
 
 @interface ISPropertyDescriptor : NSObject <ISDescriptor>
 
-+ (ISPropertyDescriptor*)descriptorForPropertyName:(NSString*)name inClass:(Class)aClass;
-+ (ISPropertyDescriptor*)descriptorForProperty:(objc_property_t)aProperty;
++ (ISPropertyDescriptor*) descriptorForPropertyName:(NSString*)name inClass:(Class)aClass;
++ (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)aProperty;
 
-- (id)initWithProperty:(objc_property_t)aProperty;
+- (id) initWithProperty:(objc_property_t)aProperty;
 
-- (void)setValue:(NSValue*)value inObject:(id)anObject;
-- (NSValue*)getValueFromObject:(id)anObject;
+- (void) setValue:(NSValue*)value inObject:(id)anObject;
+- (NSValue*) getValueFromObject:(id)anObject;
 
 @property (readonly, nonatomic, strong) NSString* backingVariable;
 @property (readonly, nonatomic) SEL getter;
@@ -28,7 +28,7 @@
 
 @interface ISPropertyDescriptor ()
 
-- (void)parsePropertyAttributeDescription:(NSString*)description;
-- (void)setDefaultAttributeValues;
+- (void) parsePropertyAttributeDescription:(NSString*)description;
+- (void) setDefaultAttributeValues;
 
 @end

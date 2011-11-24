@@ -1,7 +1,7 @@
-#import <SenTestingKit/SenTestingKit.h>
+#import "RaiseOnErrorTestCase.h"
 
 NSString* newMethodImp(id self, SEL _cmd);
 
-@interface MethodDescriptorTests : SenTestCase
+@interface MethodDescriptorTests : RaiseOnErrorTestCase
 
 @end

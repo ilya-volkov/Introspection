@@ -4,13 +4,14 @@
 
 @interface ISInstanceVariableDescriptor : NSObject <ISDescriptor>
 
-+ (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass;
-+ (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(Ivar)anInstanceVariable;
++ (ISInstanceVariableDescriptor*) descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass;
++ (ISInstanceVariableDescriptor*) descriptorForClassVariableName:(NSString*)name inClass:(Class)aClass;
++ (ISInstanceVariableDescriptor*) descriptorForInstanceVariable:(Ivar)anInstanceVariable;
 
-- (id)initWithInstanceVariable:(Ivar)anInstanceVariable;
+- (id) initWithInstanceVariable:(Ivar)anInstanceVariable;
 
-- (void)setValue:(NSValue*)value inObject:(id)anObject;
-- (NSValue*)getValueFromObject:(id)anObject;
+- (void) setValue:(NSValue*)value inObject:(id)anObject;
+- (NSValue*) getValueFromObject:(id)anObject;
 
 @property (nonatomic, readonly, strong) NSString* typeEncoding;
 

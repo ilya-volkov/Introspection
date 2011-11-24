@@ -1,5 +1,5 @@
-#import <SenTestingKit/SenTestingKit.h>
+#import "RaiseOnErrorTestCase.h"
 
-@interface PropertyDescriptorTests : SenTestCase
+@interface PropertyDescriptorTests : RaiseOnErrorTestCase
 
 @end

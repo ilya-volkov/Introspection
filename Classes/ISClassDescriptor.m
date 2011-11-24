@@ -71,41 +71,4 @@
     return [NSBundle bundleForClass:_class];
 }
 
-/*
-- (BOOL)respondsToSelector:(SEL)aSelector {
-}
-
-- (BOOL)conformsToProtocol:(ISProtocolDescriptor*)aProtocol {
-}
-
-- (NSNumber*)version {
-}
-
-- (void)setVersion:(NSNumber*)aVersion
-
-- (NSString*)name {
-    return nil;
-}
-
-- (NSArray*)superclass {
-    return nil;
-}
-
-- (NSArray*)protocols {
-    return nil;
-}
-
-- (NSArray*)methods {
-    return nil;
-}
-
-- (NSArray*)properties {
-    return nil;
-}
-
-- (NSArray*)instanceVariables {
-    return nil;
-}
-*/
-
 @end

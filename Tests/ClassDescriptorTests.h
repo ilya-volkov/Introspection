@@ -1,5 +1,5 @@
-#import <SenTestingKit/SenTestingKit.h>
+#import "RaiseOnErrorTestCase.h"
 
-@interface ClassDescriptorTests : SenTestCase
+@interface ClassDescriptorTests : RaiseOnErrorTestCase
 
 @end

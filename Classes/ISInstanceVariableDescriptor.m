@@ -9,20 +9,27 @@
 @synthesize name;
 @synthesize typeEncoding;
 
-// TODO: add override with bindign flags + UTs, static, instance
-+ (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass {
++ (ISInstanceVariableDescriptor*) descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass {
     Ivar ivar = class_getInstanceVariable(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (ivar == nil)
         return nil;
     
-    return [ISInstanceVariableDescriptor descriptorForInstanceVariableName:ivar];
+    return [ISInstanceVariableDescriptor descriptorForInstanceVariable:ivar];
 }
 
-+ (ISInstanceVariableDescriptor*)descriptorForInstanceVariableName:(Ivar)anInstanceVariable {
++ (ISInstanceVariableDescriptor*) descriptorForClassVariableName:(NSString*)name inClass:(Class)aClass {
+    Ivar ivar = class_getClassVariable(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
+    if (ivar == nil)
+        return nil;
+    
+    return [ISInstanceVariableDescriptor descriptorForInstanceVariable:ivar];
+}
+
++ (ISInstanceVariableDescriptor*) descriptorForInstanceVariable:(Ivar)anInstanceVariable {
     return [[ISInstanceVariableDescriptor alloc] initWithInstanceVariable:anInstanceVariable];
 }
 
-- (id)initWithInstanceVariable:(Ivar)anInstanceVariable {
+- (id) initWithInstanceVariable:(Ivar)anInstanceVariable {
     self = [super init];
     if (self) {
         ivar = anInstanceVariable;
@@ -37,7 +44,7 @@
     return self;
 }
 
-- (void)setValue:(NSValue*)value inObject:(id)anObject {
+- (void) setValue:(NSValue*)value inObject:(id)anObject {
     if (isObjectType) {
         object_setIvar(anObject, ivar, [value nonretainedObjectValue]);
         return;
@@ -47,7 +54,7 @@
     [value getValue:valuePointer];
 }
 
-- (NSValue*)getValueFromObject:(id)anObject {
+- (NSValue*) getValueFromObject:(id)anObject {
     if (isObjectType)
         return [NSValue valueWithNonretainedObject:object_getIvar(anObject, ivar)];
     

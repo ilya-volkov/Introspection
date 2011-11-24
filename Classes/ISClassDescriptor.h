@@ -20,9 +20,9 @@
 - (BOOL) classRespondsToSelector:(SEL)aSelector;
 - (BOOL) classConformsToProtocol:(ISProtocolDescriptor*)aProtocol;
 
-- (ISMethodDescriptor*)methodWithName:(NSString*)name;
-- (ISPropertyDescriptor*)propertyWithName:(NSString*)name;
-- (ISInstanceVariableDescriptor*)instanceVariableWithName:(NSString*)name;
+- (ISMethodDescriptor*) methodWithName:(NSString*)name;
+- (ISPropertyDescriptor*) propertyWithName:(NSString*)name;
+- (ISInstanceVariableDescriptor*) instanceVariableWithName:(NSString*)name;
 
 - (NSArray*) methodsFilteredBy:(ISBindingFlags)flags;
 - (NSArray*) propertiesFilteredBy:(ISBindingFlags)flags;
@@ -30,18 +30,14 @@
 
 @property (readonly) ISClassDescriptor* classSuperclass;
 
-// weak or strong by default ??? assign for NSNumber etc???
+// TODO: weak or strong by default ??? assign for NSNumber etc???
 @property (weak) NSNumber* classVersion;
-
-// inherited protocols
 @property (readonly) NSArray* protocols;
 @property (readonly) NSArray* methods;
 @property (readonly) NSArray* properties;
-// test class variables
 @property (readonly) NSArray* instanceVariables;
-// Test ivar layout + weak layouts
+// TODO: Test ivar layout + weak layouts
 @property (readonly) NSString* instanceVariablesLayout;
-// variables visibility: public, protected, public
 @property (readonly) NSBundle* bundle;
 
 @end

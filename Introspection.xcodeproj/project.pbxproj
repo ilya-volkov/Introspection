@@ -33,6 +33,12 @@
 		7A1D856114547F1400A2079D /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D854F1454635200A2079D /* NSString+Extensions.m */; };
 		7A1D856414547F7100A2079D /* MethodDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D856314547F7000A2079D /* MethodDescriptorTests.m */; };
 		7A1D856514547F7100A2079D /* MethodDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D856314547F7000A2079D /* MethodDescriptorTests.m */; };
+		7A69F40A147CDBDC0006D495 /* ProtocolDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F409147CDBDC0006D495 /* ProtocolDescriptorTests.m */; };
+		7A69F40B147CDBDC0006D495 /* ProtocolDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F409147CDBDC0006D495 /* ProtocolDescriptorTests.m */; };
+		7A69F40D147E0BC30006D495 /* NSValue+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9E391146112F6006650CE /* NSValue+Extensions.m */; };
+		7A69F40E147E0BC30006D495 /* NSInvocation+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9E3981461DA1D006650CE /* NSInvocation+Extensions.m */; };
+		7A69F411147E142F0006D495 /* RaiseOnErrorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F410147E142F0006D495 /* RaiseOnErrorTestCase.m */; };
+		7A69F412147E142F0006D495 /* RaiseOnErrorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F410147E142F0006D495 /* RaiseOnErrorTestCase.m */; };
 		7AD59E5B14554BED00917711 /* ClassWithProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E5A14554BED00917711 /* ClassWithProperties.m */; };
 		7AD59E5C14554BED00917711 /* ClassWithProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E5A14554BED00917711 /* ClassWithProperties.m */; };
 		7AD59E6014554C2400917711 /* ClassWithInstanceVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E5F14554C2400917711 /* ClassWithInstanceVariables.m */; };
@@ -133,6 +139,10 @@
 		7A1D856214547F7000A2079D /* MethodDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodDescriptorTests.h; sourceTree = "<group>"; };
 		7A1D856314547F7000A2079D /* MethodDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodDescriptorTests.m; sourceTree = "<group>"; };
 		7A5FE889145B2DB400916D9D /* TestStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStruct.h; sourceTree = "<group>"; };
+		7A69F408147CDBDC0006D495 /* ProtocolDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolDescriptorTests.h; sourceTree = "<group>"; };
+		7A69F409147CDBDC0006D495 /* ProtocolDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolDescriptorTests.m; sourceTree = "<group>"; };
+		7A69F40F147E142F0006D495 /* RaiseOnErrorTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RaiseOnErrorTestCase.h; sourceTree = "<group>"; };
+		7A69F410147E142F0006D495 /* RaiseOnErrorTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaiseOnErrorTestCase.m; sourceTree = "<group>"; };
 		7AD59E5914554BED00917711 /* ClassWithProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassWithProperties.h; sourceTree = "<group>"; };
 		7AD59E5A14554BED00917711 /* ClassWithProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassWithProperties.m; sourceTree = "<group>"; };
 		7AD59E5E14554C2400917711 /* ClassWithInstanceVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassWithInstanceVariables.h; sourceTree = "<group>"; };
@@ -365,6 +375,10 @@
 				7A1D8546145201A200A2079D /* PropertyDescriptorTests.m */,
 				7A1D856214547F7000A2079D /* MethodDescriptorTests.h */,
 				7A1D856314547F7000A2079D /* MethodDescriptorTests.m */,
+				7A69F408147CDBDC0006D495 /* ProtocolDescriptorTests.h */,
+				7A69F409147CDBDC0006D495 /* ProtocolDescriptorTests.m */,
+				7A69F40F147E142F0006D495 /* RaiseOnErrorTestCase.h */,
+				7A69F410147E142F0006D495 /* RaiseOnErrorTestCase.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -665,6 +679,8 @@
 				7AD59E6414569AC800917711 /* ClassWithMethods.m in Sources */,
 				7AD59E6814569E4400917711 /* DerivedClassWithMethods.m in Sources */,
 				7AD59E6C14574E2300917711 /* BaseClassWithMethods.m in Sources */,
+				7A69F40A147CDBDC0006D495 /* ProtocolDescriptorTests.m in Sources */,
+				7A69F411147E142F0006D495 /* RaiseOnErrorTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +706,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A69F40D147E0BC30006D495 /* NSValue+Extensions.m in Sources */,
+				7A69F40E147E0BC30006D495 /* NSInvocation+Extensions.m in Sources */,
 				7A1D856114547F1400A2079D /* NSString+Extensions.m in Sources */,
 				7A1D855E14547DB300A2079D /* NSArray+CollectionQuery.m in Sources */,
 				7A1D85541454638B00A2079D /* SenTestCase+CollectionAssert.m in Sources */,
@@ -703,6 +721,8 @@
 				7AD59E6514569AC800917711 /* ClassWithMethods.m in Sources */,
 				7AD59E6914569E4400917711 /* DerivedClassWithMethods.m in Sources */,
 				7AD59E6D14574E2300917711 /* BaseClassWithMethods.m in Sources */,
+				7A69F40B147CDBDC0006D495 /* ProtocolDescriptorTests.m in Sources */,
+				7A69F412147E142F0006D495 /* RaiseOnErrorTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

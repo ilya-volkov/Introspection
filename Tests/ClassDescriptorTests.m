@@ -8,12 +8,6 @@
 
 @implementation ClassDescriptorTests
 
-- (void)setUp {
-    [super setUp];
-    
-    [self raiseAfterFailure];
-}
-
 - (void)testCreateDescriptorForClassName {
     ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClassName:@"ClassWithProperties"];
     

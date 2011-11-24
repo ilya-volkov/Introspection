@@ -13,12 +13,6 @@ NSString* newMethodImp(id self, SEL _cmd) {
 
 @implementation MethodDescriptorTests
 
-- (void)setUp {
-    [super setUp];
-    
-    [self raiseAfterFailure];
-}
-
 - (ISMethodDescriptor*)descriptorForMethodName:(NSString*)name {
     return [ISMethodDescriptor descriptorForMethodName:name inClass:[DerivedClassWithMethods class]];
 }

@@ -6,12 +6,6 @@
 
 @implementation PropertyDescriptorTests
 
-- (void)setUp {
-    [super setUp];
-    
-    [self raiseAfterFailure];
-}
-
 - (void)testCreateDescriptorForPropertyName {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForPropertyName:@"idDynamicReadonly" 

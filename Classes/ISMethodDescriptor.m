@@ -18,7 +18,7 @@
 @synthesize methodSelector;
 @synthesize name;
 
-+ (ISMethodDescriptor*)descriptorForMethodName:(NSString*)name inClass:(Class)aClass {
++ (ISMethodDescriptor*) descriptorForMethodName:(NSString*)name inClass:(Class)aClass {
     return [ISMethodDescriptor 
         descriptorForMethodName:name 
         inClass:aClass 
@@ -27,7 +27,7 @@
 }
 
 // TODO: support ISDeclaredOnlyBindingFlags ???
-+ (ISMethodDescriptor*)descriptorForMethodName:(NSString*)name inClass:(Class)aClass usingFlags:(ISBindingFlags)flags{
++ (ISMethodDescriptor*) descriptorForMethodName:(NSString*)name inClass:(Class)aClass usingFlags:(ISBindingFlags)flags{
     Method instanceMethod = nil;
     Method classMethod = nil;
     
@@ -49,11 +49,11 @@
     return nil;
 }
 
-+ (ISMethodDescriptor*)descriptorForMethod:(Method)aMethod {
++ (ISMethodDescriptor*) descriptorForMethod:(Method)aMethod {
     return [[ISMethodDescriptor alloc] initWithMethod:aMethod];
 }
 
-- (void)initArgumentTypeEncodings {
+- (void) initArgumentTypeEncodings {
     int argCount = method_getNumberOfArguments(method);
     NSMutableArray *argsEncoding = [NSMutableArray arrayWithCapacity:argCount];
     
@@ -66,7 +66,7 @@
     argumentTypeEncodings = argsEncoding;
 }
 
-- (void)initProperties {
+- (void) initProperties {
     methodSelector = method_getName(method);
     name = NSStringFromSelector(methodSelector);
     
@@ -79,7 +79,7 @@
     [self initArgumentTypeEncodings];
 }
 
-- (id)initWithMethod:(Method)aMethod {
+- (id) initWithMethod:(Method)aMethod {
     self = [super init];
     if (self != nil) {
         method = aMethod;
@@ -90,7 +90,7 @@
     return self;
 }
 
-- (id)initWithClassMethod:(Method)aMethod {
+- (id) initWithClassMethod:(Method)aMethod {
     self = [self initWithMethod:aMethod];
     if (self != nil) {
         isStatic = YES;
@@ -99,7 +99,7 @@
     return self;
 }
 
-- (id)initWithInstanceMethod:(Method)aMethod {
+- (id) initWithInstanceMethod:(Method)aMethod {
     self = [self initWithMethod:aMethod];
     if (self != nil) {
         isStatic = NO;
@@ -109,15 +109,15 @@
 }
 
 // TODO: get/set methods returning struct
-- (IMP)implementation {
+- (IMP) implementation {
     return method_getImplementation(method);
 }
 
-- (void)setImplementation:(IMP)value {
+- (void) setImplementation:(IMP)value {
     method_setImplementation(method, value);
 }
 
-- (NSValue*)invokeOnObject:(id)anObject withArguments:(NSArray*)args {
+- (NSValue*) invokeOnObject:(id)anObject withArguments:(NSArray*)args {
     NSInvocation *invocation = [NSInvocation 
         invocationWithMethodSignature:[anObject methodSignatureForSelector:methodSelector]
     ];

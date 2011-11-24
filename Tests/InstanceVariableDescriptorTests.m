@@ -5,12 +5,6 @@
 
 @implementation InstanceVariableDescriptorTests
 
-- (void)setUp {
-    [super setUp];
-    
-    [self raiseAfterFailure];
-}
-
 - (void)testCreateDescriptorForInstanceVariableName {
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
         descriptorForInstanceVariableName:@"privateString" 
@@ -22,7 +16,25 @@
 
 - (void)testCreateDescriptorForInstanceVariableNameFails {
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"notExistingVariable" 
+        descriptorForInstanceVariableName:@"nonExistentInstanceVariable" 
+        inClass:[ClassWithInstanceVariables class]
+    ];
+    
+    STAssertNil(descriptor, nil);
+}
+
+- (void)testCreateDescriptorForClassVariableName {
+    ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
+        descriptorForClassVariableName:@"isa" 
+        inClass:[ClassWithInstanceVariables class]
+    ];
+    
+    STAssertEqualObjects(@"isa", descriptor.name, nil);
+}
+
+- (void)testCreateDescriptorForClassVariableNameFails {
+    ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
+        descriptorForClassVariableName:@"nonExistentClassVariable" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
