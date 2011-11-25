@@ -1,7 +1,6 @@
 #import <objc/runtime.h>
 
 #import "ISDescriptor.h"
-#import "ISBindingFlags.h"
 
 @class ISProtocolDescriptor;
 @class ISMethodDescriptor;
@@ -24,9 +23,9 @@
 - (ISPropertyDescriptor*) propertyWithName:(NSString*)name;
 - (ISInstanceVariableDescriptor*) instanceVariableWithName:(NSString*)name;
 
-- (NSArray*) methodsFilteredBy:(ISBindingFlags)flags;
+/*- (NSArray*) methodsFilteredBy:(ISBindingFlags)flags;
 - (NSArray*) propertiesFilteredBy:(ISBindingFlags)flags;
-- (NSArray*) instanceVariablesFilteredBy:(ISBindingFlags)flags;
+- (NSArray*) instanceVariablesFilteredBy:(ISBindingFlags)flags;*/
 
 @property (readonly) ISClassDescriptor* classSuperclass;
 

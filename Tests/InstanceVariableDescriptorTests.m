@@ -7,7 +7,7 @@
 
 - (void)testCreateDescriptorForInstanceVariableName {
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"privateString" 
+        descriptorForName:@"privateString" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -16,25 +16,7 @@
 
 - (void)testCreateDescriptorForInstanceVariableNameFails {
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"nonExistentInstanceVariable" 
-        inClass:[ClassWithInstanceVariables class]
-    ];
-    
-    STAssertNil(descriptor, nil);
-}
-
-- (void)testCreateDescriptorForClassVariableName {
-    ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForClassVariableName:@"isa" 
-        inClass:[ClassWithInstanceVariables class]
-    ];
-    
-    STAssertEqualObjects(@"isa", descriptor.name, nil);
-}
-
-- (void)testCreateDescriptorForClassVariableNameFails {
-    ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForClassVariableName:@"nonExistentClassVariable" 
+        descriptorForName:@"nonExistentInstanceVariable" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -46,7 +28,7 @@
     instance->publicString = @"SomeString";
 
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicString" 
+        descriptorForName:@"publicString" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -58,7 +40,7 @@
 - (void)testSetObjectValue {
     ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicString" 
+        descriptorForName:@"publicString" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -73,7 +55,7 @@
     instance->publicStruct = value;
     
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicStruct" 
+        descriptorForName:@"publicStruct" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -88,7 +70,7 @@
 - (void)testSetStructValue {
     ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicStruct" 
+        descriptorForName:@"publicStruct" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -104,7 +86,7 @@
     instance->publicInt = 123;
     
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicInt" 
+        descriptorForName:@"publicInt" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -118,7 +100,7 @@
 - (void)testSetValue {
     ClassWithInstanceVariables *instance = [ClassWithInstanceVariables new];
     ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicInt" 
+        descriptorForName:@"publicInt" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
@@ -131,12 +113,12 @@
 
 - (void)testGetTypeEncoding {
     ISInstanceVariableDescriptor *descriptor1 = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicString" 
+        descriptorForName:@"publicString" 
         inClass:[ClassWithInstanceVariables class]
     ];
     
     ISInstanceVariableDescriptor *descriptor2 = [ISInstanceVariableDescriptor 
-        descriptorForInstanceVariableName:@"publicInt" 
+        descriptorForName:@"publicInt" 
         inClass:[ClassWithInstanceVariables class]
     ];
     

@@ -1,30 +1,34 @@
 #import <objc/runtime.h>
 
-#import "ISBindingFlags.h"
 #import "ISDescriptor.h"
 
 @interface ISMethodDescriptor : NSObject <ISDescriptor>
 
-+ (ISMethodDescriptor*) descriptorForMethodName:(NSString*)name inClass:(Class)aClass;
-+ (ISMethodDescriptor*) descriptorForMethodName:(NSString*)name inClass:(Class)aClass usingFlags:(ISBindingFlags)flags;
-+ (ISMethodDescriptor*) descriptorForMethod:(Method)aMethod;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)aClass;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)aClass isInstance:(BOOL)isInstance;
+/*+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)aProtocol;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)aProtocol isInstance:(BOOL)isInstance isRequired:(BOOL)isRequired;*/
++ (ISMethodDescriptor*) descriptorForInstanceMethod:(Method)aMethod;
++ (ISMethodDescriptor*) descriptorForClassMethod:(Method)aMethod;
 
-- (id) initWithMethod:(Method)aMethod;
 - (id) initWithClassMethod:(Method)aMethod;
 - (id) initWithInstanceMethod:(Method)aMethod;
 
 - (NSValue*) invokeOnObject:(id)anObject withArguments:(NSArray*)args;
 
-@property (readonly) BOOL isStatic;
+@property (readonly) BOOL isInstanceMethod;
 @property (readonly, strong) NSString* returnTypeEncoding;
 @property (readonly, strong) NSArray* argumentTypeEncodings;
-@property (readonly) SEL methodSelector;
+@property (readonly) SEL selector;
 @property IMP implementation;
 
 @end
 
 @interface ISMethodDescriptor ()
 
++ (ISMethodDescriptor*) descriptorForInstanceMethod:(Method)instanceMethod classMethod:(Method)classMethod;
+
+- (id) initWithMethod:(Method)aMethod;
 - (void) initProperties;
 - (void) initArgumentTypeEncodings;
 

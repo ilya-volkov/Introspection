@@ -5,8 +5,8 @@
 @class ISMethodDescriptor;
 @class ISPropertyDescriptor;
 
-// 1. TODO: add find method and property in protocol to corresponding descriptors
-// 2. TODO: protocol static methods and properties
+// 1. TODO: add find method and property in protocol to corresponding descriptors 
+//          ??? if not needed remove commented code and update test classes
 
 @interface ISProtocolDescriptor : NSObject <ISDescriptor>
 

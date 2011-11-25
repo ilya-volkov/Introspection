@@ -4,8 +4,7 @@
 
 @interface ISInstanceVariableDescriptor : NSObject <ISDescriptor>
 
-+ (ISInstanceVariableDescriptor*) descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass;
-+ (ISInstanceVariableDescriptor*) descriptorForClassVariableName:(NSString*)name inClass:(Class)aClass;
++ (ISInstanceVariableDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass;
 + (ISInstanceVariableDescriptor*) descriptorForInstanceVariable:(Ivar)anInstanceVariable;
 
 - (id) initWithInstanceVariable:(Ivar)anInstanceVariable;

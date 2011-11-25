@@ -9,16 +9,8 @@
 @synthesize name;
 @synthesize typeEncoding;
 
-+ (ISInstanceVariableDescriptor*) descriptorForInstanceVariableName:(NSString*)name inClass:(Class)aClass {
++ (ISInstanceVariableDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass {
     Ivar ivar = class_getInstanceVariable(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
-    if (ivar == nil)
-        return nil;
-    
-    return [ISInstanceVariableDescriptor descriptorForInstanceVariable:ivar];
-}
-
-+ (ISInstanceVariableDescriptor*) descriptorForClassVariableName:(NSString*)name inClass:(Class)aClass {
-    Ivar ivar = class_getClassVariable(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (ivar == nil)
         return nil;
     
@@ -38,7 +30,6 @@
         isObjectType = [typeEncoding 
             hasPrefix:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]
         ];
-            
     }
     
     return self;
