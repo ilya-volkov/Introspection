@@ -16,6 +16,8 @@
 @synthesize selector;
 @synthesize name;
 
+// TODO: Protocol support (refactor implementation)
+
 + (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)aClass {
     Method instanceMethod = class_getInstanceMethod(aClass, selector);
     Method classMethod = class_getClassMethod(aClass, selector);

@@ -25,14 +25,39 @@
 @synthesize isWeakReference;
 @synthesize isEligibleForGarbageCollection;
 
-// TODO: add override with binding flags + UTs, static, instance
-+ (ISPropertyDescriptor*) descriptorForPropertyName:(NSString*)name inClass:(Class)aClass {
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass {
     objc_property_t property = class_getProperty(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (property == nil)
         return nil;
     
     return [ISPropertyDescriptor descriptorForProperty:property];
 }
+
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol {
+    objc_property_t property = protocol_getProperty(
+        aProtocol, [name cStringUsingEncoding:NSASCIIStringEncoding], YES, YES
+    );
+    
+    if (property == nil)
+        return nil;
+    
+    return [ISPropertyDescriptor descriptorForProperty:property];
+}
+
+/*+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol {
+    return [ISPropertyDescriptor descriptorForName:name inProtocol:aProtocol isRequired:YES];
+}*/
+
+/*+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol isRequired:(BOOL)isRequired {
+    objc_property_t property = protocol_getProperty(
+        aProtocol, [name cStringUsingEncoding:NSASCIIStringEncoding], isRequired, YES
+    );
+    
+    if (property == nil)
+        return nil;
+    
+    return [ISPropertyDescriptor descriptorForProperty:property];
+}*/
 
 + (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)aProperty {
     return [[ISPropertyDescriptor alloc] initWithProperty:aProperty];

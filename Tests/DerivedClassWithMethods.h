@@ -16,4 +16,9 @@
 - (int)instanceMethodWithoutParametersReturnsInt;
 - (NSString*)instanceMethodWithParametersFirst:(NSString*)param1 second:(int)param2 third:(TestStruct)param3;
 
+// ProtocolWithMethods
+
+//- (void) instanceProtocolMethod;
+//+ (void) classProtocolMethod;
+
 @end

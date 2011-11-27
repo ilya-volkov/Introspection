@@ -2,8 +2,8 @@
 
 #import "BaseProtocolWithMethods.h"
 
-@protocol ProtocolWithMethods <BaseProtocolWithMethods>
-@required
+@protocol ProtocolWithMethods // <BaseProtocolWithMethods>
+/*@required
 
 + (NSString*) classProtocolMethod:(NSString*)arg1;
 + (void) methodWithNonUniqueNameInProtocol;
@@ -14,5 +14,9 @@
 @optional
 
 - (void) optionalProtocolMethod;
+*/
+
+- (void) instanceProtocolMethod;
++ (void) classProtocolMethod;
 
 @end

@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
 
 #import "TestStruct.h"
+#import "ProtocolWithProperties.h"
 
-@interface ClassWithProperties : NSObject
+@interface ClassWithProperties : NSObject <ProtocolWithProperties>
 
 @property (readonly) id idDynamicReadonly;
 @property (nonatomic, strong) id idRetainNonatomic;

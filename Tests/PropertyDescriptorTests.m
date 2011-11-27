@@ -6,18 +6,76 @@
 
 @implementation PropertyDescriptorTests
 
-- (void)testCreateDescriptorForPropertyName {
+- (void)testCreateDescriptorForPropertyInProtocol {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"idDynamicReadonly" 
+        descriptorForName:@"requiredProperty" 
+        inProtocol:@protocol(ProtocolWithProperties)
+    ];
+    
+    STAssertEqualObjects(@"requiredProperty", descriptor.name, nil);
+}
+
+/*- (void)testCreateDescriptorForRequiredPropertyInProtocol {
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForName:@"requiredProperty" 
+        inProtocol:@protocol(ProtocolWithProperties)
+        isRequired:YES
+    ];
+    
+    STAssertEqualObjects(@"requiredProperty", descriptor.name, nil);
+}
+
+- (void)testCreateDescriptorForOptionalPropertyInProtocol {
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForName:@"optionalProperty" 
+        inProtocol:@protocol(ProtocolWithProperties)
+        isRequired:NO
+    ];
+    
+    STAssertEqualObjects(@"optionalProperty", descriptor.name, nil);
+}*/
+
+- (void)testCreateDescriptorForPropertyInProtocolFails {
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForName:@"nonExistentProperty" 
+        inProtocol:@protocol(ProtocolWithProperties)
+    ];
+    
+    STAssertNil(descriptor, nil);
+}
+
+/*- (void)testCreateDescriptorForRequiredPropertyInProtocolFails {
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForName:@"optionalProperty" 
+        inProtocol:@protocol(ProtocolWithProperties)
+        isRequired:YES
+    ];
+    
+    STAssertNil(descriptor, nil);
+}
+
+- (void)testCreateDescriptorForOptionalPropertyInProtocolFails {
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForName:@"requiredProperty" 
+        inProtocol:@protocol(ProtocolWithProperties)
+        isRequired:NO
+    ];
+    
+    STAssertNil(descriptor, nil);
+}*/
+
+- (void)testCreateDescriptorForProperty {
+    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
+        descriptorForName:@"idDynamicReadonly" 
         inClass:[ClassWithProperties class]
     ];
     
     STAssertEqualObjects(@"idDynamicReadonly", descriptor.name, nil);
 }
 
-- (void)testCreateDescriptorForPropertyNameFails {
+- (void)testCreateDescriptorForPropertyFails {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"notExistingProperty" 
+        descriptorForName:@"notExistingProperty" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -28,7 +86,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"structNonatomic" 
+        descriptorForName:@"structNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -47,7 +105,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"structNonatomic" 
+        descriptorForName:@"structNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -65,7 +123,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"idRetainNonatomic" 
+        descriptorForName:@"idRetainNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -80,7 +138,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"idRetainNonatomic" 
+        descriptorForName:@"idRetainNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -93,7 +151,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"intNonatomic" 
+        descriptorForName:@"intNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -110,7 +168,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"intNonatomic" 
+        descriptorForName:@"intNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -124,7 +182,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"intDynamicNonatomic" 
+        descriptorForName:@"intDynamicNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -141,7 +199,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"intDynamicNonatomic" 
+        descriptorForName:@"intDynamicNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -156,7 +214,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"intGetterSetter" 
+        descriptorForName:@"intGetterSetter" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -173,7 +231,7 @@
     ClassWithProperties *instance = [ClassWithProperties new];
     
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"intGetterSetter" 
+        descriptorForName:@"intGetterSetter" 
         inClass:[ClassWithProperties class]
     ];
     int intValue = 555;
@@ -184,7 +242,7 @@
 
 - (void)testRetainNonatomicAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"idRetainNonatomic" 
+        descriptorForName:@"idRetainNonatomic" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -202,7 +260,7 @@
 
 - (void)testReadonlyCopyAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"idDynamicReadonly" 
+        descriptorForName:@"idDynamicReadonly" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -220,7 +278,7 @@
 
 - (void)testGetterSetterAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"intGetterSetter" 
+        descriptorForName:@"intGetterSetter" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -238,7 +296,7 @@
 
 - (void)testCopyAttributesDescription {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"idCopy" 
+        descriptorForName:@"idCopy" 
         inClass:[ClassWithProperties class]
     ];
     
@@ -256,7 +314,7 @@
 
 - (void)testSetReadonlyPropertyFails {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForPropertyName:@"idDynamicReadonly" 
+        descriptorForName:@"idDynamicReadonly" 
         inClass:[ClassWithProperties class]
     ];
     

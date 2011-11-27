@@ -5,7 +5,9 @@
 
 @interface ISPropertyDescriptor : NSObject <ISDescriptor>
 
-+ (ISPropertyDescriptor*) descriptorForPropertyName:(NSString*)name inClass:(Class)aClass;
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass;
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol;
+//+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol isRequired:(BOOL)isRequired;
 + (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)aProperty;
 
 - (id) initWithProperty:(objc_property_t)aProperty;

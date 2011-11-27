@@ -10,10 +10,6 @@
     return @"classMethodWithoutParameters";
 }
 
-+ (NSString*)classProtocolMethod:(NSString *)arg1 {
-    return [@"classProtocolMethod" stringByAppendingString:arg1];
-}
-
 - (void)mehtodWithoutReturnValue {
 }
 
@@ -36,6 +32,16 @@
     return [NSString stringWithFormat:@"%@:%i:%.1f:%i", param1, param2, param3.field1, param3.field2];
 }
 
+// ProtocolWithMethods implementation
+
+/*+ (NSString*)classProtocolMethod:(NSString *)arg1 {
+    return [@"classProtocolMethod" stringByAppendingString:arg1];
+}
+
++ (NSString*) baseClassProtocolMethod:(NSString*)arg1 { return nil; }
+
++ (void) methodWithNonUniqueNameInProtocol {}
+
 - (NSString *)instanceProtocolMethod:(NSString *)arg1 {
     return [@"instanceProtocolMethod" stringByAppendingString:arg1];
 }
@@ -45,5 +51,14 @@
     
     return result;
 }
+
+- (void) methodWithNonUniqueNameInProtocol {}
+
+- (void) requiredProtocolMethod {}
+
+- (NSString*) baseInstanceProtocolMethod:(NSString*)arg1 { return nil;}*/
+
+- (void) instanceProtocolMethod {}
++ (void) classProtocolMethod {}
 
 @end

@@ -13,6 +13,8 @@
 @synthesize intGetterSetter;
 @synthesize intNonatomic;
 @synthesize idCopy;
+@synthesize requiredProperty;
+//@synthesize optionalProperty;
 
 - (id)init {
     self = [super init];

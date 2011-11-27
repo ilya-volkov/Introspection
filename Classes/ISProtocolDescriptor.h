@@ -7,6 +7,7 @@
 
 // 1. TODO: add find method and property in protocol to corresponding descriptors 
 //          ??? if not needed remove commented code and update test classes
+// 2. TODO: Test protocol_getMethodDescription, create descriptro for method ???
 
 @interface ISProtocolDescriptor : NSObject <ISDescriptor>
 

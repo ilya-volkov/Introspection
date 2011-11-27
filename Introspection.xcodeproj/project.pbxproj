@@ -134,6 +134,7 @@
 		7A1D85591454749200A2079D /* ISInvalidStateException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISInvalidStateException.m; sourceTree = "<group>"; };
 		7A1D856214547F7000A2079D /* MethodDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodDescriptorTests.h; sourceTree = "<group>"; };
 		7A1D856314547F7000A2079D /* MethodDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodDescriptorTests.m; sourceTree = "<group>"; };
+		7A4DEB601480F0260021AC2E /* ProtocolWithProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolWithProperties.h; sourceTree = "<group>"; };
 		7A5FE889145B2DB400916D9D /* TestStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStruct.h; sourceTree = "<group>"; };
 		7A69F408147CDBDC0006D495 /* ProtocolDescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolDescriptorTests.h; sourceTree = "<group>"; };
 		7A69F409147CDBDC0006D495 /* ProtocolDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolDescriptorTests.m; sourceTree = "<group>"; };
@@ -428,6 +429,7 @@
 				7A5FE889145B2DB400916D9D /* TestStruct.h */,
 				7A69F4131480172E0006D495 /* ProtocolWithMethods.h */,
 				7A69F414148029CC0006D495 /* BaseProtocolWithMethods.h */,
+				7A4DEB601480F0260021AC2E /* ProtocolWithProperties.h */,
 			);
 			name = TestClasses;
 			sourceTree = "<group>";
