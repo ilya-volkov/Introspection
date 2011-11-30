@@ -6,20 +6,10 @@
 
 @implementation PropertyDescriptorTests
 
-- (void)testCreateDescriptorForPropertyInProtocol {
+- (void)testCreateDescriptorForRequiredPropertyInProtocol {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForName:@"requiredProperty" 
         inProtocol:@protocol(ProtocolWithProperties)
-    ];
-    
-    STAssertEqualObjects(@"requiredProperty", descriptor.name, nil);
-}
-
-/*- (void)testCreateDescriptorForRequiredPropertyInProtocol {
-    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForName:@"requiredProperty" 
-        inProtocol:@protocol(ProtocolWithProperties)
-        isRequired:YES
     ];
     
     STAssertEqualObjects(@"requiredProperty", descriptor.name, nil);
@@ -29,11 +19,10 @@
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
         descriptorForName:@"optionalProperty" 
         inProtocol:@protocol(ProtocolWithProperties)
-        isRequired:NO
     ];
     
     STAssertEqualObjects(@"optionalProperty", descriptor.name, nil);
-}*/
+}
 
 - (void)testCreateDescriptorForPropertyInProtocolFails {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
@@ -43,26 +32,6 @@
     
     STAssertNil(descriptor, nil);
 }
-
-/*- (void)testCreateDescriptorForRequiredPropertyInProtocolFails {
-    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForName:@"optionalProperty" 
-        inProtocol:@protocol(ProtocolWithProperties)
-        isRequired:YES
-    ];
-    
-    STAssertNil(descriptor, nil);
-}
-
-- (void)testCreateDescriptorForOptionalPropertyInProtocolFails {
-    ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 
-        descriptorForName:@"requiredProperty" 
-        inProtocol:@protocol(ProtocolWithProperties)
-        isRequired:NO
-    ];
-    
-    STAssertNil(descriptor, nil);
-}*/
 
 - (void)testCreateDescriptorForProperty {
     ISPropertyDescriptor *descriptor = [ISPropertyDescriptor 

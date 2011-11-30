@@ -12,6 +12,6 @@
 - (void) setValue:(NSValue*)value inObject:(id)anObject;
 - (NSValue*) getValueFromObject:(id)anObject;
 
-@property (nonatomic, readonly, strong) NSString* typeEncoding;
+@property (readonly, copy) NSString* typeEncoding;
 
 @end

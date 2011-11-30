@@ -15,16 +15,16 @@
 - (void) setValue:(NSValue*)value inObject:(id)anObject;
 - (NSValue*) getValueFromObject:(id)anObject;
 
-@property (readonly, nonatomic, strong) NSString* backingVariable;
-@property (readonly, nonatomic) SEL getter;
-@property (readonly, nonatomic) SEL setter;
-@property (readonly, nonatomic, strong) NSString* typeEncoding;
-@property (readonly, nonatomic) ISSetterSemanticsType setterSemanticsType;
-@property (readonly, nonatomic) BOOL isReadOnly;
-@property (readonly, nonatomic) BOOL isNonAtomic;
-@property (readonly, nonatomic) BOOL isDynamic;
-@property (readonly, nonatomic) BOOL isWeakReference;
-@property (readonly, nonatomic) BOOL isEligibleForGarbageCollection;
+@property (readonly, copy) NSString* backingVariable;
+@property (readonly) SEL getter;
+@property (readonly) SEL setter;
+@property (readonly, copy) NSString* typeEncoding;
+@property (readonly) ISSetterSemanticsType setterSemanticsType;
+@property (readonly) BOOL isReadOnly;
+@property (readonly) BOOL isNonAtomic;
+@property (readonly) BOOL isDynamic;
+@property (readonly) BOOL isWeakReference;
+@property (readonly) BOOL isEligibleForGarbageCollection;
 
 @end
 

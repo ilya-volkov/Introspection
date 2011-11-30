@@ -58,7 +58,7 @@
 
 - (NSString*) baseInstanceProtocolMethod:(NSString*)arg1 { return nil;}*/
 
-- (void) instanceProtocolMethod {}
-+ (void) classProtocolMethod {}
+- (NSString*) instanceProtocolMethod:(NSString*)arg1 { return nil; }
++ (NSString*) classProtocolMethod:(NSString*)arg1 { return nil; }
 
 @end

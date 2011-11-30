@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
 #import "BaseProtocolWithMethods.h"
+#import "TestStruct.h"
 
 @protocol ProtocolWithMethods // <BaseProtocolWithMethods>
 /*@required
@@ -16,7 +17,7 @@
 - (void) optionalProtocolMethod;
 */
 
-- (void) instanceProtocolMethod;
-+ (void) classProtocolMethod;
+- (NSString*)instanceProtocolMethodWithParametersFirst:(NSString*)param1 second:(int)param2 third:(TestStruct)param3;
+
 
 @end

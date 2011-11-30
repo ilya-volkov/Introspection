@@ -4,19 +4,20 @@
 #import "NSValue+Extensions.h"
 #import "NSInvocation+Extensions.h"
 
+// TODO: refactor get/set implementation
+
 @implementation ISMethodDescriptor {
 @private
     Method method;
-    NSString *typeEncoding;
+    struct objc_method_description methodDescription;
 }
 
 @synthesize isInstanceMethod;
 @synthesize returnTypeEncoding;
 @synthesize argumentTypeEncodings;
+@synthesize typeEncoding;
 @synthesize selector;
 @synthesize name;
-
-// TODO: Protocol support (refactor implementation)
 
 + (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)aClass {
     Method instanceMethod = class_getInstanceMethod(aClass, selector);
@@ -37,11 +38,19 @@
     return [ISMethodDescriptor descriptorForInstanceMethod:instanceMethod classMethod:classMethod];
 }
 
-/*+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)aProtocol {
-    Method instanceMethod =  class_getInstanceMethod(aClass, selector);
-    Method classMethod = class_getClassMethod(aClass, selector);
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)aProtocol {
+    struct objc_method_description description = protocol_getMethodDescription(aProtocol, selector, YES, YES);
+    if (description.name == NULL && description.types == NULL)
+        return nil;
     
-    return [ISMethodDescriptor descriptorForInstanceMethod:instanceMethod classMethod:classMethod];
+    
+    // TODO: instance or static
+    return [[ISMethodDescriptor alloc] initWithMethodDescription:description];
+    
+    /*if (isInstance)
+        return [ISMethodDescriptor descriptorForInstanceMethod:method];
+    else
+        return [ISMethodDescriptor descriptorForClassMethod:method];*/
 }
 
 + (ISMethodDescriptor*) descriptorForSelector: (SEL)selector 
@@ -49,15 +58,15 @@
                                    isInstance: (BOOL)isInstance 
                                    isRequired: (BOOL)isRequired 
 {
-    Method methodDescription = protocol_getMethodDescription(aProtocol, selector, isRequired, isInstance);
+    /*Method methodDescription = protocol_getMethodDescription(aProtocol, selector, isRequired, isInstance);
     if (method == nil)
         return nil;
     
     if (isInstance)
         return [ISMethodDescriptor descriptorForInstanceMethod:method];
     else
-        return [ISMethodDescriptor descriptorForClassMethod:method];
-}*/
+        return [ISMethodDescriptor descriptorForClassMethod:method];*/
+}
 
 + (ISMethodDescriptor*) descriptorForInstanceMethod:(Method)aMethod {
     return [[ISMethodDescriptor alloc] initWithInstanceMethod:aMethod];
@@ -150,6 +159,19 @@
     self = [super init];
     if (self != nil) {
         method = aMethod;
+        
+        [self initProperties];
+    }
+    
+    return self;
+}
+
+// TODO: refactor
+- (id) initWithMethodDescription:(struct objc_method_description)description {
+    self = [super init];
+    if (self != nil) {
+        methodDescription = description;
+        method = (Method)&description;
         
         [self initProperties];
     }

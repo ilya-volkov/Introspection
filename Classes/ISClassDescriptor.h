@@ -7,6 +7,9 @@
 @class ISPropertyDescriptor;
 @class ISInstanceVariableDescriptor;
 
+// TODO: research property modifiers: strong, weak (NSNumber), when use copy (NSString???)
+// use string and copy, default: string vs. weak
+
 @interface ISClassDescriptor : NSObject <ISDescriptor>
 
 + (NSArray*) allClasses;
@@ -30,13 +33,13 @@
 @property (readonly) ISClassDescriptor* classSuperclass;
 
 // TODO: weak or strong by default ??? assign for NSNumber etc???
-@property (weak) NSNumber* classVersion;
+@property (copy) NSNumber* classVersion;
 @property (readonly) NSArray* protocols;
 @property (readonly) NSArray* methods;
 @property (readonly) NSArray* properties;
 @property (readonly) NSArray* instanceVariables;
 // TODO: Test ivar layout + weak layouts
-@property (readonly) NSString* instanceVariablesLayout;
-@property (readonly) NSBundle* bundle;
+@property (readonly, copy) NSString* instanceVariablesLayout;
+@property (readonly, strong) NSBundle* bundle;
 
 @end

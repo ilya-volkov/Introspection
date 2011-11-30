@@ -14,7 +14,7 @@
 @synthesize intNonatomic;
 @synthesize idCopy;
 @synthesize requiredProperty;
-//@synthesize optionalProperty;
+@synthesize optionalProperty;
 
 - (id)init {
     self = [super init];

@@ -25,7 +25,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
     ];
 }
 
-/*- (ISMethodDescriptor*) descriptorInProtocolForSelector:(SEL)selector {
+- (ISMethodDescriptor*) descriptorInProtocolForSelector:(SEL)selector {
     return [ISMethodDescriptor descriptorForSelector:selector inProtocol:@protocol(ProtocolWithMethods)];
 }
 
@@ -36,7 +36,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
         isInstance:isInstance
         isRequired:isRequired
     ];
-}*/
+}
 
 - (void) testCreateDescriptorForInstanceMethod {
     ISMethodDescriptor *descriptor = [self descriptorForSelector:@selector(instanceMethodWithoutParametersReturnsString)];
@@ -194,6 +194,36 @@ NSString* newMethodImp(id self, SEL _cmd) {
 
 }*/
 
+- (void) testGetSelectorInProtocol {
+    ISMethodDescriptor *descriptor = [self 
+        descriptorInProtocolForSelector:@selector(instanceProtocolMethodWithParametersFirst:second:third:)
+    ];
+    
+    STAssertEquals(@selector(instanceProtocolMethodWithParametersFirst:second:third:), descriptor.selector, nil);
+}
+
+- (void) testGetReturnTypeEncodingInProtocol {
+    ISMethodDescriptor *descriptor = [self 
+        descriptorInProtocolForSelector:@selector(instanceProtocolMethodWithParametersFirst:second:third:)
+    ];
+    
+    STAssertEqualObjects([NSString stringWithCString:@encode(id)], descriptor.returnTypeEncoding, nil);
+}
+
+- (void) testGetArgumentTypeEncodingsInProtocol {
+    ISMethodDescriptor *descriptor = [self 
+        descriptorInProtocolForSelector:@selector(instanceProtocolMethodWithParametersFirst:second:third:)
+    ];
+    
+    [self 
+        assertCollection:[NSArray arrayWithObjects:
+            @"@", @":", @"@", @"i", 
+            [NSString stringWithCString:@encode(TestStruct)], 
+            nil
+        ] 
+        isEqualToCollection:descriptor.argumentTypeEncodings
+     ];
+}
 
 - (void) testGetSelector {
     ISMethodDescriptor *descriptor = [self descriptorForSelector:@selector(instanceMethodWithParametersFirst:second:third:)];
