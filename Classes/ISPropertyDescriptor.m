@@ -25,17 +25,17 @@
 @synthesize isWeakReference;
 @synthesize isEligibleForGarbageCollection;
 
-+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass {
-    objc_property_t property = class_getProperty(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inClass:(Class)class {
+    objc_property_t property = class_getProperty(class, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (property == nil)
         return nil;
     
     return [ISPropertyDescriptor descriptorForProperty:property];
 }
 
-+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol {
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)protocol {
     objc_property_t property = protocol_getProperty(
-        aProtocol, [name cStringUsingEncoding:NSASCIIStringEncoding], YES, YES
+        protocol, [name cStringUsingEncoding:NSASCIIStringEncoding], YES, YES
     );
     
     if (property == nil)
@@ -44,23 +44,52 @@
     return [ISPropertyDescriptor descriptorForProperty:property];
 }
 
-/*+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol {
-    return [ISPropertyDescriptor descriptorForName:name inProtocol:aProtocol isRequired:YES];
-}*/
++ (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)property {
+    return [[ISPropertyDescriptor alloc] initWithProperty:property];
+}
 
-/*+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol isRequired:(BOOL)isRequired {
-    objc_property_t property = protocol_getProperty(
-        aProtocol, [name cStringUsingEncoding:NSASCIIStringEncoding], isRequired, YES
-    );
+- (id) initWithProperty:(objc_property_t)property {
+    self = [super init];
+    if (self) {
+        self->property = property;
+        name = [NSString stringWithCString:property_getName(property) encoding:NSASCIIStringEncoding];
+        
+        [self parsePropertyAttributeDescription:
+            [NSString stringWithCString:property_getAttributes(property) encoding:NSASCIIStringEncoding]
+        ];
+    }
     
-    if (property == nil)
-        return nil;
-    
-    return [ISPropertyDescriptor descriptorForProperty:property];
-}*/
+    return self;
+}
 
-+ (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)aProperty {
-    return [[ISPropertyDescriptor alloc] initWithProperty:aProperty];
+- (void) setValue:(NSValue*)value inObject:(id)object {
+    if (isReadOnly)
+        @throw [ISInvalidStateException exceptionWithReason:@"Can't set readonly property"];
+    
+    if (isObjectType) {
+        [object performSelector:setter withObject:[value nonretainedObjectValue]];
+        return;
+    }
+    
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:setter]];
+    [invocation setSelector:setter];
+    NSMutableData* dataValue = [[value dataValue] mutableCopy];
+    [invocation setArgument:[dataValue mutableBytes] atIndex:2];
+    
+    [invocation invokeWithTarget:object];
+}
+
+- (NSValue*) getValueFromObject:(id)object {
+    if (isObjectType)
+        return [NSValue valueWithNonretainedObject:[object performSelector:getter]];
+    
+    NSInvocation* invocation = [NSInvocation 
+        invocationWithMethodSignature:[object methodSignatureForSelector:getter]
+    ];
+    [invocation setSelector:getter];
+    [invocation invokeWithTarget:object];
+    
+    return [invocation getReturnValue];
 }
 
 - (void) setDefaultAttributeValues {
@@ -74,7 +103,7 @@
     
     attributesDescription = description;
     NSArray* attributes = [description componentsSeparatedByString:@","];
-        
+    
     for (NSString *attribute in attributes) {
         if ([attribute hasPrefix:@"T"])
             typeEncoding = [attribute substringFromIndex:1];
@@ -106,49 +135,6 @@
     isObjectType = [typeEncoding 
         hasPrefix:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]
     ];
-}
-
-- (id) initWithProperty:(objc_property_t)aProperty {
-    self = [super init];
-    if (self) {
-        property = aProperty;
-        name = [NSString stringWithCString:property_getName(aProperty) encoding:NSASCIIStringEncoding];
-        
-        [self parsePropertyAttributeDescription:
-            [NSString stringWithCString:property_getAttributes(property) encoding:NSASCIIStringEncoding]
-        ];
-    }
-    
-    return self;
-}
-
-- (void) setValue:(NSValue*)value inObject:(id)anObject {
-    if (isReadOnly)
-        @throw [ISInvalidStateException exceptionWithReason:@"Can't set readonly property"];
-    
-    if (isObjectType) {
-        [anObject performSelector:setter withObject:[value nonretainedObjectValue]];
-        return;
-    }
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[anObject methodSignatureForSelector:setter]];
-    [invocation setSelector:setter];
-    NSMutableData* dataValue = [[value dataValue] mutableCopy];
-    [invocation setArgument:[dataValue mutableBytes] atIndex:2];
-    
-    [invocation invokeWithTarget:anObject];
-}
-
-- (NSValue*) getValueFromObject:(id)anObject {
-    if (isObjectType)
-        return [NSValue valueWithNonretainedObject:[anObject performSelector:getter]];
-    
-    NSInvocation* invocation = [NSInvocation 
-        invocationWithMethodSignature:[anObject methodSignatureForSelector:getter]
-    ];
-    [invocation setSelector:getter];
-    [invocation invokeWithTarget:anObject];
-    
-    return [invocation getReturnValue];
 }
 
 @end

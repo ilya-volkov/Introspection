@@ -17,11 +17,11 @@ NSString* newMethodImp(id self, SEL _cmd) {
     return [ISMethodDescriptor descriptorForSelector:selector inClass:[DerivedClassWithMethods class]];
 }
 
-- (ISMethodDescriptor*) descriptorForSelector:(SEL)selector isInstance:(BOOL)isInstance {
+- (ISMethodDescriptor*) descriptorForSelector:(SEL)selector instance:(BOOL)isInstance {
     return [ISMethodDescriptor 
         descriptorForSelector:selector
         inClass:[DerivedClassWithMethods class]
-        isInstance:isInstance
+        instance:isInstance
     ];
 }
 
@@ -29,12 +29,12 @@ NSString* newMethodImp(id self, SEL _cmd) {
     return [ISMethodDescriptor descriptorForSelector:selector inProtocol:@protocol(ProtocolWithMethods)];
 }
 
-- (ISMethodDescriptor*) descriptorInProtocolForSelector:(SEL)selector isInstance:(BOOL)isInstance isRequired:(BOOL)isRequired {
+- (ISMethodDescriptor*) descriptorInProtocolForSelector:(SEL)selector instance:(BOOL)isInstance required:(BOOL)isRequired {
     return [ISMethodDescriptor 
         descriptorForSelector:selector
         inProtocol:@protocol(ProtocolWithMethods) 
-        isInstance:isInstance
-        isRequired:isRequired
+        instance:isInstance
+        required:isRequired
     ];
 }
 
@@ -71,7 +71,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
 - (void) testCreateDescriptorForNotDeclaredInstanceMethodFails {
     ISMethodDescriptor *descriptor = [self 
         descriptorForSelector:@selector(classMethodWithoutParameters)
-        isInstance:YES
+        instance:YES
     ];
     
     STAssertNil(descriptor, nil);
@@ -80,7 +80,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
 - (void) testCreateDescriptorForNotDeclaredClassMethodFails {
     ISMethodDescriptor *descriptor = [self 
         descriptorForSelector:@selector(instanceMethodWithoutParametersReturnsString)
-        isInstance:NO
+        instance:NO
     ];
     
     STAssertNil(descriptor, nil);
@@ -94,7 +94,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
     );
 }
 
-/*- (void) testCreateDescriptorForInstanceMethodInProtocol {
+- (void) testCreateDescriptorForInstanceMethodInProtocol {
     ISMethodDescriptor *descriptor = [self descriptorInProtocolForSelector:@selector(instanceProtocolMethod:)];
     
     STAssertEqualObjects(@"instanceProtocolMethod:", descriptor.name, nil);
@@ -127,8 +127,8 @@ NSString* newMethodImp(id self, SEL _cmd) {
 - (void) testCreateDescriptorForNotDeclaredInstanceMethodInProtocolFails {
     ISMethodDescriptor *descriptor = [self 
         descriptorInProtocolForSelector:@selector(classProtocolMethod:)
-        isInstance:YES
-        isRequired:YES
+        instance:YES
+        required:YES
     ];
     
     STAssertNil(descriptor, nil);
@@ -137,8 +137,8 @@ NSString* newMethodImp(id self, SEL _cmd) {
 - (void) testCreateDescriptorForNotDeclaredClassMethodInProtocolFails {
     ISMethodDescriptor *descriptor = [self 
         descriptorInProtocolForSelector:@selector(instanceProtocolMethod:)
-        isInstance:NO
-        isRequired:YES
+        instance:NO
+        required:YES
     ];
     
     STAssertNil(descriptor, nil);
@@ -155,8 +155,8 @@ NSString* newMethodImp(id self, SEL _cmd) {
 - (void) testCreateDescriptorForOptionalMethod {
     ISMethodDescriptor *descriptor = [self 
         descriptorInProtocolForSelector:@selector(optionalProtocolMethod)
-        isInstance:YES
-        isRequired:NO
+        instance:YES
+        required:NO
     ];
     
     STAssertEqualObjects(@"optionalProtocolMethod", descriptor.name, nil);
@@ -165,8 +165,8 @@ NSString* newMethodImp(id self, SEL _cmd) {
 - (void) testCreateDescriptorForRequiredMethod {
     ISMethodDescriptor *descriptor = [self 
         descriptorInProtocolForSelector:@selector(requiredProtocolMethod)
-        isInstance:YES
-        isRequired:YES
+        instance:YES
+        required:YES
     ];
     
     STAssertEqualObjects(@"requiredProtocolMethod", descriptor.name, nil);
@@ -175,9 +175,9 @@ NSString* newMethodImp(id self, SEL _cmd) {
 
 - (void) testCreateDescriptorForOptionalMethodFails {
     ISMethodDescriptor *descriptor = [self 
-        descriptorInProtocolForSelector:@selector(optionalProtocolMethod)
-        isInstance:YES
-        isRequired:NO
+        descriptorInProtocolForSelector:@selector(requiredProtocolMethod)
+        instance:YES
+        required:NO
     ];
     
     STAssertNil(descriptor, nil);
@@ -185,14 +185,13 @@ NSString* newMethodImp(id self, SEL _cmd) {
 
 - (void) testCreateDescriptorForRequiredMethodFails {
     ISMethodDescriptor *descriptor = [self 
-        descriptorInProtocolForSelector:@selector(requiredProtocolMethod)
-        isInstance:YES
-        isRequired:NO
+        descriptorInProtocolForSelector:@selector(optionalProtocolMethod)
+        instance:YES
+        required:YES
     ];
     
     STAssertNil(descriptor, nil);
-
-}*/
+}
 
 - (void) testGetSelectorInProtocol {
     ISMethodDescriptor *descriptor = [self 
@@ -252,7 +251,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
 
 - (void) testGetImplementation {
     ISMethodDescriptor *descriptor = [self descriptorForSelector:@selector(methodForChangingImplementation)];
-    IMP implementation = descriptor.implementation;
+    IMP implementation = [descriptor implementationForClass:[DerivedClassWithMethods class]];
     
     DerivedClassWithMethods *instance = [DerivedClassWithMethods new];
     
@@ -265,7 +264,7 @@ NSString* newMethodImp(id self, SEL _cmd) {
 
 - (void) testSetImplementation {
     ISMethodDescriptor *descriptor = [self descriptorForSelector:@selector(methodForChangingImplementation)];
-    descriptor.implementation = (IMP)newMethodImp;
+    [descriptor setImplementationForClass:[DerivedClassWithMethods class] value:(IMP)newMethodImp];
     
     DerivedClassWithMethods* instance = [DerivedClassWithMethods new];
     
@@ -286,13 +285,13 @@ NSString* newMethodImp(id self, SEL _cmd) {
     STAssertTrue(instanceMethodDescriptor.isInstanceMethod, nil);
 }
 
-/*- (void) testIsInstanceMethodInProtocol {
-    ISMethodDescriptor *classMethodDescriptor = [self descriptorInProtocolForSelector:@selector(classProtocolMethod)];
-    ISMethodDescriptor *instanceMethodDescriptor = [self descriptorInProtocolForSelector:@selector(instanceProtocolMethod)];
+- (void) testIsInstanceMethodInProtocol {
+    ISMethodDescriptor *classMethodDescriptor = [self descriptorInProtocolForSelector:@selector(classProtocolMethod:)];
+    ISMethodDescriptor *instanceMethodDescriptor = [self descriptorInProtocolForSelector:@selector(instanceProtocolMethod:)];
     
     STAssertFalse(classMethodDescriptor.isInstanceMethod, nil);
     STAssertTrue(instanceMethodDescriptor.isInstanceMethod, nil);
-}*/
+}
 
 - (void) testInvokeInstanceMethodWithArguments {
     ISMethodDescriptor *descriptor = [self descriptorForSelector:@selector(instanceMethodWithParametersFirst:second:third:)];
@@ -354,14 +353,14 @@ NSString* newMethodImp(id self, SEL _cmd) {
     STAssertNoThrow([descriptor invokeOnObject:instance withArguments:nil], nil);
 }
 
-/*- (void) testInvokeProtocolInstanceMethod {
+- (void) testInvokeProtocolInstanceMethod {
     ISMethodDescriptor *descriptor = [self descriptorInProtocolForSelector:@selector(instanceProtocolMethod:)];
     
-    NSArray *args = [NSArray arrayWithObject:@"aaa"];
+    NSArray *args = [NSArray arrayWithObject:[NSValue valueWithNonretainedObject:@"aaa"]];
     
     STAssertEqualObjects(
-        @"instanceProtocolMethod aaa", 
-        [descriptor invokeOnObject:[DerivedClassWithMethods new] withArguments:args], 
+        @"instanceProtocolMethodaaa", 
+        [[descriptor invokeOnObject:[DerivedClassWithMethods new] withArguments:args] nonretainedObjectValue], 
         nil
     );
 }
@@ -369,13 +368,13 @@ NSString* newMethodImp(id self, SEL _cmd) {
 - (void) testInvokeProtocolClassMethod {
     ISMethodDescriptor *descriptor = [self descriptorInProtocolForSelector:@selector(classProtocolMethod:)];
     
-    NSArray *args = [NSArray arrayWithObject:@"bbb"];
+    NSArray *args = [NSArray arrayWithObject:[NSValue valueWithNonretainedObject:@"bbb"]];
     
     STAssertEqualObjects(
-        @"instanceProtocolMethod bbb", 
-        [descriptor invokeOnObject:[DerivedClassWithMethods new] withArguments:args], 
+        @"classProtocolMethodbbb", 
+        [[descriptor invokeOnObject:[DerivedClassWithMethods class] withArguments:args] nonretainedObjectValue], 
         nil
     );
-}*/
+}
 
 @end

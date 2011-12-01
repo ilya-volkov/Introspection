@@ -9,22 +9,22 @@
 @synthesize name;
 @synthesize typeEncoding;
 
-+ (ISInstanceVariableDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass {
-    Ivar ivar = class_getInstanceVariable(aClass, [name cStringUsingEncoding:NSASCIIStringEncoding]);
++ (ISInstanceVariableDescriptor*) descriptorForName:(NSString*)name inClass:(Class)class {
+    Ivar ivar = class_getInstanceVariable(class, [name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (ivar == nil)
         return nil;
     
     return [ISInstanceVariableDescriptor descriptorForInstanceVariable:ivar];
 }
 
-+ (ISInstanceVariableDescriptor*) descriptorForInstanceVariable:(Ivar)anInstanceVariable {
-    return [[ISInstanceVariableDescriptor alloc] initWithInstanceVariable:anInstanceVariable];
++ (ISInstanceVariableDescriptor*) descriptorForInstanceVariable:(Ivar)instanceVariable {
+    return [[ISInstanceVariableDescriptor alloc] initWithInstanceVariable:instanceVariable];
 }
 
-- (id) initWithInstanceVariable:(Ivar)anInstanceVariable {
+- (id) initWithInstanceVariable:(Ivar)instanceVariable {
     self = [super init];
     if (self) {
-        ivar = anInstanceVariable;
+        ivar = instanceVariable;
         name = [NSString stringWithCString:ivar_getName(ivar) encoding:NSASCIIStringEncoding];
         typeEncoding = [NSString stringWithCString:ivar_getTypeEncoding(ivar) encoding:NSASCIIStringEncoding];
         isObjectType = [typeEncoding 
@@ -35,21 +35,21 @@
     return self;
 }
 
-- (void) setValue:(NSValue*)value inObject:(id)anObject {
+- (void) setValue:(NSValue*)value inObject:(id)object {
     if (isObjectType) {
-        object_setIvar(anObject, ivar, [value nonretainedObjectValue]);
+        object_setIvar(object, ivar, [value nonretainedObjectValue]);
         return;
     }
     
-    void *valuePointer = (__bridge void *)anObject + ivar_getOffset(ivar);
+    void *valuePointer = (__bridge void *)object + ivar_getOffset(ivar);
     [value getValue:valuePointer];
 }
 
-- (NSValue*) getValueFromObject:(id)anObject {
+- (NSValue*) getValueFromObject:(id)object {
     if (isObjectType)
-        return [NSValue valueWithNonretainedObject:object_getIvar(anObject, ivar)];
+        return [NSValue valueWithNonretainedObject:object_getIvar(object, ivar)];
     
-    void *valuePointer = (__bridge void *)anObject + ivar_getOffset(ivar);
+    void *valuePointer = (__bridge void *)object + ivar_getOffset(ivar);
     return [NSValue 
         valueWithBytes:valuePointer
         objCType:[typeEncoding cStringUsingEncoding:NSASCIIStringEncoding]

@@ -1,5 +1,4 @@
 #import "DerivedClassWithMethods.h"
-#import "TestStruct.h"
 
 @implementation DerivedClassWithMethods
 
@@ -9,6 +8,14 @@
 + (NSString*)classMethodWithoutParameters {
     return @"classMethodWithoutParameters";
 }
+
++ (NSString*)classProtocolMethod:(NSString *)arg1 {
+    return [@"classProtocolMethod" stringByAppendingString:arg1];
+}
+
++ (NSString*) baseClassProtocolMethod:(NSString*)arg1 { return nil; }
+
++ (void) methodWithNonUniqueNameInProtocol {}
 
 - (void)mehtodWithoutReturnValue {
 }
@@ -32,33 +39,18 @@
     return [NSString stringWithFormat:@"%@:%i:%.1f:%i", param1, param2, param3.field1, param3.field2];
 }
 
-// ProtocolWithMethods implementation
-
-/*+ (NSString*)classProtocolMethod:(NSString *)arg1 {
-    return [@"classProtocolMethod" stringByAppendingString:arg1];
-}
-
-+ (NSString*) baseClassProtocolMethod:(NSString*)arg1 { return nil; }
-
-+ (void) methodWithNonUniqueNameInProtocol {}
-
 - (NSString *)instanceProtocolMethod:(NSString *)arg1 {
     return [@"instanceProtocolMethod" stringByAppendingString:arg1];
 }
 
-- (TestStruct)instanceMethodReturnsStruct {
-    TestStruct result = { .field1 = 44.4, .field2 = 555 };
-    
-    return result;
+- (NSString*)instanceProtocolMethodWithParametersFirst:(NSString*)param1 second:(int)param2 third:(TestStruct)param3 {
+    return [NSString stringWithFormat:@"%@:%i:%.1f:%i", param1, param2, param3.field1, param3.field2];
 }
 
 - (void) methodWithNonUniqueNameInProtocol {}
 
 - (void) requiredProtocolMethod {}
 
-- (NSString*) baseInstanceProtocolMethod:(NSString*)arg1 { return nil;}*/
-
-- (NSString*) instanceProtocolMethod:(NSString*)arg1 { return nil; }
-+ (NSString*) classProtocolMethod:(NSString*)arg1 { return nil; }
+- (NSString*) baseInstanceProtocolMethod:(NSString*)arg1 { return nil; }
 
 @end

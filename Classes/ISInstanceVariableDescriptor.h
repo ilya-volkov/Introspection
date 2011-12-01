@@ -5,12 +5,12 @@
 @interface ISInstanceVariableDescriptor : NSObject <ISDescriptor>
 
 + (ISInstanceVariableDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass;
-+ (ISInstanceVariableDescriptor*) descriptorForInstanceVariable:(Ivar)anInstanceVariable;
++ (ISInstanceVariableDescriptor*) descriptorForInstanceVariable:(Ivar)instanceVariable;
 
-- (id) initWithInstanceVariable:(Ivar)anInstanceVariable;
+- (id) initWithInstanceVariable:(Ivar)instanceVariable;
 
-- (void) setValue:(NSValue*)value inObject:(id)anObject;
-- (NSValue*) getValueFromObject:(id)anObject;
+- (void) setValue:(NSValue*)value inObject:(id)object;
+- (NSValue*) getValueFromObject:(id)object;
 
 @property (readonly, copy) NSString* typeEncoding;
 

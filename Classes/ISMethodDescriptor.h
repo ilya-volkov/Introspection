@@ -2,37 +2,36 @@
 
 #import "ISDescriptor.h"
 
-// TODO: remove articles in arg names
+typedef struct objc_method_description MethodDescription;
+
+BOOL isMethodDescriptionEmpty(MethodDescription description);
 
 @interface ISMethodDescriptor : NSObject <ISDescriptor>
 
-+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)aClass;
-+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)aClass isInstance:(BOOL)isInstance;
-+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)aProtocol;
-+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)aProtocol isInstance:(BOOL)isInstance isRequired:(BOOL)isRequired;
-+ (ISMethodDescriptor*) descriptorForInstanceMethod:(Method)aMethod;
-+ (ISMethodDescriptor*) descriptorForClassMethod:(Method)aMethod;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)class;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)class instance:(BOOL)isInstance;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)protocol;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)protocol instance:(BOOL)isInstance required:(BOOL)isRequired;
++ (ISMethodDescriptor*) descriptorForMethod:(Method)method instance:(BOOL)isInstance;
++ (ISMethodDescriptor*) descriptorForMethodDescription:(MethodDescription)methodDescription instance:(BOOL)isInstance;
 
-- (id) initWithClassMethod:(Method)aMethod;
-- (id) initWithInstanceMethod:(Method)aMethod;
+- (id) initWithMethod:(Method)method instance:(BOOL)isInstance;
+- (id) initWithMethodDescription:(MethodDescription)methodDescription instance:(BOOL)isInstance;
 
-- (NSValue*) invokeOnObject:(id)anObject withArguments:(NSArray*)args;
+- (NSValue*) invokeOnObject:(id)object withArguments:(NSArray*)args;
+- (IMP) implementationForClass:(Class)class;
+- (IMP) setImplementationForClass:(Class)class value:(IMP)value;
 
 @property (readonly) BOOL isInstanceMethod;
 @property (readonly, copy) NSString* returnTypeEncoding;
 @property (readonly, strong) NSArray* argumentTypeEncodings;
 @property (readonly) SEL selector;
 @property (readonly, copy) NSString* typeEncoding;
-@property IMP implementation;
 
 @end
 
 @interface ISMethodDescriptor ()
 
-+ (ISMethodDescriptor*) descriptorForInstanceMethod:(Method)instanceMethod classMethod:(Method)classMethod;
-
-- (id) initWithMethod:(Method)aMethod;
-- (id) initWithMethodDescription:(struct objc_method_description)description;
 - (void) initProperties;
 - (void) initArgumentTypeEncodings;
 

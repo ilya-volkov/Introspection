@@ -4,12 +4,14 @@
 #import "NSValue+Extensions.h"
 #import "NSInvocation+Extensions.h"
 
-// TODO: refactor get/set implementation
+BOOL isMethodDescriptionEmpty(MethodDescription description) {
+    return description.name == NULL && description.types == NULL;
+}
 
 @implementation ISMethodDescriptor {
 @private
     Method method;
-    struct objc_method_description methodDescription;
+    MethodDescription methodDescription;
 }
 
 @synthesize isInstanceMethod;
@@ -23,99 +25,99 @@
     Method instanceMethod = class_getInstanceMethod(aClass, selector);
     Method classMethod = class_getClassMethod(aClass, selector);
     
-    return [ISMethodDescriptor descriptorForInstanceMethod:instanceMethod classMethod:classMethod];
-}
-
-+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)aClass isInstance:(BOOL)isInstance {
-    Method instanceMethod = nil;
-    Method classMethod = nil;
-    
-    if (isInstance)
-        instanceMethod = class_getInstanceMethod(aClass, selector);
-    else
-        classMethod = class_getClassMethod(aClass, selector);
-    
-    return [ISMethodDescriptor descriptorForInstanceMethod:instanceMethod classMethod:classMethod];
-}
-
-+ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)aProtocol {
-    struct objc_method_description description = protocol_getMethodDescription(aProtocol, selector, YES, YES);
-    if (description.name == NULL && description.types == NULL)
-        return nil;
-    
-    
-    // TODO: instance or static
-    return [[ISMethodDescriptor alloc] initWithMethodDescription:description];
-    
-    /*if (isInstance)
-        return [ISMethodDescriptor descriptorForInstanceMethod:method];
-    else
-        return [ISMethodDescriptor descriptorForClassMethod:method];*/
-}
-
-+ (ISMethodDescriptor*) descriptorForSelector: (SEL)selector 
-                                   inProtocol: (Protocol*)aProtocol 
-                                   isInstance: (BOOL)isInstance 
-                                   isRequired: (BOOL)isRequired 
-{
-    /*Method methodDescription = protocol_getMethodDescription(aProtocol, selector, isRequired, isInstance);
-    if (method == nil)
-        return nil;
-    
-    if (isInstance)
-        return [ISMethodDescriptor descriptorForInstanceMethod:method];
-    else
-        return [ISMethodDescriptor descriptorForClassMethod:method];*/
-}
-
-+ (ISMethodDescriptor*) descriptorForInstanceMethod:(Method)aMethod {
-    return [[ISMethodDescriptor alloc] initWithInstanceMethod:aMethod];
-}
-
-+ (ISMethodDescriptor*) descriptorForClassMethod:(Method)aMethod {
-    return [[ISMethodDescriptor alloc] initWithClassMethod:aMethod];
-}
-
-+ (ISMethodDescriptor*) descriptorForInstanceMethod:(Method)instanceMethod classMethod:(Method)classMethod {
     if (instanceMethod != nil && classMethod != nil)
         @throw [ISAmbiguousMatchException exceptionWithReason:@"More than one matching method found"];
     
     if (instanceMethod != nil)
-        return [ISMethodDescriptor descriptorForInstanceMethod:instanceMethod];
+        return [ISMethodDescriptor descriptorForMethod:instanceMethod instance:YES];
     
-    if (classMethod != nil)
-        return [ISMethodDescriptor descriptorForClassMethod:classMethod];
+    if (classMethod != nil) 
+        return [ISMethodDescriptor descriptorForMethod:classMethod instance:NO];
     
     return nil;
 }
 
-- (id) initWithClassMethod:(Method)aMethod {
-    self = [self initWithMethod:aMethod];
-    if (self != nil)
-        isInstanceMethod = NO;
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inClass:(Class)class instance:(BOOL)isInstance {
+    Method method = isInstance ? class_getInstanceMethod(class, selector)
+                               : class_getClassMethod(class, selector);
+    
+    if (method == nil)
+        return nil;
+    
+    return [ISMethodDescriptor descriptorForMethod:method instance:isInstance];
+}
+
++ (ISMethodDescriptor*) descriptorForSelector:(SEL)selector inProtocol:(Protocol*)protocol {
+    MethodDescription classDescription = protocol_getMethodDescription(protocol, selector, YES, NO);
+    MethodDescription instanceDescription = protocol_getMethodDescription(protocol, selector, YES, YES);
+    
+    if (!isMethodDescriptionEmpty(instanceDescription) && !isMethodDescriptionEmpty(classDescription))
+        @throw [ISAmbiguousMatchException exceptionWithReason:@"More than one matching method found"];
+    
+    if (!isMethodDescriptionEmpty(instanceDescription))
+        return [ISMethodDescriptor descriptorForMethodDescription:instanceDescription instance:YES];
+    
+    if (!isMethodDescriptionEmpty(classDescription)) 
+        return [ISMethodDescriptor descriptorForMethodDescription:classDescription instance:NO];
+    
+    return nil;
+}
+
++ (ISMethodDescriptor*) descriptorForSelector: (SEL)selector 
+                                   inProtocol: (Protocol*)protocol 
+                                     instance: (BOOL)isInstance 
+                                     required: (BOOL)isRequired 
+{
+    MethodDescription description = protocol_getMethodDescription(protocol, selector, isRequired, isInstance);
+    if (description.name == NULL && description.types == NULL)
+        return nil;
+    
+    return [ISMethodDescriptor descriptorForMethodDescription:description instance:isInstance];
+}
+
++ (ISMethodDescriptor*) descriptorForMethod:(Method)method instance:(BOOL)isInstance {
+    return [[ISMethodDescriptor alloc] initWithMethod:method instance:isInstance];
+}
+
++ (ISMethodDescriptor*) descriptorForMethodDescription:(MethodDescription)methodDescription instance:(BOOL)isInstance {
+    return [[ISMethodDescriptor alloc] initWithMethodDescription:methodDescription instance:isInstance];
+}
+
+- (id) initWithMethod:(Method)method instance:(BOOL)isInstance {
+    self = [super init];
+    if (self != nil) {
+        self->method = method;
+        isInstanceMethod = isInstance;
+        
+        [self initProperties];
+    }
     
     return self;
 }
 
-- (id) initWithInstanceMethod:(Method)aMethod {
-    self = [self initWithMethod:aMethod];
-    if (self != nil)
-        isInstanceMethod = YES;
+- (id) initWithMethodDescription:(MethodDescription)methodDescription instance:(BOOL)isInstance {
+    self->methodDescription = methodDescription;
     
-    return self;
+    return [self initWithMethod:(Method)&(self->methodDescription) instance:isInstance];
 }
 
-- (IMP) implementation {
-    return method_getImplementation(method);
+- (IMP) implementationForClass:(Class)class {
+    return class_getMethodImplementation(class, selector);
 }
 
-- (void) setImplementation:(IMP)value {
-    method_setImplementation(method, value);
+- (IMP) setImplementationForClass:(Class)class value:(IMP)value {
+    Method m = isInstanceMethod ? class_getInstanceMethod(class, selector)
+                                : class_getClassMethod(class, selector);
+    
+    if (m == nil)
+        return nil;
+    
+    return method_setImplementation(m, value);
 }
 
-- (NSValue*) invokeOnObject:(id)anObject withArguments:(NSArray*)args {
+- (NSValue*) invokeOnObject:(id)object withArguments:(NSArray*)args {
     NSInvocation *invocation = [NSInvocation 
-        invocationWithMethodSignature:[anObject methodSignatureForSelector:selector]
+        invocationWithMethodSignature:[object methodSignatureForSelector:selector]
     ];
    
     [invocation retainArguments];
@@ -124,7 +126,7 @@
         [invocation setArgument:[arg mutableBytes] atIndex:i + 2];
     }
     [invocation setSelector:selector];
-    [invocation invokeWithTarget:anObject];
+    [invocation invokeWithTarget:object];
     
     return [invocation getReturnValue];
 }
@@ -153,30 +155,6 @@
     free(returnType);
     
     [self initArgumentTypeEncodings];
-}
-
-- (id) initWithMethod:(Method)aMethod {
-    self = [super init];
-    if (self != nil) {
-        method = aMethod;
-        
-        [self initProperties];
-    }
-    
-    return self;
-}
-
-// TODO: refactor
-- (id) initWithMethodDescription:(struct objc_method_description)description {
-    self = [super init];
-    if (self != nil) {
-        methodDescription = description;
-        method = (Method)&description;
-        
-        [self initProperties];
-    }
-    
-    return self;
 }
 
 @end

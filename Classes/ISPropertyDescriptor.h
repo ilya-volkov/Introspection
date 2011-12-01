@@ -5,15 +5,14 @@
 
 @interface ISPropertyDescriptor : NSObject <ISDescriptor>
 
-+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inClass:(Class)aClass;
-+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol;
-//+ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)aProtocol isRequired:(BOOL)isRequired;
-+ (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)aProperty;
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inClass:(Class)class;
++ (ISPropertyDescriptor*) descriptorForName:(NSString*)name inProtocol:(Protocol*)protocol;
++ (ISPropertyDescriptor*) descriptorForProperty:(objc_property_t)property;
 
-- (id) initWithProperty:(objc_property_t)aProperty;
+- (id) initWithProperty:(objc_property_t)property;
 
-- (void) setValue:(NSValue*)value inObject:(id)anObject;
-- (NSValue*) getValueFromObject:(id)anObject;
+- (void) setValue:(NSValue*)value inObject:(id)object;
+- (NSValue*) getValueFromObject:(id)object;
 
 @property (readonly, copy) NSString* backingVariable;
 @property (readonly) SEL getter;
