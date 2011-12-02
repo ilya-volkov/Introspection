@@ -1,9 +1,10 @@
 #import <Foundation/Foundation.h>
 
 #import "BaseProtocolWithMethods.h"
+#import "BaseProtocol.h"
 #import "TestStruct.h"
 
-@protocol ProtocolWithMethods <BaseProtocolWithMethods>
+@protocol ProtocolWithMethods <BaseProtocolWithMethods, BaseProtocol>
 @required
 
 + (void) methodWithNonUniqueNameInProtocol;

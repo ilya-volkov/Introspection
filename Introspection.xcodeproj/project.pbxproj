@@ -188,6 +188,8 @@
 		7AD9E3971461DA1D006650CE /* NSInvocation+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Extensions.h"; sourceTree = "<group>"; };
 		7AD9E3981461DA1D006650CE /* NSInvocation+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+Extensions.m"; sourceTree = "<group>"; };
 		7ADFEDEC14477AC9009EE7CF /* ISSetterSemanticsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSetterSemanticsType.h; sourceTree = "<group>"; };
+		7AE371251488B3AC002382C3 /* BaseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseProtocol.h; sourceTree = "<group>"; };
+		7AE371261488B6C6002382C3 /* BaseProtocolWithMethodsCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseProtocolWithMethodsCopy.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,8 @@
 				7A69F4131480172E0006D495 /* ProtocolWithMethods.h */,
 				7A69F414148029CC0006D495 /* BaseProtocolWithMethods.h */,
 				7A4DEB601480F0260021AC2E /* ProtocolWithProperties.h */,
+				7AE371251488B3AC002382C3 /* BaseProtocol.h */,
+				7AE371261488B6C6002382C3 /* BaseProtocolWithMethodsCopy.h */,
 			);
 			name = TestClasses;
 			sourceTree = "<group>";

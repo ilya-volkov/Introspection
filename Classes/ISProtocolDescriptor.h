@@ -5,28 +5,22 @@
 @class ISMethodDescriptor;
 @class ISPropertyDescriptor;
 
-// 1. TODO: add find method and property in protocol to corresponding descriptors 
-//          ??? if not needed remove commented code and update test classes
-// 2. TODO: Test protocol_getMethodDescription, create descriptro for method ???
-
 @interface ISProtocolDescriptor : NSObject <ISDescriptor>
 
 + (NSArray*) allProtocols;
-+ (ISProtocolDescriptor*) descriptorForProtocol:(Protocol*)aProtocol;
-+ (ISProtocolDescriptor*) descriptorForProtocolName:(NSString*)aProtocolName;
++ (ISProtocolDescriptor*) descriptorForProtocol:(Protocol*)protocol;
++ (ISProtocolDescriptor*) descriptorForName:(NSString*)protocolName;
 
-- (id) initWithProtocol:(Protocol*)aProtocol;
+- (id) initWithProtocol:(Protocol*)protocol;
 
-- (BOOL) protocolRespondsToSelector:(SEL)aSelector;
-- (BOOL) isProtocolEqual:(ISProtocolDescriptor*)aProtocol;
+- (BOOL) protocolRespondsToSelector:(SEL)selector;
+- (BOOL) isProtocolEqual:(ISProtocolDescriptor*)protocol;
 
-// TODO: better names for methods
-- (ISMethodDescriptor*) methodWithSelector:(NSString*)aSelector;
-- (ISMethodDescriptor*) methodWithSelector:(NSString*)aSelector required:(BOOL)isRequired instance:(BOOL)isInstance;
-- (ISPropertyDescriptor*) propertyWithName:(NSString*)name;
-- (ISPropertyDescriptor*) propertyWithName:(NSString*)name required:(BOOL)isRequired instance:(BOOL)isInstance;
-- (NSArray*) methodsRequired:(BOOL)required instance:(BOOL)isInstance;
-- (NSArray*) propertyRequired:(BOOL)required instance:(BOOL)isInstance;
+- (ISMethodDescriptor*) methodWithSelector:(NSString*)selector;
+- (ISMethodDescriptor*) methodWithSelector:(NSString*)selector instance:(BOOL)isInstance required:(BOOL)isRequired;
+- (ISPropertyDescriptor*) propertyWithName:(NSString*)propertyName;
+
+- (NSArray*) methodsInstance:(BOOL)isInstance required:(BOOL)isRequired;
 
 @property (readonly) NSArray* protocols;
 @property (readonly) NSArray* methods;

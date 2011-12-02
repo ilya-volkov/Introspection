@@ -5,5 +5,6 @@
 @private
     Protocol *protocol;
 }
+@synthesize name;
 
 @end

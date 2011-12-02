@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@protocol BaseProtocolWithMethods// <NSObject>
+@protocol BaseProtocolWithMethodsCopy
 
 + (NSString*) baseClassProtocolMethod:(NSString*)arg1;
 - (NSString*) baseInstanceProtocolMethod:(NSString*)arg1;

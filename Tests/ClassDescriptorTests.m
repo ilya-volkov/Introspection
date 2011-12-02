@@ -20,7 +20,6 @@
     STAssertNil(descriptor, nil);
 }
 
-
 - (void)testListAllClasses {
     NSArray *classes = [ISClassDescriptor allClasses];    
     NSArray *names = [classes selectUsingBlock:^(id obj) {
