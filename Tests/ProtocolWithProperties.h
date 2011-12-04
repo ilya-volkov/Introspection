@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 
-@protocol ProtocolWithProperties <NSObject>
+#import "BaseProtocolWithProperties.h"
+
+@protocol ProtocolWithProperties <BaseProtocolWithProperties>
 @required
 
 @property (readonly, copy) NSString *requiredProperty;

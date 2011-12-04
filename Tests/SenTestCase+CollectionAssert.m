@@ -20,6 +20,7 @@
     [self assertCollection:expected isSubsetOfCollection:actual];
 }
 
+// TODO: repeating elements problem
 - (void)assertCollection:(NSArray*)expected isSubsetOfCollection:(NSArray*)actual {
     for (int i = 0; i < [expected count]; i++) {
         BOOL contains = [actual containsObject:[expected objectAtIndex:i]];

@@ -29,10 +29,3 @@ BOOL isMethodDescriptionEmpty(MethodDescription description);
 @property (readonly, copy) NSString* typeEncoding;
 
 @end
-
-@interface ISMethodDescriptor ()
-
-- (void) initProperties;
-- (void) initArgumentTypeEncodings;
-
-@end

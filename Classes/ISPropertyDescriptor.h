@@ -26,10 +26,3 @@
 @property (readonly) BOOL isEligibleForGarbageCollection;
 
 @end
-
-@interface ISPropertyDescriptor ()
-
-- (void) parsePropertyAttributeDescription:(NSString*)description;
-- (void) setDefaultAttributeValues;
-
-@end

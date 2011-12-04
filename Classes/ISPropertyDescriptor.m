@@ -6,6 +6,13 @@
 #import "NSValue+Extensions.h"
 #import "NSInvocation+Extensions.h"
 
+@interface ISPropertyDescriptor ()
+
+- (void) parsePropertyAttributeDescription:(NSString*)description;
+- (void) setDefaultAttributeValues;
+
+@end
+
 @implementation ISPropertyDescriptor {
 @private
     objc_property_t property;

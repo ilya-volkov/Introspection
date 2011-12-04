@@ -18,5 +18,6 @@
 @optional
 
 - (void) optionalProtocolMethod;
++ (void) optionalClassProtocolMethod;
 
 @end

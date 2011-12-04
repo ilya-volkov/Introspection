@@ -8,6 +8,13 @@ BOOL isMethodDescriptionEmpty(MethodDescription description) {
     return description.name == NULL && description.types == NULL;
 }
 
+@interface ISMethodDescriptor ()
+
+- (void) initProperties;
+- (void) initArgumentTypeEncodings;
+
+@end
+
 @implementation ISMethodDescriptor {
 @private
     Method method;

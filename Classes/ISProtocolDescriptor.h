@@ -9,21 +9,21 @@
 
 + (NSArray*) allProtocols;
 + (ISProtocolDescriptor*) descriptorForProtocol:(Protocol*)protocol;
-+ (ISProtocolDescriptor*) descriptorForName:(NSString*)protocolName;
++ (ISProtocolDescriptor*) descriptorForName:(NSString*)name;
 
 - (id) initWithProtocol:(Protocol*)protocol;
 
 - (BOOL) protocolRespondsToSelector:(SEL)selector;
-- (BOOL) isProtocolEqual:(ISProtocolDescriptor*)protocol;
+- (BOOL) protocolConformsToProtocol:(ISProtocolDescriptor*)protocol;
 
-- (ISMethodDescriptor*) methodWithSelector:(NSString*)selector;
-- (ISMethodDescriptor*) methodWithSelector:(NSString*)selector instance:(BOOL)isInstance required:(BOOL)isRequired;
-- (ISPropertyDescriptor*) propertyWithName:(NSString*)propertyName;
+- (ISMethodDescriptor*) methodWithSelector:(SEL)selector;
+- (ISMethodDescriptor*) methodWithSelector:(SEL)selector instance:(BOOL)isInstance required:(BOOL)isRequired;
+- (ISPropertyDescriptor*) propertyWithName:(NSString*)name;
 
 - (NSArray*) methodsInstance:(BOOL)isInstance required:(BOOL)isRequired;
 
-@property (readonly) NSArray* protocols;
-@property (readonly) NSArray* methods;
-@property (readonly) NSArray* properties;
+@property (readonly, strong) NSArray* protocols;
+@property (readonly, strong) NSArray* methods;
+@property (readonly, strong) NSArray* properties;
 
 @end
