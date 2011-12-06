@@ -13,7 +13,6 @@
 
 - (id) initWithProtocol:(Protocol*)protocol;
 
-- (BOOL) protocolRespondsToSelector:(SEL)selector;
 - (BOOL) protocolConformsToProtocol:(ISProtocolDescriptor*)protocol;
 
 - (ISMethodDescriptor*) methodWithSelector:(SEL)selector;

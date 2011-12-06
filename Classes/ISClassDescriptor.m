@@ -2,10 +2,38 @@
 
 @implementation ISClassDescriptor {
 @private
-    Class _class;
+    Class class;
 }
 
-+ (NSArray*) allClasses {
+/*+ (NSArray*) allClasses;
++ (NSArray*) classesInBundle:(NSBundle*)aBundle;
++ (ISClassDescriptor*) descriptorForClass:(Class)class;
++ (ISClassDescriptor*) descriptorForClassName:(NSString*)name;
+
+- (id) initWithClass:(Class)aClass;
+
+- (BOOL) classRespondsToSelector:(SEL)selector;
+- (BOOL) classConformsToProtocol:(ISProtocolDescriptor*)protocol;
+
+- (ISMethodDescriptor*) methodWithSelector:(SEL)selector;
+- (ISMethodDescriptor*) methodWithSelector:(SEL)selector instance:(BOOL)isInstance;
+- (ISPropertyDescriptor*) propertyWithName:(NSString*)name;
+- (ISInstanceVariableDescriptor*) instanceVariableWithName:(NSString*)name;
+
+- (NSArray*) methodsInstance:(BOOL)isInstance;
+
+@property (readonly) ISClassDescriptor* classSuperclass;
+@property (readonly) NSNumber* classVersion;
+// TODO: Test ivar layout + weak layouts
+@property (readonly, copy) NSString* instanceVariablesLayout;
+@property (readonly, strong) NSBundle* bundle;
+
+@property (readonly) NSArray* protocols;
+@property (readonly) NSArray* methods;
+@property (readonly) NSArray* properties;
+@property (readonly) NSArray* instanceVariables;*/
+
+/*+ (NSArray*) allClasses {
     unsigned int outCount;
     Class* classes = objc_copyClassList(&outCount);
     
@@ -69,6 +97,6 @@
 
 - (NSBundle*)bundle {
     return [NSBundle bundleForClass:_class];
-}
+}*/
 
 @end

@@ -117,13 +117,6 @@
     return [ISPropertyDescriptor descriptorForName:name inProtocol:protocol];
 }
 
-// TODO: responds to optional method
-- (BOOL) protocolRespondsToSelector:(SEL)selector {
-    ISMethodDescriptor *descriptor = [ISMethodDescriptor descriptorForSelector:selector inProtocol:protocol];
-    
-    return descriptor != nil;
-}
-
 - (BOOL) protocolConformsToProtocol:(ISProtocolDescriptor*)protocol {
     return protocol_conformsToProtocol(self->protocol, protocol);
 }

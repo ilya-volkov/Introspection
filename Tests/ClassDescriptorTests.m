@@ -8,7 +8,37 @@
 
 @implementation ClassDescriptorTests
 
-- (void)testCreateDescriptorForClassName {
+/*
+ + (NSArray*) allClasses;
+ + (NSArray*) classesInBundle:(NSBundle*)aBundle;
+ + (ISClassDescriptor*) descriptorForClass:(Class)class;
+ + (ISClassDescriptor*) descriptorForClassName:(NSString*)name;
+ 
+ - (id) initWithClass:(Class)aClass;
+ 
+ - (BOOL) classRespondsToSelector:(SEL)selector;
+ - (BOOL) classConformsToProtocol:(ISProtocolDescriptor*)protocol;
+ 
+ - (ISMethodDescriptor*) methodWithSelector:(SEL)selector;
+ - (ISMethodDescriptor*) methodWithSelector:(SEL)selector instance:(BOOL)isInstance;
+ - (ISPropertyDescriptor*) propertyWithName:(NSString*)name;
+ - (ISInstanceVariableDescriptor*) instanceVariableWithName:(NSString*)name;
+ 
+ - (NSArray*) methodsInstance:(BOOL)isInstance;
+ 
+ @property (readonly) ISClassDescriptor* classSuperclass;
+ @property (readonly) NSNumber* classVersion;
+ // TODO: Test ivar layout + weak layouts
+ @property (readonly, copy) NSString* instanceVariablesLayout;
+ @property (readonly, strong) NSBundle* bundle;
+ 
+ @property (readonly) NSArray* protocols;
+ @property (readonly) NSArray* methods;
+ @property (readonly) NSArray* properties;
+ @property (readonly) NSArray* instanceVariables;
+ */
+
+/*- (void)testCreateDescriptorForClassName {
     ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClassName:@"ClassWithProperties"];
     
     STAssertEqualObjects(@"ClassWithProperties", descriptor.name, nil);
@@ -54,6 +84,6 @@
     ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[ClassWithProperties class]];
     
     STAssertEqualObjects(@"com.ilyavolkov.IntrospectionTests", [descriptor.bundle bundleIdentifier], nil);
-}
+}*/
 
 @end

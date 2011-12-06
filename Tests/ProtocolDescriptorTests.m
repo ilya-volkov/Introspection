@@ -34,18 +34,6 @@
     STAssertNil(descriptor, nil);
 }
 
-- (void)testProtocolRespondsToSelector {
-    ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
-    
-    STAssertTrue([descriptor protocolRespondsToSelector:@selector(baseClassProtocolMethod:)], nil);
-}
-
-- (void)testProtocolNotRespondsToSelector {
-    ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
-    
-    STAssertFalse([descriptor protocolRespondsToSelector:@selector(notExistentMethod:)], nil);
-}
-
 // TODO: fix test
 /*- (void)testConformsToProtocol {
     ISProtocolDescriptor *first = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
