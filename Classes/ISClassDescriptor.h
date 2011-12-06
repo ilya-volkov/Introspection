@@ -9,9 +9,9 @@
 @interface ISClassDescriptor : NSObject <ISDescriptor>
 
 + (NSArray*) allClasses;
-+ (NSArray*) classesInBundle:(NSBundle*)aBundle;
++ (NSArray*) classesInBundle:(NSBundle*)bundle;
 + (ISClassDescriptor*) descriptorForClass:(Class)class;
-+ (ISClassDescriptor*) descriptorForClassName:(NSString*)name;
++ (ISClassDescriptor*) descriptorForName:(NSString*)name;
 
 - (id) initWithClass:(Class)aClass;
 
@@ -27,8 +27,6 @@
 
 @property (readonly) ISClassDescriptor* classSuperclass;
 @property (readonly) NSNumber* classVersion;
-@property (readonly) NSString* instanceVariablesLayout;
-@property (readonly) NSString* weakInstanceVariablesLayout;
 @property (readonly) NSBundle* bundle;
 
 @property (readonly) NSArray* protocols;

@@ -1,39 +1,16 @@
 #import "ISClassDescriptor.h"
 
+#import "ISMethodDescriptor.h"
+#import "ISPropertyDescriptor.h"
+#import "ISInstanceVariableDescriptor.h"
+#import "ISProtocolDescriptor.h"
+
 @implementation ISClassDescriptor {
 @private
     Class class;
 }
 
-/*+ (NSArray*) allClasses;
-+ (NSArray*) classesInBundle:(NSBundle*)aBundle;
-+ (ISClassDescriptor*) descriptorForClass:(Class)class;
-+ (ISClassDescriptor*) descriptorForClassName:(NSString*)name;
-
-- (id) initWithClass:(Class)aClass;
-
-- (BOOL) classRespondsToSelector:(SEL)selector;
-- (BOOL) classConformsToProtocol:(Protocol*)protocol;
-
-- (ISMethodDescriptor*) methodWithSelector:(SEL)selector;
-- (ISMethodDescriptor*) methodWithSelector:(SEL)selector instance:(BOOL)isInstance;
-- (ISPropertyDescriptor*) propertyWithName:(NSString*)name;
-- (ISInstanceVariableDescriptor*) instanceVariableWithName:(NSString*)name;
-
-- (NSArray*) methodsInstance:(BOOL)isInstance;
-
-@property (readonly) ISClassDescriptor* classSuperclass;
-@property (readonly) NSNumber* classVersion;
-@property (readonly) NSString* instanceVariablesLayout;
-@property (readonly) NSString* weakInstanceVariableLayout;
-@property (readonly, strong) NSBundle* bundle;
-
-@property (readonly) NSArray* protocols;
-@property (readonly) NSArray* methods;
-@property (readonly) NSArray* properties;
-@property (readonly) NSArray* instanceVariables;*/
-
-/*+ (NSArray*) allClasses {
++ (NSArray*) allClasses {
     unsigned int outCount;
     Class* classes = objc_copyClassList(&outCount);
     
@@ -48,22 +25,22 @@
     return result;
 }
 
-+ (ISClassDescriptor*) descriptorForClass:(Class)aClass {
-    return [[ISClassDescriptor alloc] initWithClass:aClass];
++ (ISClassDescriptor*) descriptorForClass:(Class)class {
+    return [[ISClassDescriptor alloc] initWithClass:class];
 }
 
-+ (ISClassDescriptor*) descriptorForClassName:(NSString*)aClassName {
-    Class class = objc_getClass([aClassName cStringUsingEncoding:NSASCIIStringEncoding]);
++ (ISClassDescriptor*) descriptorForName:(NSString*)name {
+    Class class = objc_getClass([name cStringUsingEncoding:NSASCIIStringEncoding]);
     if (class == nil)
         return nil;
     
     return [ISClassDescriptor descriptorForClass:class];
 }
 
-+ (NSArray*) classesInBundle:(NSBundle*)aBundle {
++ (NSArray*) classesInBundle:(NSBundle*)bundle {
     unsigned int count = 0;
     const char **classNames = objc_copyClassNamesForImage(
-        [[aBundle executablePath] cStringUsingEncoding:NSUTF8StringEncoding],                                                  
+        [[bundle executablePath] cStringUsingEncoding:NSUTF8StringEncoding],                                                  
         &count
     );
     
@@ -71,7 +48,7 @@
     for (int i = 0; i < count; i++) {
         [result addObject:
             [ISClassDescriptor 
-                descriptorForClassName:[NSString stringWithCString:classNames[i] encoding:NSASCIIStringEncoding]
+                descriptorForName:[NSString stringWithCString:classNames[i] encoding:NSASCIIStringEncoding]
             ]
         ];
     }
@@ -81,22 +58,125 @@
     return result;
 }
 
-- (id) initWithClass:(Class)aClass {
+- (id) initWithClass:(Class)class {
     self = [super init];
-    if (self)
-        _class = aClass;
+    if (self != nil) {
+        self->class = class;
+    }
     
     return self;
 }
 
-- (NSString*)name {
-    const char *name = class_getName(_class);
+- (BOOL) classRespondsToSelector:(SEL)selector {
+    return class_respondsToSelector(class, selector);
+}
+
+- (BOOL) classConformsToProtocol:(Protocol*)protocol {
+    return class_conformsToProtocol(class, protocol);
+}
+
+- (NSString*) name {
+    const char *name = class_getName(class);
     
     return [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
 }
 
-- (NSBundle*)bundle {
-    return [NSBundle bundleForClass:_class];
-}*/
+- (NSBundle*) bundle {
+    return [NSBundle bundleForClass:class];
+}
+
+- (ISMethodDescriptor*) methodWithSelector:(SEL)selector {
+    return [ISMethodDescriptor descriptorForSelector:selector inClass:class];
+}
+
+- (ISMethodDescriptor*) methodWithSelector:(SEL)selector instance:(BOOL)isInstance {
+    return [ISMethodDescriptor descriptorForSelector:selector inClass:class instance:isInstance];
+}
+
+- (ISPropertyDescriptor*) propertyWithName:(NSString*)name {
+    return [ISPropertyDescriptor descriptorForName:name inClass:class];
+}
+
+- (ISInstanceVariableDescriptor*) instanceVariableWithName:(NSString*)name {
+    return [ISInstanceVariableDescriptor descriptorForName:name inClass:class];
+}
+
+- (ISClassDescriptor*) classSuperclass {
+    return [ISClassDescriptor descriptorForClass:class_getSuperclass(class)];
+}
+
+- (NSNumber*) classVersion {
+    return [NSNumber numberWithInt:class_getVersion(class)];
+}
+
+- (NSArray*) methods {
+    NSMutableArray *methods = [[self methodsInstance:YES] mutableCopy];
+    [methods addObjectsFromArray:[self methodsInstance:NO]];
+    
+    return methods;
+}
+
+- (NSArray*) methodsInstance:(BOOL)isInstance {
+    Class targetClass = isInstance ? class : object_getClass(class);
+    
+    unsigned int outCount;
+    Method *methods = class_copyMethodList(targetClass, &outCount);
+    
+    NSMutableArray *result = [NSMutableArray array];
+    for (int i = 0; i < outCount; i++) {
+        ISMethodDescriptor *descriptor = [ISMethodDescriptor descriptorForMethod:methods[i] instance:isInstance];
+        [result addObject:descriptor];
+    }
+    
+    free(methods);
+    
+    return result;
+}
+
+// TODO: all protocols
+- (NSArray*) protocols {
+    unsigned int outCount;
+    Protocol *__unsafe_unretained *protocols = class_copyProtocolList(class, &outCount);
+    
+    NSMutableArray *result = [NSMutableArray array];
+    for (int i = 0; i < outCount; i++) {
+        ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForProtocol:protocols[i]];
+        [result addObject:descriptor];
+    }
+    
+    free(protocols);
+    
+    return result;
+}
+
+- (NSArray*) properties {
+    unsigned int outCount;
+    objc_property_t *properties = class_copyPropertyList(class, &outCount);
+    
+    NSMutableArray *result = [NSMutableArray array];
+    for (int i = 0; i < outCount; i++) {
+        ISPropertyDescriptor *descriptor = [ISPropertyDescriptor descriptorForProperty:properties[i]];
+        [result addObject:descriptor];
+    }
+    
+    free(properties);
+    
+    return result;
+}
+
+- (NSArray*) instanceVariables {
+    unsigned int outCount;
+    Ivar *ivars = class_copyIvarList(class, &outCount);
+    
+    NSMutableArray *result = [NSMutableArray array];
+    for (int i = 0; i < outCount; i++) {
+        ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor descriptorForInstanceVariable:ivars[i]];
+        [result addObject:descriptor];
+    }
+    
+    free(ivars);
+    
+    return result;
+}
 
 @end
