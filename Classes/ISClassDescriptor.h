@@ -2,7 +2,6 @@
 
 #import "ISDescriptor.h"
 
-@class ISProtocolDescriptor;
 @class ISMethodDescriptor;
 @class ISPropertyDescriptor;
 @class ISInstanceVariableDescriptor;
@@ -17,7 +16,7 @@
 - (id) initWithClass:(Class)aClass;
 
 - (BOOL) classRespondsToSelector:(SEL)selector;
-- (BOOL) classConformsToProtocol:(ISProtocolDescriptor*)protocol;
+- (BOOL) classConformsToProtocol:(Protocol*)protocol;
 
 - (ISMethodDescriptor*) methodWithSelector:(SEL)selector;
 - (ISMethodDescriptor*) methodWithSelector:(SEL)selector instance:(BOOL)isInstance;
@@ -28,9 +27,9 @@
 
 @property (readonly) ISClassDescriptor* classSuperclass;
 @property (readonly) NSNumber* classVersion;
-// TODO: Test ivar layout + weak layouts
-@property (readonly, copy) NSString* instanceVariablesLayout;
-@property (readonly, strong) NSBundle* bundle;
+@property (readonly) NSString* instanceVariablesLayout;
+@property (readonly) NSString* weakInstanceVariablesLayout;
+@property (readonly) NSBundle* bundle;
 
 @property (readonly) NSArray* protocols;
 @property (readonly) NSArray* methods;

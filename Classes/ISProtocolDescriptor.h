@@ -21,6 +21,7 @@
 
 - (NSArray*) methodsInstance:(BOOL)isInstance required:(BOOL)isRequired;
 
+// TODO: all protocols
 @property (readonly, strong) NSArray* protocols;
 @property (readonly, strong) NSArray* methods;
 @property (readonly, strong) NSArray* properties;

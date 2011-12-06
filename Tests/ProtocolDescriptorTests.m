@@ -34,7 +34,7 @@
     STAssertNil(descriptor, nil);
 }
 
-// TODO: fix test
+// TODO: fix test, conforms to base protocol
 /*- (void)testConformsToProtocol {
     ISProtocolDescriptor *first = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
     ISProtocolDescriptor *second = [ISProtocolDescriptor descriptorForName:@"BaseProtocolWithMethods"];
