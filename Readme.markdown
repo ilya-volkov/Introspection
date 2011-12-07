@@ -1,4 +1,4 @@
-s# Introspection Framework #
+# Introspection Framework #
 
 Introspection framework based on the [Objective-C 2.0 runtime library][runtime_reference].
 
@@ -17,21 +17,34 @@ Due to the use of [Automatic Reference Counting][arc] (ARC) you need [Xcode 4.2]
 
 # How to Use #
 
-All runtime entities like methods, protocols, properties, classes and instance variables 
-have coressponding classes called descriptors.
-You can work with descriptors directly or via `NSObject` extension methods.
+All runtime entities (methods, protocols, properties, classes and instance variables) 
+have coressponding descriptors.
+You can create descriptors directly or via `NSObject` extension methods.
+For example, if you want to create a descriptor for the property with name `surname` from the class `Person`
+you can create it using `ISPropertyDescriptor` class:
+
+```objc
+ISPropertyDescriptor *descriptor = [ISPropertyDescriptor descriptorForName:@"surname" inClass:[Person class]];
+```
+
+or via `NSObject` extension method `propertyWithName:`:
+
+```objc
+Person *forrest = [Person new];
+ISPropertyDescriptor *descriptor = [forrest propertyWithName:@"surname"];
+```
 
 The following examples demonstrate some common use cases of the Introspection framework.
 
 // TODO: update examples using NSObject extensions
 To find property for a class:
-//TODO
+
 To find method for a protocol:
-//TODO
+
 To list methods for a class:
-//TODO
+
 To list properties for a protocol:
-//TODO
+
 To get instance variable:
 
 ```objc
