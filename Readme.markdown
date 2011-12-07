@@ -1,4 +1,4 @@
-# Introspection Framework #
+s# Introspection Framework #
 
 Introspection framework based on the [Objective-C 2.0 runtime library][runtime_reference].
 
@@ -10,7 +10,7 @@ Due to the use of [Automatic Reference Counting][arc] (ARC) you need [Xcode 4.2]
 
 * Mac OS X and iOS support
 * High unit test code coverage
-* Introspection of instance variables, methods, protocols and classes
+* Introspection of instance variables, methods, properties, protocols and classes
 * Calling methods dynamically
 * Get/set properties and instance variables dynamically
 * Convenient `NSObject` extension methods
