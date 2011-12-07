@@ -36,16 +36,38 @@ ISPropertyDescriptor *descriptor = [forrest propertyWithName:@"surname"];
 
 The following examples demonstrate some common use cases of the Introspection framework.
 
-// TODO: update examples using NSObject extensions
-To find property for a class:
+To find instance variable for a class:
+
+```objc
+ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor 
+    descriptorForName:@"age" inClass:[Person class]
+];    
+```
 
 To find method for a protocol:
 
-To list methods for a class:
+```objc
+ISMethodDescirptor *descriptor = [ISMethodDescirptor 
+    descriptorForSelector:@selector(playMovie:skippingSeconds:) 
+               inProtocol:@protocol(Player)
+]
+```
+
+To list instance methods for a class:
+
+```objc
+ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[Person class]]
+NSArray *methods = [descriptor methodsInstance:YES];
+```
 
 To list properties for a protocol:
 
-To get instance variable:
+```objc
+ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForProtocol:@protocol(Player)];
+NSArray *properties = descriptor.properties;
+```
+
+To get instance variable value:
 
 ```objc
 Person *jenny = [Person new];    
@@ -58,7 +80,7 @@ ISInstanceVariableDescriptor *descriptor = [ISInstanceVariableDescriptor
 NSValue *value = [descriptor getValueFromObject:instance];
 ```
 
-To set instance variable:
+To set instance variable value:
 
 ```objc
 Person *jenny = [Person new];
@@ -76,7 +98,7 @@ To call method:
 
 ```obc
 ISMethodDescriptor *descriptor = [ISMethodDescriptor 
-    descriptorForSelector:playMovie:skippingSeconds: 
+    descriptorForSelector:@selector(playMovie:skippingSeconds:) 
     inClass:[Player class]
 ]
 
@@ -92,7 +114,7 @@ NSArray *args = [NSArray arrayWithObjects:
 NSValue *value =[descriptor invokeOnObject:player withArguments:args];
 ```
 
-To get property:
+To get property value:
 
 ```objc
 Person *dan = [Person new];
@@ -104,7 +126,7 @@ ISPropertyDescriptor *descriptor = [ISPropertyDescriptor
     
 NSValue *nameValue = [descriptor getValueFromObject:dan];
 ```
-To set property:
+To set property value:
 
 ```objc
 Person *dan = [Person new];
