@@ -19,9 +19,9 @@ Due to the use of [Automatic Reference Counting][arc] (ARC) you need [Xcode 4.2]
 
 All runtime entities like methods, protocols, properties, classes and instance variables 
 have coressponding classes called descriptors.
-You can work with descriptors directly or use `NSObject` extension methods.
+You can work with descriptors directly or via `NSObject` extension methods.
 
-Examples below show some common use cases of the Introspection framework.
+The following examples demonstrate some common use cases of the Introspection framework.
 
 // TODO: update examples using NSObject extensions
 To find property for a class:
