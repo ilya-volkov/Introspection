@@ -96,7 +96,7 @@ int age = 20;
 
 To call method:
 
-```obc
+```objc
 ISMethodDescriptor *descriptor = [ISMethodDescriptor 
     descriptorForSelector:@selector(playMovie:skippingSeconds:) 
     inClass:[Player class]
