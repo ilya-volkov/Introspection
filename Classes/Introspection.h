@@ -1,13 +1,16 @@
 #import "ISDescriptor.h"
-
-#import "ISCommon.h"
-#import "ISBindingFlags.h"
 #import "ISSetterSemanticsType.h"
-
 #import "ISInvalidStateException.h"
+#import "ISAmbiguousMatchException.h"
 
 #import "ISClassDescriptor.h"
 #import "ISProtocolDescriptor.h"
 #import "ISMethodDescriptor.h"
 #import "ISPropertyDescriptor.h"
 #import "ISInstanceVariableDescriptor.h"
+
+#import "NSArray+CollectionQuery.h"
+#import "NSString+Extensions.h"
+#import "NSValue+Extensions.h"
+#import "NSInvocation+Extensions.h"
+#import "NSObject+Introspection.h"

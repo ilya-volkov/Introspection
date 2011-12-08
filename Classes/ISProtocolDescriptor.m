@@ -118,7 +118,7 @@
     return [ISPropertyDescriptor descriptorForName:name inProtocol:protocol];
 }
 
-- (BOOL) protocolConformsToProtocol:(ISProtocolDescriptor*)protocol {
+- (BOOL) protocolConformsToProtocol:(Protocol*)protocol {
     return protocol_conformsToProtocol(self->protocol, protocol);
 }
 

@@ -1,5 +1,8 @@
 #import "ProtocolDescriptorTests.h"
 #import "ISProtocolDescriptor.h"
+#import "BaseProtocolWithMethods.h"
+#import "ProtocolWithProperties.h"
+
 
 #import "NSArray+CollectionQuery.h"
 #import "SenTestCase+CollectionAssert.h"
@@ -34,19 +37,17 @@
     STAssertNil(descriptor, nil);
 }
 
-// TODO: fix test, conforms to base protocol
-/*- (void)testConformsToProtocol {
-    ISProtocolDescriptor *first = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
-    ISProtocolDescriptor *second = [ISProtocolDescriptor descriptorForName:@"BaseProtocolWithMethods"];
+// TODO: conforms to base protocol
+- (void)testConformsToProtocol {
+    ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
     
-    STAssertTrue([first protocolConformsToProtocol:second], nil);
-}*/
+    STAssertTrue([descriptor protocolConformsToProtocol:@protocol(BaseProtocolWithMethods)], nil);
+}
 
 - (void)testNotConformsToProtocol {
-    ISProtocolDescriptor *first = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
-    ISProtocolDescriptor *second = [ISProtocolDescriptor descriptorForName:@"ProtocolWithProperties"];
+    ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
     
-    STAssertFalse([first protocolConformsToProtocol:second], nil);
+    STAssertFalse([descriptor protocolConformsToProtocol:@protocol(ProtocolWithProperties)], nil);
 }
 
 - (void)testListProtocols {

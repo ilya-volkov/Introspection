@@ -13,7 +13,7 @@
 
 - (id) initWithProtocol:(Protocol*)protocol;
 
-- (BOOL) protocolConformsToProtocol:(ISProtocolDescriptor*)protocol;
+- (BOOL) protocolConformsToProtocol:(Protocol*)protocol;
 
 - (ISMethodDescriptor*) methodWithSelector:(SEL)selector;
 - (ISMethodDescriptor*) methodWithSelector:(SEL)selector instance:(BOOL)isInstance required:(BOOL)isRequired;
