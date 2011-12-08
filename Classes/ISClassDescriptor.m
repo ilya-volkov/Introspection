@@ -102,7 +102,11 @@
 }
 
 - (ISClassDescriptor*) classSuperclass {
-    return [ISClassDescriptor descriptorForClass:class_getSuperclass(class)];
+    Class superclass = class_getSuperclass(class);
+    if (superclass == [NSObject superclass])
+        return nil;
+        
+    return [ISClassDescriptor descriptorForClass:superclass];
 }
 
 - (NSNumber*) classVersion {
@@ -133,7 +137,6 @@
     return result;
 }
 
-// TODO: all protocols
 - (NSArray*) protocols {
     unsigned int outCount;
     Protocol *__unsafe_unretained *protocols = class_copyProtocolList(class, &outCount);

@@ -20,12 +20,14 @@
     [self assertCollection:expected isSubsetOfCollection:actual];
 }
 
-// TODO: repeating elements problem
 - (void)assertCollection:(NSArray*)expected isSubsetOfCollection:(NSArray*)actual {
+    NSMutableArray *actualCopy = [actual mutableCopy];
     for (int i = 0; i < [expected count]; i++) {
-        BOOL contains = [actual containsObject:[expected objectAtIndex:i]];
-        if (!contains)
+        NSUInteger index = [actualCopy indexOfObject:[expected objectAtIndex:i]];
+        if (index == NSNotFound)
             STFail(@"Expected object at index %d not exists in actual collection", i);
+        
+        [actualCopy removeObjectAtIndex:index];
     }
 }
 

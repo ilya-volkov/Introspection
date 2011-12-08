@@ -66,10 +66,11 @@
     return result;
 }
 
-// TODO: return optional methods too ???
 - (NSArray*) methods {
     NSMutableArray *methods = [[self methodsInstance:YES required:YES] mutableCopy];
     [methods addObjectsFromArray:[self methodsInstance:NO required:YES]];
+    [methods addObjectsFromArray:[self methodsInstance:YES required:NO]];
+    [methods addObjectsFromArray:[self methodsInstance:NO required:NO]];
     
     return methods;
 }

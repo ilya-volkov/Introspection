@@ -29,14 +29,10 @@
 		7A1D855B1454749200A2079D /* ISInvalidStateException.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1D85581454749200A2079D /* ISInvalidStateException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A1D855C1454749200A2079D /* ISInvalidStateException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D85591454749200A2079D /* ISInvalidStateException.m */; };
 		7A1D855D1454749200A2079D /* ISInvalidStateException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D85591454749200A2079D /* ISInvalidStateException.m */; };
-		7A1D855E14547DB300A2079D /* NSArray+CollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D84FC144C12FF00A2079D /* NSArray+CollectionQuery.m */; };
-		7A1D856114547F1400A2079D /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D854F1454635200A2079D /* NSString+Extensions.m */; };
 		7A1D856414547F7100A2079D /* MethodDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D856314547F7000A2079D /* MethodDescriptorTests.m */; };
 		7A1D856514547F7100A2079D /* MethodDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D856314547F7000A2079D /* MethodDescriptorTests.m */; };
 		7A69F40A147CDBDC0006D495 /* ProtocolDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F409147CDBDC0006D495 /* ProtocolDescriptorTests.m */; };
 		7A69F40B147CDBDC0006D495 /* ProtocolDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F409147CDBDC0006D495 /* ProtocolDescriptorTests.m */; };
-		7A69F40D147E0BC30006D495 /* NSValue+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9E391146112F6006650CE /* NSValue+Extensions.m */; };
-		7A69F40E147E0BC30006D495 /* NSInvocation+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9E3981461DA1D006650CE /* NSInvocation+Extensions.m */; };
 		7A69F411147E142F0006D495 /* RaiseOnErrorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F410147E142F0006D495 /* RaiseOnErrorTestCase.m */; };
 		7A69F412147E142F0006D495 /* RaiseOnErrorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F410147E142F0006D495 /* RaiseOnErrorTestCase.m */; };
 		7AD59E5B14554BED00917711 /* ClassWithProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD59E5A14554BED00917711 /* ClassWithProperties.m */; };
@@ -103,6 +99,8 @@
 		7AE37139148F4E66002382C3 /* NSObject+Introspection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE37136148F4E66002382C3 /* NSObject+Introspection.h */; };
 		7AE3713A148F4E66002382C3 /* NSObject+Introspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE37137148F4E66002382C3 /* NSObject+Introspection.m */; };
 		7AE3713B148F4E66002382C3 /* NSObject+Introspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE37137148F4E66002382C3 /* NSObject+Introspection.m */; };
+		7AE3713F14915AFA002382C3 /* ISAmbiguousMatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD59E6E1457E7CA00917711 /* ISAmbiguousMatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AE3714014915B82002382C3 /* ISAmbiguousMatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD59E6E1457E7CA00917711 /* ISAmbiguousMatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +196,7 @@
 		7AE37133148F49A7002382C3 /* Readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.markdown; sourceTree = "<group>"; };
 		7AE37136148F4E66002382C3 /* NSObject+Introspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Introspection.h"; sourceTree = "<group>"; };
 		7AE37137148F4E66002382C3 /* NSObject+Introspection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Introspection.m"; sourceTree = "<group>"; };
+		7AE3713C149154E7002382C3 /* SuperBaseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperBaseProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +444,7 @@
 				7A4DEB601480F0260021AC2E /* ProtocolWithProperties.h */,
 				7AE371251488B3AC002382C3 /* BaseProtocol.h */,
 				7AE37127148BFAF3002382C3 /* BaseProtocolWithProperties.h */,
+				7AE3713C149154E7002382C3 /* SuperBaseProtocol.h */,
 			);
 			name = TestClasses;
 			sourceTree = "<group>";
@@ -456,6 +456,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AE3713F14915AFA002382C3 /* ISAmbiguousMatchException.h in Headers */,
 				7A1D855A1454749200A2079D /* ISInvalidStateException.h in Headers */,
 				7AD8065D144426A100BF6EE6 /* ISDescriptor.h in Headers */,
 				7ADFEDED14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */,
@@ -478,6 +479,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AE3714014915B82002382C3 /* ISAmbiguousMatchException.h in Headers */,
 				7A1D855B1454749200A2079D /* ISInvalidStateException.h in Headers */,
 				7AD8065E144426A100BF6EE6 /* ISDescriptor.h in Headers */,
 				7ADFEDEE14477AC9009EE7CF /* ISSetterSemanticsType.h in Headers */,
@@ -720,10 +722,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A69F40D147E0BC30006D495 /* NSValue+Extensions.m in Sources */,
-				7A69F40E147E0BC30006D495 /* NSInvocation+Extensions.m in Sources */,
-				7A1D856114547F1400A2079D /* NSString+Extensions.m in Sources */,
-				7A1D855E14547DB300A2079D /* NSArray+CollectionQuery.m in Sources */,
 				7A1D85541454638B00A2079D /* SenTestCase+CollectionAssert.m in Sources */,
 				7AD805E71442360100BF6EE6 /* ClassDescriptorTests.m in Sources */,
 				7A1D8540144F789800A2079D /* InstanceVariableDescriptorTests.m in Sources */,
@@ -1010,6 +1008,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Introspection-iosTests/Introspection-iosTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
@@ -1036,6 +1035,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Introspection-iosTests/Introspection-iosTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

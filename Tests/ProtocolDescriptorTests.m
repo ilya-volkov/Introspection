@@ -2,6 +2,8 @@
 #import "ISProtocolDescriptor.h"
 #import "BaseProtocolWithMethods.h"
 #import "ProtocolWithProperties.h"
+#import "ProtocolWithMethods.h"
+#import "SuperBaseProtocol.h"
 
 
 #import "NSArray+CollectionQuery.h"
@@ -37,11 +39,16 @@
     STAssertNil(descriptor, nil);
 }
 
-// TODO: conforms to base protocol
 - (void)testConformsToProtocol {
     ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForName:@"ProtocolWithMethods"];
     
     STAssertTrue([descriptor protocolConformsToProtocol:@protocol(BaseProtocolWithMethods)], nil);
+}
+
+- (void)testConformsToBaseProtocol {
+    ISProtocolDescriptor *descriptor = [ISProtocolDescriptor descriptorForProtocol:@protocol(ProtocolWithMethods)];
+    
+    STAssertTrue([descriptor protocolConformsToProtocol:@protocol(SuperBaseProtocol)], nil);
 }
 
 - (void)testNotConformsToProtocol {
@@ -96,7 +103,9 @@
             @"instanceProtocolMethod:",
             @"instanceProtocolMethodWithParametersFirst:second:third:",
             @"methodWithNonUniqueNameInProtocol",
-            @"requiredProtocolMethod", nil
+            @"requiredProtocolMethod", 
+            @"optionalProtocolMethod",
+            @"optionalClassProtocolMethod", nil
         ] 
         isEquivalentToCollection:names
     ];

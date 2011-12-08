@@ -100,8 +100,7 @@
 - (void)testNSObjectClassSuperclass {
     ISClassDescriptor *descriptor = [ISClassDescriptor descriptorForClass:[NSObject class]];
     
-    STAssertEqualObjects(@"nil", descriptor.classSuperclass.name, nil);
-    //STAssertNil(descriptor.classSuperclass.name, nil);
+    STAssertNil(descriptor.classSuperclass, nil);
 }
 
 - (void)testGetBundle {

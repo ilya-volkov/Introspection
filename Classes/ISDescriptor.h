@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@protocol ISDescriptor// <NSObject>
+@protocol ISDescriptor
 
 @property (nonatomic, readonly, strong) NSString* name;
 
