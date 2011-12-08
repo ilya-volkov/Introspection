@@ -18,7 +18,7 @@ Due to the use of [Automatic Reference Counting][arc] (ARC) you need [Xcode 4.2]
 # How to Use #
 
 All runtime entities (methods, protocols, properties, classes and instance variables) 
-have coressponding descriptors.
+have corresponding descriptors.
 You can create descriptors directly or via `NSObject` extension methods.
 For example, if you want to create a descriptor for the property with name `surname` from the class `Person`
 you can create it using `ISPropertyDescriptor` class:
