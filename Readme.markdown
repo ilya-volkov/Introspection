@@ -10,7 +10,7 @@ Due to the use of [Automatic Reference Counting][arc] (ARC) you need [Xcode 4.2]
 
 * Mac OS X and iOS support
 * High unit test code coverage
-* Introspection of instance variables, methods, properties, classes and protocols
+* Introspection of instance variables, properties, methods, protocols and classes
 * Calling methods dynamically
 * Get/set properties and instance variables dynamically
 * Convenient `NSObject` extension methods
